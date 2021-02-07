@@ -1,20 +1,16 @@
-# furugiKitai_front
+# 規約
+node.jsのスタイルガイドに準拠  
+http://popkirby.github.io/contents/nodeguide/style.html  
+(原文)  
+https://github.com/felixge/node-style-guide  
 
-## Build Setup
+# 画面設計
+atomic designでいい感じでコンポーネント使いまわしてやりたい  
+ただいまいちやりかたがわからん。。  
+https://qiita.com/cawpea/items/c6cc6e2b9baaec1bca62  
 
-```bash
-# install dependencies
-$ npm install
+# 個人的な思い
+atomic designとか正直学習コスト高い  
+大きく分けてヘッダーとかフッターとか分割できれば最初はいいか  
+潔くあきらめよう！！  
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
