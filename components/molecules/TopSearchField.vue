@@ -1,0 +1,11 @@
+<template>
+　<v-row>
+    <v-text-field
+      placeholder='店舗名・キーワード'
+      filled
+      rounded
+      dense
+    >
+    </v-text-field>
+  </v-row>
+</template>

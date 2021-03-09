@@ -11,6 +11,7 @@
         src='/images/mainLogo.png'
       ></v-img>
       <TopSearchButtons />
+      <TopSearchField />
     </v-col>
   </v-main>
 </template>
