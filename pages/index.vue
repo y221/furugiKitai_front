@@ -2,6 +2,7 @@
   <div>
     <Header />
     <FurugiKitaiTop />
+    <NewShopsInformation />
     
   </div>
 </template>
