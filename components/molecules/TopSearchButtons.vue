@@ -11,21 +11,21 @@
     <v-btn
       text
       color='#fff'
-      width='180'
+      width='176'
     >
       キーワードから探す
     </v-btn>
     <v-btn
       text
       color='#fff'
-      width='180'
+      width='176'
     >
       都道府県から探す
     </v-btn>
     <v-btn
       text
       color='#fff'
-      width='180'
+      width='176'
     >
       地図から探す
     </v-btn>

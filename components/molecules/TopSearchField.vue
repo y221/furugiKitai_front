@@ -1,11 +1,30 @@
 <template>
-　<v-row>
-    <v-text-field
-      placeholder='店舗名・キーワード'
-      filled
+　<v-row
+    class='mt-5 mb-15'
+    justify='center'
+  >
+    <div class='my-text-field'>
+      <v-text-field
+        placeholder='店舗名・キーワード'
+        filled
+        rounded
+      >
+      </v-text-field>
+    </div>
+    <v-btn
+      depressed
+      large
+      color='#DA5824'
+      dark
       rounded
-      dense
+      height='56'
     >
-    </v-text-field>
+      検索
+    </v-btn>
   </v-row>
 </template>
+<style scoped>
+.my-text-field {
+  width:450px;
+}
+</style>
