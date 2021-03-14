@@ -12,10 +12,10 @@
         古着屋登録
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn text>
+      <v-btn to="/login" nuxt text>
         ログイン
       </v-btn>
-      <v-btn text>
+      <v-btn to="/login" nuxt text>
         新規登録
       </v-btn>
     </v-app-bar>
