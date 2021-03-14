@@ -38,5 +38,4 @@
   .theme--light.v-btn.v-btn--has-bg {
     background-color: transparent;
   }
-
 </style>

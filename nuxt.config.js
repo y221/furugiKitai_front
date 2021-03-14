@@ -20,6 +20,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/reset.css',
     '@/assets/css/common.css'
   ],
 
@@ -44,6 +45,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'nuxt-webfontloader'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -61,5 +63,22 @@ export default {
     transpile: [
       /typed-vuex/,
     ]
-  }
+  },
+  vuetify: {
+    theme: {
+      dark: false,
+      themes: {
+        light: {
+          primary: '#E9C402',
+          secondary: '#9BD4CE',
+          accent: '#DA5824'
+        }
+      }
+    },
+  },
+  webfontloader: {
+    google: {
+      families: ['Noto+Sans+JP']
+    }
+  },
 }
