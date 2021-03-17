@@ -5,9 +5,7 @@
     to="/design"
   >
     <v-row>
-      <v-col
-        cols="3"
-      >
+      <v-col cols="3">
         <v-img
           src="/images/mainLogoNew.png"
           max-height="150px"
@@ -31,7 +29,6 @@
           active
           color="#887C6C"
           text-color="#887C6C"
-          disabled
           class="mt-n3"
         >
           お気に入り
@@ -66,12 +63,12 @@
   </v-card>
 </template>
 <style scoped>
-.theme--light.v-sheet--outlined {
-  border: 0 none; 
-  border-bottom: 2px solid #C4C4C4;
-  border-radius: 0;
-}
-.accent-color {
-  color: #F44336;
-}
+  .theme--light.v-sheet--outlined {
+    border: 0 none; 
+    border-bottom: 2px solid #C4C4C4;
+    border-radius: 0;
+  }
+  .accent-color {
+    color: #F44336;
+  }
 </style>

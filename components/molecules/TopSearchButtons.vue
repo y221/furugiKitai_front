@@ -1,7 +1,7 @@
 <template>
   <v-btn-toggle
     class='mt-10'
-    background-color='#9BD4CE'
+    background-color='secondary'
     color='#fff'
     mandatory
     dense

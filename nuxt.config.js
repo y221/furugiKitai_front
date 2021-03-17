@@ -71,7 +71,8 @@ export default {
         light: {
           primary: '#E9C402',
           secondary: '#9BD4CE',
-          accent: '#DA5824'
+          accent: '#DA5824',
+          main_background: '#FBF8F4'
         }
       }
     },
