@@ -26,13 +26,10 @@
       cols="12"
       align="center"
     >
-      <v-img
-        alt="フルギキタイ"
-        height="129"
-        width="212.5"
-        src="/images/mainLogoNew.png"
-      >
-      </v-img>  
+    <FurugiKitaiLogo 
+      height="129"
+      width="212.5"
+    />  
     </v-col>
   </v-footer>
 </template>
