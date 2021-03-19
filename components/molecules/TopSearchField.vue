@@ -14,7 +14,7 @@
     <v-btn
       depressed
       large
-      color='#DA5824'
+      color='accent'
       dark
       rounded
       height='56'

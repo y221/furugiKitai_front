@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar
-      color='#FBF8F4'
+      color='main_background'
       dense
       flat
     >

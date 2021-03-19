@@ -1,22 +1,30 @@
-
+/*フォント*/
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
 /*色定義*/
 .main-background-color {
-    background-color: #FBF8F4;
+  background-color: #FBF8F4;
 }
 .main-text-color {
-    color: #333;
+  color: #333;
 }
 .sub-text-color {
-    color: #888;
+  color: #888;
 }
 /*メインラッパー*/
 .main-wrapper {
-    width: 1100px;
-    margin: 0 auto;
+  width: 1100px;
+  margin: 0 auto;
 }
 /*メインコンテント*/
 .main-content {
-    padding: 20px 40px;
-    border-radius: 16px;
-    background-color: #fff
+  padding: 20px 40px;
+  border-radius: 16px;
+  background-color: #fff
+}
+/*高さが足りない場合*/
+.fill-height {
+  background-color: #FBF8F4;
+  height:100vh;
 }
