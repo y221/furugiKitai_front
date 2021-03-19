@@ -34,8 +34,8 @@
 <script>
 </script>
 <style scoped>
-  /* 変な色が重なるので上書き */
-  .theme--light.v-btn.v-btn--has-bg {
-    background-color: transparent;
-  }
+/* 変な色が重なるので上書き */
+.theme--light.v-btn.v-btn--has-bg {
+  background-color: transparent;
+}
 </style>

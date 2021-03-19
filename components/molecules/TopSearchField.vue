@@ -24,7 +24,7 @@
   </v-row>
 </template>
 <style scoped>
-  .my-text-field {
-    width:450px;
-  }
+.my-text-field {
+  width:450px;
+}
 </style>

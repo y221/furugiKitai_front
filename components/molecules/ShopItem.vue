@@ -63,12 +63,12 @@
   </v-card>
 </template>
 <style scoped>
-  .theme--light.v-sheet--outlined {
-    border: 0 none; 
-    border-bottom: 2px solid #C4C4C4;
-    border-radius: 0;
-  }
-  .accent-color {
-    color: #F44336;
-  }
+.theme--light.v-sheet--outlined {
+  border: 0 none; 
+  border-bottom: 2px solid #C4C4C4;
+  border-radius: 0;
+}
+.accent-color {
+  color: #F44336;
+}
 </style>
