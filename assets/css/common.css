@@ -23,3 +23,8 @@ body {
   border-radius: 16px;
   background-color: #fff
 }
+/*高さが足りない場合*/
+.fill-height {
+  background-color: #FBF8F4;
+  height:100vh;
+}
