@@ -72,7 +72,8 @@ export default {
           primary: '#E9C402',
           secondary: '#9BD4CE',
           accent: '#DA5824',
-          main_background: '#FBF8F4'
+          main_background: '#FBF8F4',
+          chip_color: '#887C6C'
         }
       }
     },

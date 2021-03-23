@@ -1,41 +1,52 @@
 <template>
-  <v-btn-toggle
-    class='mt-10'
-    background-color='secondary'
-    color='#fff'
-    mandatory
-    dense
-    rounded
-    borderless
+  <div
   >
     <v-btn
-      text
-      color='#fff'
-      width='176'
+      v-for="button in buttons"
+      :key="button.text"
+      :button="button.to"
+      :class="btn"
+      :width="width"
+      :height="height"
+      color="secondary"
+      depressed
     >
-      キーワードから探す
+      {{ button.text }}
     </v-btn>
-    <v-btn
-      text
-      color='#fff'
-      width='176'
-    >
-      都道府県から探す
-    </v-btn>
-    <v-btn
-      text
-      color='#fff'
-      width='176'
-    >
-      地図から探す
-    </v-btn>
-  </v-btn-toggle>
+  </div>
 </template>
 <script>
-</script>
-<style scoped>
-/* 変な色が重なるので上書き */
-.theme--light.v-btn.v-btn--has-bg {
-  background-color: transparent;
+export default {
+  data () {
+    return {
+      buttons : buttons()
+    }
+  },
+  computed: {
+    width () {
+      if (this.$vuetify.breakpoint.xs) return '125'
+      return '176'
+    },
+    height () {
+      if (!this.$vuetify.breakpoint.xs) return '52'
+    },
+    btn () {
+      if (this.$vuetify.breakpoint.xs) return 'caption font-weight-bold mt-5 mx-1'
+      return 'mt-10 mx-1 font-weight-bold'
+    }
+  }
 }
-</style>
+
+const buttons = () => {
+  return [
+    {
+      text: '都道府県から探す',
+      to: ''
+    },
+    {
+      text: '地図から探す',
+      to: ''
+    }
+  ]
+}
+</script>

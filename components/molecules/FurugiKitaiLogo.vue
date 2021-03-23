@@ -3,7 +3,7 @@
     alt="フルギキタイ"
     :height="height"
     :width="width"
-    src="/images/mainLogoNew.png"
+    src="/images/mainLogo.png"
   >
   </v-img>
 </template>

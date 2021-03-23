@@ -12,9 +12,12 @@ body {
 .sub-text-color {
   color: #888;
 }
+.accent-color {
+  color: #F44336;
+}
 /*メインラッパー*/
 .main-wrapper {
-  width: 1100px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 /*メインコンテント*/
@@ -27,4 +30,10 @@ body {
 .fill-height {
   background-color: #FBF8F4;
   height:100vh;
+}
+
+@media only screen and (max-width:600px) {
+  .main-content {
+    padding: 0 10px;
+  }
 }
