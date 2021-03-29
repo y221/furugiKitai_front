@@ -45,8 +45,12 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    'nuxt-fontawesome',
   ],
+  fontawesome: {
+    component: 'fa'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -72,7 +76,8 @@ export default {
           primary: '#E9C402',
           secondary: '#9BD4CE',
           accent: '#DA5824',
-          main_background: '#FBF8F4'
+          main_background: '#FBF8F4',
+          chip_color: '#887C6C'
         }
       }
     },

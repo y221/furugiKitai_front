@@ -2,10 +2,10 @@
   <v-main class="main-background-color">
     <v-container>
       <v-col align="center">
-        <p class="mt-16 mb-11">お気に入りの古着屋がみつかる検索サイト</p>
+        <p :class="subHeader">お気に入りの古着屋がみつかる検索サイト</p>
         <FurugiKitaiLogo 
-          height="258"
-          width="425"
+          :height="height"
+          :width="width"
         />
         <TopSearchButtons />
         <TopSearchField />
@@ -13,3 +13,21 @@
     </v-container>
   </v-main>
 </template>
+<script>
+export default {
+  computed: {
+    height () {
+      if (this.$vuetify.breakpoint.xs) return '129'
+      return '258'
+    },
+    width () {
+      if (this.$vuetify.breakpoint.xs) return '212.5'
+      return '425'
+    },
+    subHeader () {
+      if (this.$vuetify.breakpoint.xs) return 'mt-sm-16 mb-sm-11 caption'
+      return 'mt-sm-16 mb-sm-11'
+    }
+  }
+}
+</script>

@@ -6,15 +6,25 @@
       no-gutters
     >
       <v-btn
-        v-for="button in buttons"
+        :key="aboutButton.text"
+        :to="aboutButton.to"
+        text
+        :class="btnAbout"
+      >
+        {{ aboutButton.text }}
+      </v-btn>
+      <v-btn
+        v-for="button in footerButtons"
+        :key="button.text"
         :to="button.to"
         text
+        :class="btnFooter"
       >
         {{ button.text }}
       </v-btn>
     </v-row>
     <v-col
-      class="my-15"
+      :class="footer"
       cols="12"
       align="center"
     >
@@ -29,17 +39,39 @@
 export default {
   data () {
     return {
-      buttons : buttons()
+      aboutButton: aboutButton(),
+      footerButtons: footerButtons()
+    }
+  },
+  computed: {
+    btnWidth () {
+      if (this.$vuetify.breakpoint.xs) return 'btn-width'
+      return '';
+    },
+    btnAbout () {
+      if (this.$vuetify.breakpoint.xs) return 'btn-about caption'
+      return '';
+    },
+    btnFooter () {
+      if (this.$vuetify.breakpoint.xs) return 'btn-footer caption'
+      return '';
+    },
+    footer () {
+      if (this.$vuetify.breakpoint.xs) return 'mt-10 mb-15'
+      return 'my-15';
     }
   }
 }
 
-const buttons = () => {
+const aboutButton = () => {
+  return {
+    text: 'フルギキタイとは？',
+    to: ''
+  }
+}
+
+const footerButtons = () => {
   return [
-    {
-      text: 'フルギキタイとは？',
-      to: ''
-    },
     {
       text: '古着屋登録',
       to: ''
@@ -59,3 +91,11 @@ const buttons = () => {
   ]
 }
 </script>
+<style>
+.btn-about {
+  width:100%;
+}
+.btn-footer {
+  width:50%;
+}
+</style>

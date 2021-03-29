@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :isIndex="true" />
     <FurugiKitaiTop />
     <NewShopsInformation />
     <Footer />
