@@ -5,6 +5,16 @@
       dense
       flat
     >
+    <nuxt-link
+      v-if="!isIndex"
+      to="/"
+    >
+      <FurugiKitaiLogo
+        class="mt-6 mr-2" 
+        :height="height"
+        :width="width"
+      />
+    </nuxt-link>
     　<v-app-bar-nav-icon
         @click="drawer = true"
         v-if="$vuetify.breakpoint.xs"
@@ -71,11 +81,25 @@ export default {
     drawer: false,
     group: null,
   }),
+  props: {
+    isIndex: {
+      type: Boolean,
+      required: true
+    }
+  },
   computed: {
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'caption'
       return ''
-    }
+    },
+    height () {
+      if (this.$vuetify.breakpoint.xs) return '129'
+      return '68'
+    },
+    width () {
+      if (this.$vuetify.breakpoint.xs) return '212.5'
+      return '106'
+    },
   }
 }
 </script>

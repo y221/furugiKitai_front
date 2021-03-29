@@ -45,8 +45,12 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    'nuxt-fontawesome',
   ],
+  fontawesome: {
+    component: 'fa'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

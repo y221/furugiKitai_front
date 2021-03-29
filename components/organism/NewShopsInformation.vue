@@ -9,7 +9,9 @@
           <span :class="subHeader">情報は誰でも登録することができます。</span>
           <div :class="mainContent">
             <div v-for="n in 5">
-              <ShopItem />
+              <ShopItem 
+                :id="n"
+              />
             </div>
             <v-col align="center">
               <v-btn

@@ -2,7 +2,7 @@
   <v-card
     class="py-5"
     outlined
-    to="/shopDetail"
+    :to="to"
   >
     <v-row>
       <v-col
@@ -86,6 +86,12 @@
 </template>
 <script>
 export default {
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    }
+  },
   computed: {
     maxHeight () {
       if (this.$vuetify.breakpoint.xs) return '130'
@@ -103,6 +109,9 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'text-caption'
       return ''
     },
+    to () {
+      return `/shops/${this.id}`
+    }
   }
 }
 </script>
