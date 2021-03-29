@@ -1,0 +1,11 @@
+<template>
+  <v-img
+    width="500"
+    height="372"
+    src="/images/shop.jpg"
+  >
+  </v-img>
+</template>
+<script>
+</script>
+</script>

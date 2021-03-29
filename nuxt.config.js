@@ -20,6 +20,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/reset.css',
+    '@/assets/css/common.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -33,18 +35,22 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    'nuxt-typed-vuex'
+    'nuxt-typed-vuex',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'nuxt-webfontloader',
+    'nuxt-fontawesome',
   ],
+  fontawesome: {
+    component: 'fa'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -61,5 +67,24 @@ export default {
     transpile: [
       /typed-vuex/,
     ]
-  }
+  },
+  vuetify: {
+    theme: {
+      dark: false,
+      themes: {
+        light: {
+          primary: '#E9C402',
+          secondary: '#9BD4CE',
+          accent: '#DA5824',
+          main_background: '#FBF8F4',
+          chip_color: '#887C6C'
+        }
+      }
+    },
+  },
+  webfontloader: {
+    google: {
+      families: ['Noto+Sans+JP']
+    }
+  },
 }
