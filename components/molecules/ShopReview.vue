@@ -4,12 +4,12 @@
   >
     <v-row>
       <v-col
-        cols="3"
+        cols="2"
         lg="1"
         md="1"
         sm="1"
       >
-        <v-avatar size="62px">
+        <v-avatar :size="avater">
           <v-img
             :alt="user"
             :src="src"
@@ -17,14 +17,14 @@
         </v-avatar>
       </v-col>
       <v-col
-        cols="7"
+        cols="9"
         lg="11"
         md="11"
         sm="11"
       >
-        <p class="h5 font-weight-bold mb-0">{{ user }}</p>
-        <p class="sub-text-color mb-2">{{ date }}</p>
-        <p class="main-text-color body-2" style="white-space: pre-line;">{{ text }}</p>
+        <p :class="userText">{{ user }}</p>
+        <p :class="dateText">{{ date }}</p>
+        <p :class="reviewText" style="white-space: pre-line;">{{ text }}</p>
         <v-row class="ml-1 mt-2">
           <div>
             <fa :icon="heart" />
@@ -68,6 +68,22 @@ export default {
     heart () {
       return faHeart
     },
+    avater () {
+      if (this.$vuetify.breakpoint.xs) return '36'
+      return '62'
+    },
+    userText () {
+      if (this.$vuetify.breakpoint.xs) return 'h6 font-weight-bold mb-0'
+      return 'h5 font-weight-bold mb-0'
+    },
+    dateText () {
+      if (this.$vuetify.breakpoint.xs) return 'sub-text-color mb-2 caption'
+      return 'sub-text-color mb-2'
+    },
+    reviewText () {
+      if (this.$vuetify.breakpoint.xs) return 'main-text-color caption'
+      return 'main-text-color body-2'
+    }
   },
 }
 </script>

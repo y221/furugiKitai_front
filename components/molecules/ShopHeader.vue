@@ -1,32 +1,35 @@
 <template>
   <div>
-    <p class="text-h4 font-weight-medium main-text-color">Circus Vintage</p>
+    <p :class="shopName">Circus Vintage</p>
     <v-row>
       <v-col
+        cols="12"
         lg="6"
         md="6"
         sm="6"
       >
-        <p class="sub-text-color">レディース・メンズ</p>
+        <p :class="gender">レディース・メンズ</p>
       </v-col>
       <v-col
+        cols="12"
         lg="6"
         md="6"
         sm="6"
-        align="end"
+        :align="this.$vuetify.breakpoint.xs ? 'start' : 'end'"
+        :class="this.$vuetify.breakpoint.xs ? 'pt-0' : '' "
       >
         <v-btn
           depressed
           color="primary"
           outlined
-          class="font-weight-bold"
+          :class="btn"
         >
           お気に入り 117
         </v-btn>
         <v-btn
           depressed
           color="secondary"
-          class="font-weight-bold"
+          :class="btn"
         >
           クチコミ投稿
         </v-btn>
@@ -34,3 +37,21 @@
     </v-row>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    shopName () {
+      if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium main-text-color pt-3 mb-0'
+      return 'text-h4 font-weight-medium main-text-color'
+    },
+    gender () {
+      if (this.$vuetify.breakpoint.xs) return 'sub-text-color caption mb-0'
+      return 'sub-text-color'
+    },
+    btn () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
+      return 'font-weight-bold'
+    }
+  }
+}
+</script>

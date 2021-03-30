@@ -1,15 +1,15 @@
 <template>
   <div class="mt-4">
+    <v-divider :class="this.$vuetify.breakpoint.xs ? '' : 'my-6'"></v-divider>
     <template v-for="(item, index) in items">
-      <v-divider class="my-6"></v-divider>
       <ShopReview
         :user="item.user"
         :date="item.date"
         :src="item.src"
         :text="item.text"
       />
+      <v-divider class="my-6"></v-divider>
     </template>
-    <v-divider class="my-6"></v-divider>
     <div class="text-center">
       <v-pagination
         v-model="page"
@@ -17,6 +17,7 @@
         :total-visible="5"
         circle
         color="chip_color"
+        :class="this.$vuetify.breakpoint.xs ? 'mb-6' : ''"
       ></v-pagination>
     </div>
   </div>
@@ -58,5 +59,11 @@ export default {
       },
     ],
   }),
+  computed: {
+    divider () {
+      if (this.$vuetify.breakpoint.xs) return 'my-6'
+      return 'my-6'
+    },
+  }
 }
 </script>

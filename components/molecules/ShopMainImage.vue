@@ -1,11 +1,18 @@
 <template>
   <v-img
     width="500"
-    height="372"
+    :aspect-ratio="4/3"
     src="/images/shop.jpg"
   >
   </v-img>
 </template>
 <script>
-</script>
+export default {
+  computed: {
+    height () {
+      if (this.$vuetify.breakpoint.xs) return '230'
+      return '372'
+    },
+  }
+}
 </script>

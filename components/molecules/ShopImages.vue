@@ -1,30 +1,34 @@
 <template>
   <v-card
     flat
-    class="mt-12"
+    :class="this.$vuetify.breakpoint.xs ? '' : 'mt-12'"
   >
-    <p class="text-h5 font-weight-bold">写真</p>
+    <p :class="title">写真</p>
     <v-divider></v-divider>
-    <v-row class="mt-4">
+    <v-row :class="this.$vuetify.breakpoint.xs ? 'mt-1' : 'mt-4'">
       <v-col
         v-for="(image, index) in images"
         :key="index"
-        cols="4"
+        cols="6"
         lg="4"
         md="4"
         sm="4"
       >
         <v-img
           :src="image.src"
+          :aspect-ratio="4/3"
           @click="onClickImage(image.src)"
           class="image"
         >
         </v-img> 
       </v-col>
     </v-row>
-    <v-dialog v-model="dialog" max-width="800px">
+    <v-dialog v-model="dialog" max-width="800">
       <v-card>
-        <v-carousel hide-delimiters>
+        <v-carousel
+          hide-delimiters
+          :height="this.$vuetify.breakpoint.xs ? '200' : '500' "
+        >
           <v-carousel-item
             v-for="(image, index) in images"
             :key="index"
@@ -56,6 +60,12 @@
         this.modalImageSrc = src
         this.dialog = true
       }
+    },
+    computed: {
+      title () {
+        if (this.$vuetify.breakpoint.xs) return 'text-h6 font-weight-bold mb-1'
+        return 'text-h5 font-weight-bold'
+      },
     }
   }
 </script>

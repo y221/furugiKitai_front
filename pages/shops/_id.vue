@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :isIndex="false" />
+    <Header :isTop="false" />
     <ShopInformation />
     <Footer />
   </div>

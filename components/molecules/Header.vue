@@ -6,13 +6,14 @@
       flat
     >
     <nuxt-link
-      v-if="!isIndex"
+      v-if="!isTop"
       to="/"
     >
       <FurugiKitaiLogo
         class="mt-6 mr-2" 
         :height="height"
         :width="width"
+        v-if="!$vuetify.breakpoint.xs"
       />
     </nuxt-link>
     　<v-app-bar-nav-icon
@@ -32,10 +33,28 @@
       >
         古着屋登録
       </v-btn>
-      <v-spacer></v-spacer>
+      <v-col
+        align="center"
+        v-if="!isTop"
+        class="logo-wrapper"
+      >
+      <nuxt-link
+        
+        to="/"
+      >
+        <FurugiKitaiLogo
+          class="" 
+          :height="height"
+          :width="width"
+          v-if="$vuetify.breakpoint.xs"
+        />
+      </nuxt-link>
+      </v-col>
+      <v-spacer v-if="isTop"></v-spacer>
       <v-btn
         :class="btn"
         text
+        v-if="!$vuetify.breakpoint.xs"
       >
         ログイン
       </v-btn>
@@ -58,17 +77,29 @@
         <v-list-item-group
           v-model="group"
         >
-          <v-list-item>
+          <v-btn text>✕</v-btn>
+          <v-divider class="my-4"></v-divider>
+          <v-btn
+            depressed
+            color="secondary"
+            outlined
+            class="font-weight-bold caption ml-5"
+          >
+            ログイン
+          </v-btn>
+          <v-btn
+            depressed
+            color="secondary"
+            class="font-weight-bold caption"
+          >
+            新規登録
+          </v-btn>
+          <v-divider class="my-4"></v-divider>
+          <v-list-item class="ml-4">
             <v-list-item-title>フルギキタイとは？</v-list-item-title>
           </v-list-item>
-          <v-list-item>
+          <v-list-item class="ml-4">
             <v-list-item-title>古着屋登録</v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>ログイン</v-list-item-title>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-title>新規登録</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -82,7 +113,7 @@ export default {
     group: null,
   }),
   props: {
-    isIndex: {
+    isTop: {
       type: Boolean,
       required: true
     }
@@ -93,16 +124,18 @@ export default {
       return ''
     },
     height () {
-      if (this.$vuetify.breakpoint.xs) return '129'
+      if (this.$vuetify.breakpoint.xs) return '34'
       return '68'
     },
     width () {
-      if (this.$vuetify.breakpoint.xs) return '212.5'
+      if (this.$vuetify.breakpoint.xs) return '54'
       return '106'
-    },
+    }
   }
 }
 </script>
 <style>
-
+.logo-wrapper {
+  margin-right:48px;
+}
 </style>
