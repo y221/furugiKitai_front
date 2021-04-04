@@ -86,7 +86,6 @@ export default {
     }
   },
   mounted () {
-    console.log('updated');
     this.tab = 'review';
   }
 }

@@ -20,6 +20,7 @@
       rounded
       class="font-weight-bold"
       :height="height"
+      to="/search"
     >
       検索
     </v-btn>
