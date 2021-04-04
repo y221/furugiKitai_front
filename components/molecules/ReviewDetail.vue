@@ -1,8 +1,9 @@
 <template>
   <v-card
     flat
-    :to="to"
+    class="mt-4"
   >
+    <v-divider :class="this.$vuetify.breakpoint.xs ? '' : 'my-6'"></v-divider>
     <v-row>
       <v-col
         cols="2"
@@ -38,6 +39,7 @@
         </v-row>
       </v-col>
     </v-row>
+    <FormReviewComment />
   </v-card>
 </template>
 <script>
@@ -92,9 +94,6 @@ export default {
     reviewText () {
       if (this.$vuetify.breakpoint.xs) return 'main-text-color caption'
       return 'main-text-color body-2'
-    },
-    to () {
-      return `/shops/${this.shopId}/reviews/${this.reviewId}`
     }
   },
 }
