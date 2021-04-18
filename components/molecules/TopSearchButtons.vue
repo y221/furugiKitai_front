@@ -44,7 +44,7 @@ const buttons = () => {
       to: ''
     },
     {
-      text: '地図から探す',
+      text: 'エリアから探す',
       to: ''
     }
   ]

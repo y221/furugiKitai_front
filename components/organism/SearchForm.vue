@@ -3,10 +3,6 @@
     <v-container>
       <div class="main-wrapper">
         <div :class="mainContent">
-          <NuxtLink to="/">
-            <fa :icon="search" :class="searchMap" />
-            地図から探す
-          </NuxtLink>
           <v-row
             :class="this.$vuetify.breakpoint.xs ? 'mt-2' : 'mt-5'"
             justify="center"
@@ -26,10 +22,24 @@
               :height="prefectureHeight"
               color="secondary"
               depressed
+              outlined
               @click="selectPrefectures()"
             >
               <fa :class="this.$vuetify.breakpoint.xs ? 'mr-1 body-2' : 'text-h5 mr-1 mb-1'" :icon="plusCircle" />
               都道府県を選択
+            </v-btn>
+            <v-btn
+              button=""
+              :class="prefectureBtn"
+              :width="prefectureWidth"
+              :height="prefectureHeight"
+              color="secondary"
+              depressed
+              outlined
+              @click="selectPrefectures()"
+            >
+              <fa :class="this.$vuetify.breakpoint.xs ? 'mr-1 body-2' : 'text-h5 mr-1 mb-1'" :icon="plusCircle" />
+              エリアを選択
             </v-btn>
           </v-row>
           <v-row :class="this.$vuetify.breakpoint.xs ? '' : 'mt-n5 mb-2'">
@@ -73,68 +83,11 @@
       </div>
     </v-container>
     <v-dialog v-model="dialog" max-width="800" scrollable>
-      <v-card>
-        <v-card-title>
-          <v-row>
-            <v-col v-if="!this.$vuetify.breakpoint.xs" md="1"></v-col>
-            <v-col
-              cols="9"
-              md="10"
-              :align="this.$vuetify.breakpoint.xs ? '' : 'center'"
-              :class="this.$vuetify.breakpoint.xs ? 'font-weight-bold body-2 pt-5' : 'font-weight-bold'"
-            >
-              エリア絞り込み
-            </v-col>
-            <v-col cols="3" md="1">
-              <v-btn text @click="hideDialog()">✕</v-btn>
-            </v-col>
-          </v-row>
-        </v-card-title>
-        <v-divider class="mt-1"></v-divider>
-        <v-card-text style="height: 500px;">
-          <template v-for="record in areas">
-            <v-row class="mt-2">
-              <v-col
-                md="3"
-                cols="12"
-              >
-                <p :class="$vuetify.breakpoint.xs ? 'body-2 mb-0 font-weight-bold' : 'ml-4 body-1 font-weight-bold'">
-                  {{ record.area }}
-                </p>
-              </v-col>
-              <v-col
-                md="9"
-                cols="12"
-              >
-                <v-row class="pr-5">
-                  <v-checkbox
-                    v-for="prefecture in record.prefectures"
-                    :key="prefecture.id"
-                    v-model="prefectureSelected"
-                    :class="$vuetify.breakpoint.xs ? 'ml-2 mr-4 mt-2' :'ml-4 mt-2'"
-                    :label="prefecture.text"
-                    :value="prefecture.id"
-                  ></v-checkbox>
-                </v-row>
-              </v-col>
-            </v-row>
-            <v-divider class="mt-2"></v-divider>
-          </template>
-        </v-card-text>
-        <v-card-actions>
-          <v-col align="center">
-            <v-btn
-              color="primary"
-              depressed
-              rounded
-              class="font-weight-bold"
-              @click="selectPrefectureCompleted()"
-            >
-              このエリアで絞り込む
-            </v-btn>
-          </v-col>
-        </v-card-actions>
-      </v-card>
+      <PrefectureCheckbox
+        @closeDialog="closeDialog"
+        @selectPrefectureCompleted="setChips"
+        :prefectureSelected="prefectureSelected"
+      />
     </v-dialog>
   </v-main>
 </template>
@@ -147,7 +100,6 @@ export default {
       genderSelected: [],
       prefectureSelected: [],
       dialog: false,
-      areas: getAreas(),
       prefectureChips: getPrefectureChips()
     }
   },
@@ -155,20 +107,16 @@ export default {
     selectPrefectures() {
       this.dialog = true
     },
-    hideDialog() {
-      this.dialog = false
-    },
-    selectPrefectureCompleted() {
-      this.prefectureChips = getPrefectureChips();
-      for(const id of this.prefectureSelected) {
-        this.prefectureChips[id]['display'] = true; 
-      }
+    closeDialog() {
       this.dialog = false
     },
     closeChip(id) {
       this.prefectureSelected = this.prefectureSelected.filter( n => n !== id)
       this.prefectureChips[id]['display'] = false
     },
+    setChips(chips) {
+      this.prefectureChips = chips;
+    }
   },
   computed: {
     searchMap () {
@@ -206,93 +154,6 @@ export default {
       return 'ml-1 font-weight-bold'
     }
   }
-}
-
-const getAreas = () => {
-  return [
-    {
-      area: '北海道・東北',
-      prefectures: [
-        { id: 1, text: '北海道' },
-        { id: 2, text: '青森県' },
-        { id: 3, text: '岩手県' },
-        { id: 4, text: '宮城県' },
-        { id: 5, text: '秋田県' },
-        { id: 6, text: '山形県' },
-        { id: 7, text: '福島県' },
-      ]
-    },
-    {
-      area: '関東',
-      prefectures: [
-        { id: 8, text: '茨城県' },
-        { id: 9, text: '栃木県' },
-        { id: 10, text: '群馬県' },
-        { id: 11, text: '埼玉県' },
-        { id: 12, text: '千葉県' },
-        { id: 13, text: '東京都' },
-        { id: 14, text: '神奈川県' },
-      ]
-    },
-    {
-      area: '北陸・甲信越',
-      prefectures: [
-        { id: 15, text: '新潟県' },
-        { id: 16, text: '富山県' },
-        { id: 17, text: '石川県' },
-        { id: 18, text: '福井県' },
-        { id: 19, text: '山梨県' },
-        { id: 20, text: '長野県' },
-      ]
-    },
-    {
-      area: '東海',
-      prefectures: [
-        { id: 21, text: '岐阜県' },
-        { id: 22, text: '静岡県' },
-        { id: 23, text: '愛知県' },
-        { id: 24, text: '三重県' },
-      ]
-    },
-    {
-      area: '近畿',
-      prefectures: [
-        { id: 25, text: '滋賀県' },
-        { id: 26, text: '京都府' },
-        { id: 27, text: '大阪府' },
-        { id: 28, text: '兵庫県' },
-        { id: 29, text: '奈良県' },
-        { id: 30, text: '和歌山県' },
-      ]
-    },
-    {
-      area: '中国・四国',
-      prefectures: [
-        { id: 31, text: '鳥取県' },
-        { id: 32, text: '島根県' },
-        { id: 33, text: '岡山県' },
-        { id: 34, text: '広島県' },
-        { id: 35, text: '山口県' },
-        { id: 36, text: '徳島県' },
-        { id: 37, text: '香川県' },
-        { id: 38, text: '愛媛県' },
-        { id: 39, text: '高知県' },
-      ]
-    },
-    {
-      area: '九州・沖縄',
-      prefectures: [
-        { id: 40, text: '福岡県' },
-        { id: 41, text: '佐賀県' },
-        { id: 42, text: '長崎県' },
-        { id: 43, text: '熊本県' },
-        { id: 44, text: '大分県' },
-        { id: 45, text: '宮崎県' },
-        { id: 46, text: '鹿児島県' },
-        { id: 47, text: '沖縄県' }
-      ]
-    },
-  ]
 }
 
 const getPrefectureChips = () => {

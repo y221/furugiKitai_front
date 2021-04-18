@@ -20,7 +20,8 @@
       rounded
       class="font-weight-bold"
       :height="height"
-      to="/search"
+      
+      @click='test()'
     >
       検索
     </v-btn>
@@ -37,7 +38,16 @@ export default {
       if (this.$vuetify.breakpoint.xs) return '40'
       return '57'
     }
-  }
+  },
+  methods: {
+    async test() {
+      console.log('test');
+      const ip = await this.$axios.$get(
+        `/`
+      );
+      console.log(ip);
+    }
+  } 
 }
 </script>
 <style scoped>
