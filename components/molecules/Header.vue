@@ -36,6 +36,7 @@
       <v-btn
         :class="btn"
         text
+        to="login"
       >
         ログイン
       </v-btn>

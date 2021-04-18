@@ -77,7 +77,8 @@ export default {
           secondary: '#9BD4CE',
           accent: '#DA5824',
           main_background: '#FBF8F4',
-          chip_color: '#887C6C'
+          chip_color: '#887C6C',
+          line_image: '#00b900'
         }
       }
     },
