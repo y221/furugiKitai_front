@@ -55,6 +55,7 @@
         :class="btn"
         text
         v-if="!$vuetify.breakpoint.xs"
+        to="login"
       >
         ログイン
       </v-btn>
