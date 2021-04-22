@@ -7,11 +7,12 @@
           <v-tabs
             v-model="tab"
             color="accent"
+            :class="this.$vuetify.breakpoint.xs ? 'mt-2' : ''"
           >
             <v-tab
               v-for="item in items"
               :key="item.key"
-              class="font-weight-bold"
+              :class="tabFont"
             >
               {{ item.text }}
               <span
@@ -22,8 +23,11 @@
               </span>
             </v-tab>
           </v-tabs>
-          <v-tabs-items v-model="tab" class="mb-16">
-            <v-tab-item key="shopInformation">
+          <v-tabs-items v-model="tab" :class="this.$vuetify.breakpoint.xs ? '' : 'mb-16'">
+            <v-tab-item
+              key="shopInformation"
+              :class="this.$vuetify.breakpoint.xs ? 'pt-0 pb-6' : ''"
+            >
               <ShopDetail />
               <ShopImages />
             </v-tab-item>
@@ -58,6 +62,10 @@ export default {
     mainContent () {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-2'
       return 'main-content mt-6'
+    },
+    tabFont () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
+      return 'font-weight-bold'
     }
   }
 }

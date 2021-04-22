@@ -20,6 +20,8 @@
       rounded
       class="font-weight-bold"
       :height="height"
+      
+      @click='test()'
     >
       検索
     </v-btn>
@@ -27,7 +29,12 @@
 </template>
 <script>
 export default {
-  computed: {
+  data () {
+    return {
+      aaa: 'bbb'
+    }
+  },
+    computed: {
     textField () {
       if (this.$vuetify.breakpoint.xs) return ''
       return 'text-field'
@@ -35,6 +42,12 @@ export default {
     height () {
       if (this.$vuetify.breakpoint.xs) return '40'
       return '57'
+    }
+  },
+  methods: {
+    async test() {
+      const ip = await this.$axios.$get('/api/shops')
+      console.log(ip)
     }
   }
 }

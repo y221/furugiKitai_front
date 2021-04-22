@@ -16,7 +16,7 @@
             <v-col align="center">
               <v-btn
                 class="mx-auto my-6"
-          　    color="primary"
+                color="primary"
                 depressed
                 rounded
                 width="200px"

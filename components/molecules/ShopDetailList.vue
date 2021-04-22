@@ -1,5 +1,8 @@
 <template>
-    <v-list three-line class="pt-0">
+    <v-list
+      v-model="this.$vuetify.breakpoint.xs ? 'three-line' : ''"
+      class="pt-0"
+    >
       <template v-for="(item, index) in items">
         <v-divider></v-divider>
         <v-list-item
@@ -8,10 +11,10 @@
           <v-list-item-content>
           　<v-list-item-title
               v-text="item.title"
-              class="font-weight-bold"
+              :class="title"
             >
             </v-list-item-title>
-            <p v-text="item.text" class="mt-2 sub-text-color body-2" style="white-space: pre-line;"></p>
+            <p v-text="item.text" :class="text" style="white-space: pre-line;"></p>
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -47,5 +50,15 @@ export default {
       },
     ],
   }),
+  computed: {
+    title () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold body-2'
+      return 'font-weight-bold'
+    },
+    text () {
+      if (this.$vuetify.breakpoint.xs) return 'my-0 sub-text-color caption'
+      return 'mt-2 sub-text-color body-2'
+    },
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-row class="mt-4">
+  <v-row :class="this.$vuetify.breakpoint.xs ? 'mt-1' : 'mt-4'">
     <v-col
       cols="12"
       lg="6"
