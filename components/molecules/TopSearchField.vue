@@ -29,7 +29,12 @@
 </template>
 <script>
 export default {
-  computed: {
+  data () {
+    return {
+      aaa: 'bbb'
+    }
+  },
+    computed: {
     textField () {
       if (this.$vuetify.breakpoint.xs) return ''
       return 'text-field'
@@ -41,13 +46,10 @@ export default {
   },
   methods: {
     async test() {
-      console.log('test');
-      const ip = await this.$axios.$get(
-        `/`
-      );
-      console.log(ip);
+      const ip = await this.$axios.$get('/api/shops')
+      console.log(ip)
     }
-  } 
+  }
 }
 </script>
 <style scoped>
