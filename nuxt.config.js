@@ -58,7 +58,12 @@ export default {
     proxy: true,
   },
   proxy: {
-    '/api/': 'http://localhost:80',
+    '/api': {
+      target: 'http://host.docker.internal',
+      pathRewrite: {
+        '^/api': '/',
+      },
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
