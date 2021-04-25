@@ -14,7 +14,6 @@
             class="profile-text"></span>
         </li>
     </ul>
-    <v-divider></v-divider>
   </div>
 </template>
 
