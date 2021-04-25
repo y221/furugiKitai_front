@@ -30,6 +30,7 @@
       <v-btn
         text
         v-if="!$vuetify.breakpoint.xs"
+        to='/shops/new'
       >
         古着屋登録
       </v-btn>
