@@ -16,17 +16,20 @@
         </v-chip>
       </v-col>
       <v-col cols="12" sm="8" md="7">
-        <v-textarea
+        <v-select
           v-model="value"
           :label="label"
           :id="id"
+          :items="items"
+          item-text="text"
+          item-value="value"
           outlined
           solo
           flat
           rows="5"
           auto-grow
           @change="changed()"
-        ></v-textarea>
+        ></v-select>
       </v-col>
     </v-row>
     <v-divider></v-divider>
@@ -35,14 +38,10 @@
 <script>
 export default {
   data: () => ({
-    value: ''
+    value: '',
   }),
   props: {
     columnName: {
-      type: String,
-      required: true
-    },
-    label: {
       type: String,
       required: true
     },
@@ -52,6 +51,14 @@ export default {
     },
     id: {
       type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    items: {
+      type: Array,
       required: true
     }
   },

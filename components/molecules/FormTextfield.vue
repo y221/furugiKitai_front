@@ -17,10 +17,13 @@
       </v-col>
       <v-col cols="12" sm="8" md="7">
         <v-text-field
+          v-model="value"
           :label="label"
+          :id="id"
           solo
           flat
           outlined
+          @change="changed()"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -29,6 +32,9 @@
 </template>
 <script>
 export default {
+  data: () => ({
+    value: ''
+  }),
   props: {
     columnName: {
       type: String,
@@ -41,10 +47,16 @@ export default {
     required: {
       type: Boolean,
       required: true
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
-  computed: {
-    
+  methods: {
+    changed() {
+      this.$emit("change", this.value, this.id);
+    }
   }
 }
 </script>
