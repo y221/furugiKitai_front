@@ -49,25 +49,11 @@
           <div class="text-h5 font-weight-bold">
             <p><span class="highlight">　　Member　　</span></p>
             </div>
-            <div class="my-5 text-h5">
-              <div class="my-auto">
-              <v-avatar
-                color="primary"
-                size="99"
-              ></v-avatar>
-              <v-avatar
-                color="primary"
-                size="99"
-              ></v-avatar>
-              <v-avatar
-                color="primary"
-                size="99"
-              ></v-avatar>
-              <v-avatar
-                color="primary"
-                size="99"
-              ></v-avatar>
-              </div>
+            <div class="my-15 text-h5">
+              <AboutMember />
+              <AboutMember />
+              <AboutMember />
+              <AboutMember />
             </div>
         </v-col>  
         </div>
