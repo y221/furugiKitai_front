@@ -24,6 +24,7 @@
       <v-btn
         text
         v-if="!$vuetify.breakpoint.xs"
+        to='/about'
       >
         フルギキタイとは?
       </v-btn>
