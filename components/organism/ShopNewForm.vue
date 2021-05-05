@@ -52,24 +52,18 @@ export default {
     businessHour: '',
   }),
   methods: {
-    registerShops() {
-      // this.$store.dispatch("addDeck", deckData);
+    registerShop() {
+      this.$store.dispatch("addShop", deckData);
     },
     changeValue(...values) {
       const [value, id] = values
       this[id] = value;
     }
   },
-  created() {
-      this.prefectures = getPrefectures()
-  }
-}
-const getPrefectures = () => {
-  return [
-    {value: 1, text: '青森'},
-    {value: 2, text: '秋田'},
-    {value: 3, text: '岩手'}
-  ]
+  async mounted() {
+    await this.$accessor.modules.shopNew.getPrefectures();
+    this.prefectures = this.$accessor.modules.shopNew.prefectures;
+  },
 }
 </script>
 <style>
