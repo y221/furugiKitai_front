@@ -12,6 +12,7 @@
             <v-tab
               v-for="item in items"
               :href="item.key"
+              :key="item.key"
               :class="tabFont"
             >
               {{ item.text }}

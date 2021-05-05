@@ -21,8 +21,8 @@
           :label="label"
           :id="id"
           :items="items"
-          item-text="text"
-          item-value="value"
+          item-text="prefecture"
+          item-value="id"
           outlined
           solo
           flat
