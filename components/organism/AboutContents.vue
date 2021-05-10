@@ -1,5 +1,6 @@
 <template>
-  <v-main class="main-background-color pb-10 pt-0">
+  <v-main class="main-background-color">
+    <v-container>
     <div class="main-wrapper">
       <div :class="mainContent">
         <div class="FurugiKitaiLogo">
@@ -41,6 +42,7 @@
         </div>
       </div>
     </div> 
+    </v-container>
   </v-main>
 </template>
 <script>
