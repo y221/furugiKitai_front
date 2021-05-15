@@ -1,0 +1,9 @@
+<template>
+  <v-sheet
+    class="mr-2"
+    color="#9BD4CE"
+    height="25"
+    rounded
+    width="25"
+  ></v-sheet>
+</template>

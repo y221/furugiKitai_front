@@ -78,7 +78,7 @@ const footerButtons = () => {
     },
     {
       text: '利用規約',
-      to: '/userPolicy'
+      to: '/terms'
     },
     {
       text: 'プライバシーポリシー',

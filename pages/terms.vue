@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header :isTop="false" />
-    <UtermsContents />
+    <TermsContents />
     <Footer />
   </div>
 </template>
