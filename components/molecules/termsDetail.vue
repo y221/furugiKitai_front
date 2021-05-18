@@ -2,7 +2,14 @@
   <div :class="termsWrapper">
     <div class="d-flex align-center flex-row mb-6">
       <TermsTitleBlock />
-      <div :class="termsTitle">第{{index}}条（適用）</div>
+      <div :class="termsTitle">第{{index}}条</div>
+        <span
+            v-for="(subject, i) in subjects"
+            :key="i"
+            :class="termsTitle"
+          >
+            （{{ subject }}）
+        </span>
     </div>
     <ol>
       <li
@@ -20,7 +27,8 @@
 export default {
   props: {
     i: Number,
-    terms: Array
+    terms: Array,
+    subjects: Array,
   },
   computed: {
     termsWrapper () {

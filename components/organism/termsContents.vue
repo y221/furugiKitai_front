@@ -5,14 +5,17 @@
         <div class="main-wrapper">
           <div class="my-10 px-16">
             <div :class="header">利用規約</div>
-            <div :class="mainText">この利用規約（以下，「本規約」といいます。）は，フルギキタイ（以下，「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に同意いただいた上で，本サービスを利用できるものとします。</div>
+            <div :class="headerText">この利用規約（以下，「本規約」といいます。）は，フルギキタイ（以下，「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に同意いただいた上で，本サービスを利用できるものとします。</div>
           </div>
           <div class="my-16 mx-4 px-16">
             <div v-for="(terms, i) of termsList" :key="i">
+            <div v-for="(subjects, i) of subjectsList" :key="i">
               <TermsDetail
+                :subjects='subjects'
                 :terms='terms'
                 :i='i'
               />
+            </div>
             </div>
           </div>
         </div>
@@ -25,6 +28,18 @@
 export default {
   data() {
     return {
+      subjectsList:
+        [
+          [
+            '適用'
+          ],
+          [
+            '利用登録'
+          ],
+          [
+            'ユーザーIDおよびパスワードの管理'
+          ]
+        ],
       termsList:
         [
           [
@@ -33,8 +48,8 @@ export default {
             '本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。'
           ],
           [
-            '２条の中身だよおおおおおおおおおおおおお',
-            'ああああああああああああああああああああ'
+            '本サービスにおいては，登録希望者が本規約に同意の上，運営者の定める方法によって利用登録を申請し，運営者がこの承認を登録希望者に通知することによって，利用登録が完了するものとします。',
+            '運営者は，利用登録の申請者に以下の事由があると判断した場合，利用登録の申請を承認しないことがあり，その理由については一切の開示義務を負わないものとします。(1)利用登録の申請に際して虚偽の事項を届け出た場合(2)本規約に違反したことがある者からの申請である場合(3)その他，運営者が利用登録を相当でないと判断した場合'
           ],
           [
             '3条の中身だよおおおおおおおおおおおお',
@@ -42,22 +57,26 @@ export default {
             'ううううううううううううううううううう',
             'えええええええええええええええええええ'
           ]
-        ],
+        ]
     }
   },
+
   computed: {
     mainContent () {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-4 mx-5'
       return 'main-content mt-6 mx-12'
     },
     header () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-2'
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-2 my-5'
       return 'font-weight-bold text-sm-h4 mx-4 my-10'
     },
-    mainText () {
+    headerText () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-1 mx-2 caption'
       return 'text-body-1 mx-4'
     }
   }
 }
 </script>
+
+
+
