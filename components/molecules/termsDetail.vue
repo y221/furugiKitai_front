@@ -2,7 +2,7 @@
   <div :class="termsWrapper">
     <div class="d-flex align-center flex-row">
       <TermsTitleBlock />
-      <div :class="termsTitle">第{{index}}条.({{ subjects }})</div>
+      <div :class="termsTitle">第{{index}}条.({{ subject }})</div>
     </div>
     <ol>
       <li
@@ -31,7 +31,7 @@ export default {
     i: Number,
     terms: Array,
     termseconds: Array,
-    subjects: Array,
+    subject: String,
   },
   computed: {
     termsWrapper () {
