@@ -1,8 +1,8 @@
 <template>
   <v-main class="main-background-color">
     <v-container>
-      <div :class="mainContent">
-        <div :class="mainWrapper">
+      <div class="main-wrapper">
+        <div :class="mainContent">
           <div :class="header">
             利用規約
           </div>
@@ -38,10 +38,6 @@ export default {
     mainContent () {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-4'
       return 'main-content mt-6 mx-12'
-    },
-    mainWrapper () {
-      if (this.$vuetify.breakpoint.xs) return 'main-wrapper pb-10 px-4'
-      return 'main-wrapper pb-10 my-16 mx-16'
     },
     header () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-2 my-5 pt-5'
