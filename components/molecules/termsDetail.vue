@@ -8,7 +8,7 @@
       <li
         class="termsSeconds"
         v-for="(termsecond, i) in termseconds"
-        :key="i"
+        :key="`first-${i}`"
         :class="termsText"
       >
         {{ termsecond }}
@@ -16,7 +16,7 @@
       <li
         class="terms"
         v-for="(term, i) in terms"
-        :key="i"
+        :key="`second-${i}`"
         :class="termsText"
       >
         {{ term }}

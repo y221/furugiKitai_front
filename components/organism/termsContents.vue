@@ -6,7 +6,7 @@
           <div :class="header">
             利用規約
           </div>
-          <div :class="headerFooterText">
+          <div :class="headerText">
             この利用規約（以下、「本規約」といいます。）は、フルギキタイ（以下、「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に同意いただいた上で、本サービスを利用できるものとします。
           </div>
           <div v-for="(subject, i) of subjects" :key="i">
@@ -23,7 +23,7 @@
           <div :class="footer">
             運営者
           </div>
-          <div :class="headerFooterText">
+          <div :class="footerText">
             株式会社フルギキタイ
           </div>
         </div>
@@ -43,13 +43,17 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-2 my-5 pt-5'
       return 'font-weight-bold text-sm-h4 mx-4 my-10'
     },
-    headerFooterText () {
+    headerText () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
       return 'text-body-1 mx-4 mb-12'
     },
     footer () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 pt-5'
       return 'font-weight-bold text-sm-h7 mx-4'
+    },
+    footerText () {
+      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10 pb-16'
+      return 'text-body-1 mx-4 mb-12'      
     },
     yearMonth () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 py-8'
@@ -59,7 +63,7 @@ export default {
   data() {
     return {
       subjects:[
-        '適用', '利用登録', 'ユーザーID及びパスワードの管理', '禁止事項', '本サービスの提供の停止等', '著作権', '利用制限および登録抹消', '退会', '保証の否認および免責事項', 'サービス内容の変更等', '利用規約の変更', '個人情報の取扱い', '通知または連絡', '権利義務の譲渡との禁止', '準拠法・裁判管轄'
+        '適用', '利用登録', 'ユーザーID及びパスワードの管理', '禁止事項', '本サービスの提供の停止等', '著作権', '利用制限及び登録抹消', '退会', '保証の否認及び免責事項', 'サービス内容の変更等', '利用規約の変更', '個人情報の取扱い', '通知または連絡', '権利義務の譲渡との禁止', '準拠法・裁判管轄'
       ],
       termsList:[
         [
