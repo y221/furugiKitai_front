@@ -17,7 +17,7 @@
               :index='index'
             />
           </div>
-          <div :class="yearMonth">
+          <div :class="footerText">
             2021年7月1日 施行
           </div>
         </div>
@@ -42,12 +42,8 @@ export default {
       return 'text-body-1 mx-4 mb-12'
     },
     footerText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10 pb-16'
+      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mt-15 pb-16'
       return 'text-body-1 mx-4 mb-12'      
-    },
-    yearMonth () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 py-8'
-      return 'text-body-1 mx-4 mb-16 py-9'
     }
   },
   data() {
