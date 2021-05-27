@@ -2,7 +2,7 @@
   <div :class="termsWrapper">
     <div class="d-flex align-center flex-row">
       <TermsTitleBlock />
-      <div :class="termsTitle">第{{section}}条.({{ term }})</div>
+      <div :class="sectionTitle">第{{section}}条.({{ term }})</div>
     </div>
     <ol>
       <li
@@ -38,7 +38,7 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'pb-2 px-2 mt-4 mb-2'
       return 'pb-8 px-4 mb-4'
     },
-    termsTitle () {
+    sectionTitle () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 my-3'
       return 'font-weight-bold text-sm-h5 mx-1 my-5'
     },
