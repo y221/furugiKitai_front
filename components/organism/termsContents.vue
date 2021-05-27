@@ -9,12 +9,12 @@
           <div :class="headerText">
             この利用規約（以下、「本規約」といいます。）は、フルギキタイ（以下、「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に同意いただいた上で、本サービスを利用できるものとします。
           </div>
-          <div v-for="(subject, i) of subjects" :key="i">
+          <div v-for="(term, index) of terms" :key="index">
             <TermsDetail
-              :subject='subject'
-              :termseconds='termsecondsList[i]'
-              :terms='termsList[i]'
-              :i='i'
+              :term='term'
+              :texts='textsList[index]'
+              :numbers='numbersList[index]'
+              :index='index'
             />
           </div>
           <div :class="yearMonth">
@@ -62,10 +62,10 @@ export default {
   },
   data() {
     return {
-      subjects:[
+      terms:[
         '適用', '利用登録', 'ユーザーID及びパスワードの管理', '禁止事項', '本サービスの提供の停止等', '著作権', '利用制限及び登録抹消', '退会', '保証の否認及び免責事項', 'サービス内容の変更等', '利用規約の変更', '個人情報の取扱い', '通知または連絡', '権利義務の譲渡との禁止', '準拠法・裁判管轄'
       ],
-      termsList:[
+      numbersList:[
         [
           '1.本規約は、ユーザーとフルギキタイ運営者（以下、「運営者」といいます。）との間の本サービスの利用に関わる一切の関係に適用されるものとします。',
           '2.運営者は本サービスに関し、本規約のほか、ご利用にあたってのルール等、各種の定め（以下、「個別規定」といいます。）をすることがあります。これら個別規定はその名称のいかんに関わらず、本規約の一部を構成するものとします。',
@@ -147,7 +147,7 @@ export default {
           '2.本サービスに関して紛争が生じた場合には、運営者の本店所在地を管轄する裁判所を専属的合意管轄とします。'
         ]
       ],
-      termsecondsList:[
+      textsList:[
         [],[],[],
         [
           'ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。'

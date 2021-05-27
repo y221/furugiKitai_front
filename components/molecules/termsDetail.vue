@@ -2,24 +2,24 @@
   <div :class="termsWrapper">
     <div class="d-flex align-center flex-row">
       <TermsTitleBlock />
-      <div :class="termsTitle">第{{index}}条.({{ subject }})</div>
+      <div :class="termsTitle">第{{section}}条.({{ term }})</div>
     </div>
     <ol>
       <li
-        class="termsSeconds"
-        v-for="(termsecond, i) in termseconds"
-        :key="`first-${i}`"
-        :class="termsText"
+        class="texts"
+        v-for="(text, index) in texts"
+        :key="`text-${index}`"
+        :class="sentence"
       >
-        {{ termsecond }}
+        {{ text }}
       </li>
       <li
-        class="terms"
-        v-for="(term, i) in terms"
-        :key="`second-${i}`"
-        :class="termsText"
+        class="numbers"
+        v-for="(number, index) in numbers"
+        :key="`number-${index}`"
+        :class="sentence"
       >
-        {{ term }}
+        {{ number }}
       </li>
     </ol>    
   </div>
@@ -28,10 +28,10 @@
 <script>
 export default {
   props: {
-    i: Number,
-    terms: Array,
-    termseconds: Array,
-    subject: String,
+    index: Number,
+    term: String,
+    texts: Array,
+    numbers: Array,
   },
   computed: {
     termsWrapper () {
@@ -42,12 +42,12 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 my-3'
       return 'font-weight-bold text-sm-h5 mx-1 my-5'
     },
-    termsText () {
+    sentence () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mb-5'
       return 'text-body-1 mb-5'
     },
-    index () {
-      return this.i + 1
+    section () {
+      return this.index + 1
     }
   }
 }
@@ -58,12 +58,12 @@ ol {
   list-style-type: none;
 }
 
-.termsSeconds {
+.texts {
   padding-left: 0;
   margin-left: -1.5em;
 }
 
-.terms {
+.numbers {
   padding-left: 1em;
   text-indent: -1.25em;
 }
