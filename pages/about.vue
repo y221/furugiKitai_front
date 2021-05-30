@@ -1,7 +1,0 @@
-<template>
-  <div>
-    <Header :isTop="false" />
-    <AboutContents />
-    <Footer />
-  </div>
-</template>
