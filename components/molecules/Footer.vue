@@ -82,7 +82,7 @@ const footerButtons = () => {
     },
     {
       text: 'プライバシーポリシー',
-      to: ''
+      to: '/privacy'
     },
     {
       text: 'お問い合わせ',
