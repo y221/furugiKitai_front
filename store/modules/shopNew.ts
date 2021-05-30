@@ -16,9 +16,12 @@ export const mutations = mutationTree(state, {
   }
 })
 
-export const actions = actionTree({ state, getters, mutations }, {
-  async getPrefectures({ getters, commit }) {
+export const actions = actionTree({state, getters, mutations}, {
+  async getPrefectures({ getters, commit }, ) {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
+  },
+  registerShop({ getters, commit}, shopData: string[]) {
+    this.$axios.$post('/api/shops', {shopData: shopData});
   }
 })
