@@ -44,7 +44,9 @@ export default {
     prefectures: [],
     prefecture: '',
     name: '',
+    city: '',
     address: '',
+    building: '',
     access: '',
     phoneNumber: '',
     instagram: '',
@@ -52,8 +54,20 @@ export default {
     businessHour: '',
   }),
   methods: {
-    registerShop() {
-      this.$store.dispatch("addShop", deckData);
+    async registerShop() {
+      const shopData = {
+        prefecture: this.prefecture,
+        name: this.name,
+        city: this.city,
+        address: this.address,
+        building: this.building,
+        access: this.access,
+        phoneNumber: this.phoneNumber,
+        instagram: this.instagram,
+        holiday: this.holiday,
+        businessHour: this.businessHour,
+      }
+      await this.$accessor.modules.shopNew.registerShop(shopData);
     },
     changeValue(...values) {
       const [value, id] = values
