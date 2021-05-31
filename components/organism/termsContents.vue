@@ -24,7 +24,7 @@
             運営者
           </div>
           <div :class="footerText">
-            株式会社フルギキタイ
+            フルギキタイ運営チーム
           </div>
         </div>
       </div>
