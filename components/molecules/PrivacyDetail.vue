@@ -59,7 +59,6 @@ ol {
 }
 
 .texts {
-  padding-left: 0;
   margin-left: -1.5em;
 }
 
