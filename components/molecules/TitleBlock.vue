@@ -1,7 +1,7 @@
 <template>
   <div v-if="this.$vuetify.breakpoint.xs">
     <v-sheet
-      color="#9BD4CE"
+      color="secondary"
       height="13"
       rounded
       width="13"
@@ -10,7 +10,7 @@
   <div v-else>
     <v-sheet
       class="mr-2"
-      color="#9BD4CE"
+      color="secondary"
       height="18"
       rounded
       width="18"

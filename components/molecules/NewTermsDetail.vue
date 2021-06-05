@@ -1,7 +1,7 @@
 <template>
   <div :class="termsWrapper">
     <div class="d-flex align-center flex-row">
-      <TermsTitleBlock />
+      <TitleBlock />
       <div :class="sectionTitle">第{{section}}条.({{ term }})</div>
     </div>
     <ol>
