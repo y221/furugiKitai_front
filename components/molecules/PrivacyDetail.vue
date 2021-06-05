@@ -6,7 +6,7 @@
     </div>
     <ol>
       <li
-        class="texts"
+        class="ml-n5"
         v-for="(text, index) in texts"
         :key="`text-${index}`"
         :class="sentence"
@@ -14,7 +14,7 @@
         {{ text }}
       </li>
       <li
-        class="numbers"
+        class="numbers pl-4"
         v-for="(number, index) in numbers"
         :key="`number-${index}`"
         :class="sentence"
@@ -58,12 +58,7 @@ ol {
   list-style-type: none;
 }
 
-.texts {
-  margin-left: -1.5em;
-}
-
 .numbers {
-  padding-left: 1em;
-  text-indent: -1.25em;
+  text-indent: -0.9em;
 }
 </style>
