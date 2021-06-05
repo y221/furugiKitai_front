@@ -1,12 +1,12 @@
 <template>
-  <div :class="termsWrapper">
+  <div :class="privacyWrapper">
     <div class="d-flex align-center flex-row">
-      <TermsTitleBlock />
+      <TitleBlock />
       <div :class="sectionTitle">第{{section}}条.({{ term }})</div>
     </div>
     <ol>
       <li
-        class="texts"
+        class="ml-n5"
         v-for="(text, index) in texts"
         :key="`text-${index}`"
         :class="sentence"
@@ -14,7 +14,7 @@
         {{ text }}
       </li>
       <li
-        class="numbers"
+        class="numbers pl-4"
         v-for="(number, index) in numbers"
         :key="`number-${index}`"
         :class="sentence"
@@ -34,7 +34,7 @@ export default {
     numbers: Array,
   },
   computed: {
-    termsWrapper () {
+    privacyWrapper () {
       if (this.$vuetify.breakpoint.xs) return 'pb-2 px-2 mt-4 mb-2'
       return 'pb-8 px-4 mb-4'
     },
@@ -58,13 +58,7 @@ ol {
   list-style-type: none;
 }
 
-.texts {
-  padding-left: 0;
-  margin-left: -1.5em;
-}
-
 .numbers {
-  padding-left: 1em;
-  text-indent: -1.25em;
+  text-indent: -0.9em;
 }
 </style>
