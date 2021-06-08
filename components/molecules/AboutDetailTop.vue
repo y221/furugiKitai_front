@@ -1,13 +1,28 @@
 <template>
   <div>
-    <FurugiKitaiLogo
-      :height="height"
-      :width="width"
-    />
-    <div>
+
+      <FurugiKitaiLogo class="mt-10"
+        :height="height"
+        :width="width"
+      />
+
+    <div :class="subTitle">
       古着屋を探せる！楽しめる！<br>
       フルギがもっと好きになる古着ポータルサイト
     </div>
+    <v-col align="left">
+      <div :class="mainText">
+        <div>
+          このサイトは運営者が古着をもっと知りたいという思いでつくりはじめたサイトです。
+        </div>
+        <div>
+          全国の古着屋をデータベース化して、自分のお気に入りの古着屋をもっとたくさん見つけられたらという思いで作りました。
+        </div>
+        <div>
+          このサイトを共有することで古着を好きな人がより古着を楽しめるように、古着を知らない人が古着の良さを知れるようなサイトにしていきたいと考えています。
+        </div>
+      </div>
+    </v-col>
   </div>
 </template>
 
@@ -16,27 +31,19 @@ export default {
   computed: {
     height () {
       if (this.$vuetify.breakpoint.xs) return '84.9'
-      return '151.7'
+      return '200'
     },
     width () {
       if (this.$vuetify.breakpoint.xs) return '140'
-      return '250'
+      return '329'
     },
-    header () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-2 my-5 pt-5'
-      return 'font-weight-bold text-sm-h4 mx-4 my-10'
+    subTitle () {
+      if (this.$vuetify.breakpoint.xs) return 'primary--text text-h5 font-weight-bold'
+      return 'primary--text text-h5 font-weight-bold mt-10'
     },
-    headerText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
-      return 'text-body-1 mx-4 mb-12'
-    },
-    footer () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 pt-5'
-      return 'font-weight-bold text-sm-h7 mx-4'
-    },
-    footerText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10 pb-16'
-      return 'text-body-1 mx-4 mb-12'      
+    mainText () {
+      if (this.$vuetify.breakpoint.xs) return 'text-body-1 mx-15'
+      return 'text-h6 px-5 mx-15 px-15 pt-8'
     }
   }
 }
