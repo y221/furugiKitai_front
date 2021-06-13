@@ -2,24 +2,24 @@
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
 export const state = () => ({
-  // age: 0 as number
+  shops: [] as string[]
 })
 
 export type RootState = ReturnType<typeof state>
 
 export const getters = getterTree(state, {
-  // age: state => state.age,
+  // shops: state => state.shops,
 })
 
 export const mutations = mutationTree(state, {
-  // setAge(state, age: number): void {
-  //   state.age = age
-  // }
+  setShops(state, values: string[]): void {
+    state.shops = values;
+  }
 })
 
 export const actions = actionTree({ state, getters, mutations }, {
-  // getOlder({ getters, commit }) {
-  //   const currentAge = getters.age
-  //   commit('setAge', currentAge + 1)
-  // }
+  async getShops({ getters, commit }, ) {
+    const shops = await this.$axios.$get('/api/shops');
+    commit('setShops', shops);
+  },
 })

@@ -8,9 +8,9 @@
           <br class="d-flex d-sm-none">
           <span :class="subHeader">情報は誰でも登録することができます。</span>
           <div :class="mainContent">
-            <div v-for="n in 5">
+            <div v-for="shop in shops">
               <ShopItem 
-                :id="n"
+                :shop="shop"
               />
             </div>
             <v-col align="center">
@@ -31,6 +31,9 @@
 </template>
 <script>
 export default {
+  data: () => ({
+    shops: [],
+  }),
   computed: {
     header () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 ml-2'
@@ -44,6 +47,10 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-2'
       return 'main-content mt-6'
     }
+  },
+  async mounted() {
+    await this.$accessor.modules.shops.getShops();
+    this.shops = this.$accessor.modules.shops.shops;
   }
 }
 </script>
