@@ -1,63 +1,77 @@
 <template>
   <div>
-    <div :class="subTitle">
-      フルギキタイ運営チーム
-    </div>
-    <v-col align="center">
-    <v-row>
-    <div
-      class="d-flex flex-wrap"
-      v-for="name in names"
-      :key="name"
-      :class="nameStyle"
-    >
-    {{ name }}
-    </div>
+    <v-row justify="center">
+      <div
+        v-for="(avatar, index) in avatars"
+        :key="index"
+      >
+        <v-avatar :size="avatarSize">
+          <img :src="avatar">
+        </v-avatar>
+      </div>
     </v-row>
-    <v-row>
-    <div
-      v-for="twitter in twitters"
-      :key="twitter"
-      :class="snsLink"
-    >
-    {{ twitter }}
-    </div>  
+    <v-row justify="center">
+      <div
+        v-for="(name, index) in names"
+        :key="`name-${index}`"
+        :class="nameStyle"
+        >
+      {{ name }}
+      </div>
     </v-row>
-    <v-row>
-    <div
-      v-for="profile in profiles"
-      :key="profile"
-      :class="profileStyle"
-    >
-    {{ profile }}
-    </div> 
-    </v-row>   
-    </v-col>
+    <v-row justify="center">
+      <div
+        v-for="(socialMedia, index) in socialMedias"
+        :key="`socialMedia-${index}`"
+        :class="socialMediaStyle"
+      >
+        <div
+          v-for="(links, index) in links"
+          :key="`links-${index}`"
+        >
+          <a :href="links" target=”_blank”>
+            {{ socialMedia }}
+          </a>
+        </div>
+      </div>  
+    </v-row>
+    <v-row justify="center">
+      <div
+        v-for="(profile, index) in profiles"
+        :key="`profile-${index}`"
+        :class="profileStyle"
+      >
+      {{ profile }}
+      </div> 
+    </v-row>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    names: Array,
-    twitters: Array,
-    profiles: Array,
+    index: Number,
+    avatars: Object,
+    names: String,
+    socialMedias: String,
+    links: Object,
+    profiles: String,
   },
   computed: {
-    subTitle () {
-      if (this.$vuetify.breakpoint.xs) return 'secondary--text text-h5 font-weight-bold'
-      return 'secondary--text text-h5 font-weight-bold mt-10'
+    avatarSize () {
+      if (this.$vuetify.breakpoint.xs) return '60'
+      return '75'
     },
     nameStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'secondary--text text-h5 font-weight-bold'
-      return 'text-h6 font-weight-bold'
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold mt-3'
+      return 'text-h6 font-weight-bold mt-6'
     },
-    snsLink () {
-      if (this.$vuetify.breakpoint.xs) return 'secondary--text text-h5 font-weight-bold'
-      return 'text-subtitle-2 text-decoration-underline font-weight-bold'
+    socialMediaStyle () {
+      if (this.$vuetify.breakpoint.xs) return 'text-body-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
+      return 'text-subtitle-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
     },
     profileStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'secondary--text text-h5 font-weight-bold'
+      if (this.$vuetify.breakpoint.xs) return 'text-caption'
       return 'text-caption'
     }
   }
