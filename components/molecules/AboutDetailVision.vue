@@ -16,7 +16,7 @@
               class="my-6"
               :size="imageSize"
             >
-                <img :src="image">
+              <img :src="image">
             </v-avatar>
         </v-sheet>
       </div>
