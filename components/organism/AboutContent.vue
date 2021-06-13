@@ -36,7 +36,7 @@
                 </div>
               </v-row>
             <div class="secondary--text" :class="subTitle">
-            フルギキタイ運営チーム
+              フルギキタイ運営チーム
             </div>
               <v-row no-gutters justify="center">
                 <div v-for="(name, index) of names" :key="index">
