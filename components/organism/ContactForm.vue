@@ -103,22 +103,17 @@
                 </v-col>
               </v-row>
             <v-divider class="mx-auto" :width="dividerWidth"></v-divider>
-
-              <v-row :class="formLine">
-                <v-col
-                  cols="1"
-                  :class="checkBox"  
-                >
-                  <v-checkbox
-                  ></v-checkbox>
-                </v-col>
-                <v-col>
+              <v-row
+                :class="checkBoxLine"
+                :justify="checkBoxJustify"
+                align="center"
+              >
+                <v-checkbox
+                ></v-checkbox>
                   <div :class="agreeText">
                     プライバシーポリシーに同意する
                   </div>
-                </v-col>
               </v-row>
-
               <v-row :justify="submitButtonJustify">
                 <v-btn
                   color="primary"
@@ -154,7 +149,7 @@ export default {
     },
     formLine () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'px-1 mt-4'
-      return 'mx-1 pt-3'
+      return 'mx-2 pt-3'
     },
     dividerWidth () {
       if (this.$vuetify.breakpoint.mdAndDown) return '100%'
@@ -170,19 +165,19 @@ export default {
     },
     textField () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n1'
-      return 'mx-n8 mt-3 mb-n3'
+      return 'mx-n8 mt-3 mb-n3'   
+    },
+    checkBoxJustify () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'start'
+      return 'center' 
     },
     checkBoxLine () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-5 mb-5'
-      return ''      
-    },  
-    checkBox () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n1'
-      return ''      
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 mt-4'
+      return 'mr-16 pr-16 pt-8' 
     },
     agreeText () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'text-button'
-      return 'text-body-2' 
+      return 'text-body-2 mr-16 pr-3' 
     },
     submitButtonJustify () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'center'
@@ -193,7 +188,7 @@ export default {
       return '645px'        
     },
     submitButtonPosition () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mb-10'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-6 mb-10'
       return 'mr-12 my-6 mb-12'
     } 
   }
