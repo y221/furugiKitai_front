@@ -71,7 +71,7 @@ export default {
         holiday: this.holiday,
         businessHour: this.businessHour,
       }
-      const response = await this.$accessor.modules.shopNew.registerShop(shopData);
+      const response = await this.$accessor.modules.shops.registerShop(shopData);
       if (response.errors ?? true) {
         this.errors = response.errors;
       }
@@ -86,8 +86,8 @@ export default {
     }
   },
   async mounted() {
-    await this.$accessor.modules.shopNew.getPrefectures();
-    this.prefectures = this.$accessor.modules.shopNew.prefectures;
+    await this.$accessor.modules.shops.getPrefectures();
+    this.prefectures = this.$accessor.modules.shops.prefectures;
   },
 }
 </script>
