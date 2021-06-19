@@ -1,10 +1,12 @@
 <template>
   <div class="main-wrapper">
-    <div class="main-content">
+    <CompleteText v-if="isCompleted" text="登録"/>
+    <div class="main-content" v-if="!isCompleted">
       <div class="text-h5 font-weight-bold">基本情報</div>
+      <ErrorsText class="mt-4" :errors="errors" />
       <div class="mt-5">
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue"/>
-        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="false" id="prefecture" :items="prefectures" v-on:change="changeValue"/>
+        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefecture" :items="prefectures" v-on:change="changeValue"/>
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue"/>
@@ -52,6 +54,8 @@ export default {
     instagram: '',
     holiday: '',
     businessHour: '',
+    errors: {},
+    isCompleted: false
   }),
   methods: {
     async registerShop() {
@@ -67,7 +71,14 @@ export default {
         holiday: this.holiday,
         businessHour: this.businessHour,
       }
-      await this.$accessor.modules.shopNew.registerShop(shopData);
+      const response = await this.$accessor.modules.shopNew.registerShop(shopData);
+      if (response.errors ?? true) {
+        this.errors = response.errors;
+      }
+      this.isCompleted = true;
+      window.scrollTo({
+        top: 0
+      });
     },
     changeValue(...values) {
       const [value, id] = values

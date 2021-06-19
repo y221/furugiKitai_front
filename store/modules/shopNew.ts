@@ -1,7 +1,7 @@
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
 export const state = () => ({
-  prefectures: [] as string[]
+  prefectures: [] as string[],
 })
 
 export type RootState = ReturnType<typeof state>
@@ -21,7 +21,7 @@ export const actions = actionTree({state, getters, mutations}, {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
   },
-  registerShop({ getters, commit}, shopData: string[]) {
-    this.$axios.$post('/api/shops', {shopData: shopData});
+  async registerShop({ getters, commit}, shopData: string[]) {
+    return await this.$axios.$post('/api/shops', {shopData: shopData});
   }
 })
