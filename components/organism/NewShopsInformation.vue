@@ -11,6 +11,7 @@
             <div v-for="shop in shops">
               <ShopItem 
                 :shop="shop"
+                :prefectures="prefectures"
               />
             </div>
             <v-col align="center">
@@ -20,6 +21,7 @@
                 depressed
                 rounded
                 width="200px"
+                to="/search"
               >
                 もっと見る
               </v-btn>
@@ -33,6 +35,7 @@
 export default {
   data: () => ({
     shops: [],
+    prefectures: []
   }),
   computed: {
     header () {
@@ -49,8 +52,21 @@ export default {
     }
   },
   async mounted() {
-    await this.$accessor.modules.shops.getShops();
+    const getPrefectures = this.$accessor.modules.shops.getPrefectures();
+    const shopParameters = getShopParameters();
+    const getShops = this.$accessor.modules.shops.getShops(shopParameters);
+    await Promise.all([getPrefectures, getShops]);
+    this.prefectures = this.$accessor.modules.shops.convertedPrefectures
     this.shops = this.$accessor.modules.shops.shops;
+  }
+}
+
+const getShopParameters = () => {
+  return {
+    'limit': '5',
+    'page': '1',
+    'orderby': 'created_at',
+    'order': 'DESC'
   }
 }
 </script>

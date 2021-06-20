@@ -35,10 +35,11 @@
         sm="6"
       >
         <p class="text-h5 font-weight-medium main-text-color mb-0">{{ shop.name }}</p>
-        <p :class="address">{{ shop.city }}{{ shop.address }}{{ shop.building }}</p>
+        <p :class="address">{{prefectures[shop.prefectureId]}}{{ shop.city }}{{ shop.address }}{{ shop.building }}</p>
         <p :class="time">
           <span>営業時間</span>
-          <span class="ml-1">{{ shop.businessHour }}</span>
+          <span class="ml-1" v-if="shop.businessHour">{{ shop.businessHour }}</span>
+          <span class="ml-1" v-if="!shop.businessHour">未登録</span>
         </p>
         <v-chip
           outlined
@@ -88,6 +89,10 @@ export default {
     shop: {
       type: Object,
       required: true,
+    },
+    prefectures: {
+      type: Object,
+      required: true
     }
   },
   computed: {
