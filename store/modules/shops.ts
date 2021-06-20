@@ -3,7 +3,9 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
 export const state = () => ({
   shops: [] as string[],
-  prefectures: [] as string[]
+  shopsCount: 1 as number,
+  prefectures: [] as string[],
+  convertedPrefectures: {} as object
 })
 
 export type RootState = ReturnType<typeof state>
@@ -16,19 +18,31 @@ export const mutations = mutationTree(state, {
   setShops(state, values: string[]): void {
     state.shops = values;
   },
+  setShopsCount(state, value: number): void {
+    state.shopsCount = value;
+  },
   setPrefectures(state, values: string[]): void {
     state.prefectures = values;
+  },
+  setConvertedPrefectures(state, values): void {
+    const data = {};
+    for (const value of values) {
+      data[value.id] = value.prefecture;
+    }
+    state.convertedPrefectures = data
   }
 })
 
 export const actions = actionTree({ state, getters, mutations }, {
-  async getShops({ getters, commit }, ) {
-    const shops = await this.$axios.$get('/api/shops');
-    commit('setShops', shops);
+  async getShops({ getters, commit }, parameter: object) {
+    const shops = await this.$axios.$get('/api/shops', {params: parameter});
+    commit('setShops', shops.shops);
+    commit('setShopsCount', shops.count);
   },
   async getPrefectures({ getters, commit }, ) {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
+    commit('setConvertedPrefectures', prefectures);
   },
   async registerShop({ getters, commit}, shopData: string[]) {
     return await this.$axios.$post('/api/shops', {shopData: shopData});
