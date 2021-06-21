@@ -1,10 +1,19 @@
 <template>
-  <div class="mt-8">
-    <v-row>
-      <v-col cols="6" sm="2" md="2" class="mt-4">
+  <div>
+    <v-row :class="formLine">
+      <v-col
+        cols="auto"
+        lg="2"
+        class="d-flex align-center"
+        :class="columnNameStyle"
+      >
         {{ columnName }}
       </v-col>
-      <v-col cols="6" sm="1" md="2" class="mt-4 required-tag">
+      <v-col
+        lg="1"
+        class="d-flex align-center"
+        :class="requiredStyle"
+      >
         <v-chip
           color="accent"
           text-color="white"
@@ -15,7 +24,11 @@
           <strong>必須</strong>
         </v-chip>
       </v-col>
-      <v-col cols="12" sm="8" md="7">
+      <v-col
+        cols="12"
+        lg="9"
+        :class="textFieldStyle"
+      >
         <v-text-field
           v-model="value"
           :label="label"
@@ -27,7 +40,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-divider></v-divider>
+    <v-divider class="mx-auto" :width="dividerWidth"></v-divider>
   </div>
 </template>
 <script>
@@ -57,11 +70,28 @@ export default {
     changed() {
       this.$emit("change", this.value, this.id);
     }
+  },
+  computed: {
+    formLine () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'px-1 mt-4'
+      return 'mx-2 pt-3'
+    },
+    columnNameStyle () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-button font-weight-bold px-2 ml-1'
+      return 'ml-3 text-body-2 font-weight-bold'      
+    },
+    requiredStyle () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption text-center mx-n4'
+      return 'text-caption text-center mx-2'
+    },
+    textFieldStyle () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n1'
+      return 'mx-n8 mt-3 mb-n3'       
+    },
+    dividerWidth () {
+      if (this.$vuetify.breakpoint.mdAndDown) return '100%'
+      return '95%'
+    }
   }
 }
 </script>
-<style>
-.required-tag{
-  text-align: right;
-}
-</style>

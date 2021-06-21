@@ -1,24 +1,40 @@
 <template>
   <div>
-    <v-row align="center" class="pb-5">
-      <v-col cols="6" sm="4">
+    <v-row :class="formLine">
+      <v-col
+        cols="auto"
+        lg="3"
+        class="d-flex align-center"
+        :class="imageNameStyle"
+      >
         <div>{{ imageName }}</div>
       </v-col>
-      <v-col cols="12" sm="8" md="7">
-        <v-row align="center" class="justify-center justify-sm-start">
-          <v-col style="position:relative;" cols="3">
-            <img class="image mr-0" :src="image">
-            <input
-              style="display: none"
-              ref="input"
-              type="file"
-              accept="image/jpeg, image/jpg, image/png"
-              @change="selectedImage()"
+        <v-col
+          cols="12"
+          lg="4"
+          :align="imagePosition"
+          style="position: relative;"
+        >
+          <v-avatar
+            :size="imageSize"
+          >
+            <img
+              class="image"
+              :src="image"
             >
+              <input
+                style="display: none"
+                ref="input"
+                type="file"
+                accept="image/jpeg, image/jpg, image/png"
+                @change="selectedImage()"
+              >
+          </v-avatar>
             <v-btn
               v-if="isImageSelected"
               rounded
               x-small
+              top
               fab
               depressed
               color="chip_color delete-btn"
@@ -27,20 +43,23 @@
               dark
               @click="cancelImage()"
             >✕</v-btn>
-          </v-col>
-          <v-col cols="5">
-            <v-btn
-              class="mt-2 font-weight-bold"
-              color="secondary"
-              depressed
-              width="100%"
-              @click="selectImage()"
-            >画像を選択</v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
+            
+        </v-col>
+        <v-col
+          cols="12"
+          lg="4"
+          class="d-flex align-center"
+        >
+          <v-btn
+            class="font-weight-bold"
+            color="secondary"
+            depressed
+            width="100%"
+            @click="selectImage()"
+          >画像を選択</v-btn>
+        </v-col>
     </v-row>
-    <v-divider></v-divider>
+    <v-divider class="mx-auto" :width="dividerWidth"></v-divider>
   </div>
 </template>
 <script>
@@ -85,6 +104,28 @@ export default {
     cancelImage() {
       this.image = imageDefault;
       this.isImageSelected = false;
+    }
+  },
+  computed: {
+    formLine () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-4 mb-4 px-1'
+      return 'mx-2 my-2 pt-3 '
+    },
+    imageNameStyle () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-button font-weight-bold px-2 ml-1'
+      return 'ml-3 text-body-2 font-weight-bold'      
+    },
+    imageSize () {
+      if (this.$vuetify.breakpoint.xs) return '75'
+      return '85'
+    },
+    imagePosition () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'center'
+      return 'center'
+    },
+    dividerWidth () {
+      if (this.$vuetify.breakpoint.mdAndDown) return '100%'
+      return '95%'
     }
   }
 }
