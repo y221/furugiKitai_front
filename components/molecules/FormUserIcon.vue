@@ -32,14 +32,14 @@
           </v-avatar>
             <v-btn
               v-if="isImageSelected"
+              class="font-weight-bold d-flex justify-center"
+              color="chip_color delete-btn"
+              absolute
               rounded
               x-small
-              top
               fab
+              bottom             
               depressed
-              color="chip_color delete-btn"
-              class="font-weight-bold"
-              absolute
               dark
               @click="cancelImage()"
             >✕</v-btn>
