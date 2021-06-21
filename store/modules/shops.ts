@@ -44,7 +44,15 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setPrefectures', prefectures);
     commit('setConvertedPrefectures', prefectures);
   },
-  async registerShop({ getters, commit}, shopData: string[]) {
-    return await this.$axios.$post('/api/shops', {shopData: shopData});
+  async registerShop({ getters, commit}, shopData: object) {
+    return await this.$axios.$post(
+      '/api/shops', 
+      shopData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+      }
+    );
   }
 })

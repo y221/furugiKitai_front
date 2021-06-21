@@ -18,12 +18,12 @@
       </div>
       <div class="text-h5 font-weight-bold mt-15">画像情報</div>
       <v-row>
-        <FormImage imagePath="" imageName="メイン" />
-        <FormImage imagePath="" imageName="1." />
-        <FormImage imagePath="" imageName="2." />
-        <FormImage imagePath="" imageName="3." />
-        <FormImage imagePath="" imageName="4." />
-        <FormImage imagePath="" imageName="5." />
+        <FormImage imagePath="" id="mainImage" v-on:change="changeValue" imageName="メイン" />
+        <FormImage imagePath="" id="subImage1" v-on:change="changeValue" imageName="1." />
+        <FormImage imagePath="" id="subImage2" v-on:change="changeValue" imageName="2." />
+        <FormImage imagePath="" id="subImage3" v-on:change="changeValue" imageName="3." />
+        <FormImage imagePath="" id="subImage4" v-on:change="changeValue" imageName="4." />
+        <FormImage imagePath="" id="subImage5" v-on:change="changeValue" imageName="5." />
       </v-row>
       <v-col align="center">
         <v-btn
@@ -55,23 +55,34 @@ export default {
     holiday: '',
     businessHour: '',
     errors: {},
-    isCompleted: false
+    isCompleted: false,
+    mainImage: '',
+    subImage1: '',
+    subImage2: '',
+    subImage3: '',
+    subImage4: '',
+    subImage5: '',
   }),
   methods: {
     async registerShop() {
-      const shopData = {
-        prefecture: this.prefecture,
-        name: this.name,
-        city: this.city,
-        address: this.address,
-        building: this.building,
-        access: this.access,
-        phoneNumber: this.phoneNumber,
-        instagram: this.instagram,
-        holiday: this.holiday,
-        businessHour: this.businessHour,
-      }
-      const response = await this.$accessor.modules.shops.registerShop(shopData);
+      let formData = new FormData;
+      formData.append('prefecture', this.prefecture);
+      formData.append('name', this.name);
+      formData.append('city', this.city);
+      formData.append('address', this.address);
+      formData.append('building', this.building);
+      formData.append('access', this.access);
+      formData.append('phoneNumber', this.phoneNumber);
+      formData.append('instagram', this.instagram);
+      formData.append('holiday', this.holiday);
+      formData.append('businessHour', this.businessHour);
+      formData.append('mainImage', this.mainImage);
+      formData.append('subImage1', this.subImage1);
+      formData.append('subImage2', this.subImage2);
+      formData.append('subImage3', this.subImage3);
+      formData.append('subImage4', this.subImage4);
+      formData.append('subImage5', this.subImage5);
+      const response = await this.$accessor.modules.shops.registerShop(formData);
       if (response.errors ?? true) {
         this.errors = response.errors;
       }

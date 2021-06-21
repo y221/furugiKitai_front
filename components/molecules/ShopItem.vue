@@ -23,7 +23,7 @@
           レディース・メンズ
         </v-chip>
         <v-img
-          src="/images/shop.jpg"
+          :src="imageUrl(shop.imageUrl)"
           :max-height="maxHeight"
         >
         </v-img>
@@ -114,6 +114,14 @@ export default {
     },
     to () {
       return `/shops/${this.id}`
+    }
+  },
+  methods: {
+    imageUrl(url) {
+      if (!url) {
+        return '/images/noimage.png'
+      }
+      return url
     }
   }
 }
