@@ -6,6 +6,7 @@
       style="display: none"
       ref="input"
       type="file"
+      :id="id"
       accept="image/jpeg, image/jpg, image/png"
       @change="selectedImage()"
     >
@@ -47,6 +48,10 @@ export default {
     imagePath: {
       type: String,
       default: ""
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   mounted () {
@@ -67,6 +72,7 @@ export default {
       this.isImageSelected = !this.isImageSelected;
       if (this.isImageSelected) {
         this.image = window.URL.createObjectURL(file);
+        this.$emit("change", event.target.files[0], this.id);
       }
     },
     cancelImage() {
