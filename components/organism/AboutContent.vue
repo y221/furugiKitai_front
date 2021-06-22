@@ -44,6 +44,7 @@
                     height=100%
                     :width="teamsCard"
                     class="px-8 py-10"
+                    :class="cardMargin"
                     elevation="0"
                   >
                     <v-col>
@@ -69,15 +70,15 @@
 export default {
   computed: {
     height () {
-      if (this.$vuetify.breakpoint.xs) return '121'
+      if (this.$vuetify.breakpoint.mdAndDown) return '121'
       return '200'
     },
     width () {
-      if (this.$vuetify.breakpoint.xs) return '199'
+      if (this.$vuetify.breakpoint.mdAndDown) return '199'
       return '329'
     },
     logoSpace () {
-      if (this.$vuetify.breakpoint.xs) return 'mb-10'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mb-10'
       return 'mt-10'
     },
     mainContent () {
@@ -85,16 +86,20 @@ export default {
       return 'main-content mt-6 mx-12 pt-14 pb-16'
     },
     subTitle () {
-      if (this.$vuetify.breakpoint.xs) return 'text-h6 font-weight-bold mt-8 px-8'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold mt-8 px-8'
       return 'text-h5 font-weight-bold mt-12'
     },
     visionsCard () {
-      if (this.$vuetify.breakpoint.xs) return '210'
+      if (this.$vuetify.breakpoint.mdAndDown) return '180'
       return '210'      
     },
     teamsCard () {
-      if (this.$vuetify.breakpoint.xs) return '165'
+      if (this.$vuetify.breakpoint.mdAndDown) return '165'
       return '180'      
+    },
+    cardMargin () {
+      if (this.$vuetify.breakpoint.sm) return 'mx-8'
+      return ''        
     }
   },
   data() {
@@ -102,7 +107,7 @@ export default {
       images:[
         { image: 'images/vision01.png' },
         { image: 'images/vision01.png' },
-        { image: 'images/vision01.png' },
+        { image: 'images/vision03.png' },
       ],
       visions:[
         'フルギの情報をわかりやすく',

@@ -59,19 +59,19 @@ export default {
   },
   computed: {
     avatarSize () {
-      if (this.$vuetify.breakpoint.xs) return '60'
+      if (this.$vuetify.breakpoint.mdAndDown) return '60'
       return '75'
     },
     nameStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold mt-3'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-subtitle-1 font-weight-bold mt-3'
       return 'text-h6 font-weight-bold mt-6'
     },
     socialMediaStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
       return 'text-subtitle-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
     },
     profileStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'text-caption'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption'
       return 'text-caption'
     }
   }
