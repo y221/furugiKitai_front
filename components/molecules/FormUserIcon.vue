@@ -63,7 +63,7 @@
   </div>
 </template>
 <script>
-const imageDefault = "/images/noimage.png"
+const imageDefault = "/images/noimage01.png"
 export default {
   data () {
     return {
