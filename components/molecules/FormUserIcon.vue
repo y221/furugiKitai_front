@@ -47,10 +47,10 @@
           class="d-flex align-center"
         >
           <v-btn
-            class="font-weight-bold"
+            class="font-weight-bold mx-auto"
             color="secondary"
             depressed
-            width="100%"
+            :width="selectImageSize"
             @click="selectImage()"
           >画像を選択</v-btn>
         </v-col>
@@ -119,6 +119,10 @@ export default {
     imagePosition () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'center'
       return 'center'
+    },
+    selectImageSize () {
+      if (this.$vuetify.breakpoint.xs) return '233px'
+      return '308px'
     },
     dividerWidth () {
       if (this.$vuetify.breakpoint.mdAndDown) return '100%'
