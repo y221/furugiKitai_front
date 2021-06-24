@@ -14,15 +14,17 @@
         class="d-flex align-center"
         :class="requiredStyle"
       >
-        <v-chip
+        <v-sheet
           color="accent"
-          text-color="white"
+          rounded
+          height="19"
+          width="40"
           v-if="required"
-          label
-          small
         >
-          <strong>必須</strong>
-        </v-chip>
+          <div class="white--text">
+            必須
+          </div>
+        </v-sheet>  
       </v-col>
       <v-col
         cols="12"
@@ -90,8 +92,8 @@ export default {
       return 'ml-3 text-body-2 font-weight-bold'      
     },
     requiredStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption text-center mx-n4'
-      return 'text-caption text-center mx-2'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n4'
+      return 'text-caption font-weight-bold text-center mx-2'
     },
     textSelectStyle () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n1'
