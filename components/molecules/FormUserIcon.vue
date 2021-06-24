@@ -13,15 +13,12 @@
           cols="12"
           lg="4"
           :align="imagePosition"
-          style="position: relative;"
         >
           <v-avatar
             :size="imageSize"
+            style="position: relative;"
           >
-            <img
-              class="image"
-              :src="image"
-            >
+            <v-img :src="image"></v-img>
               <input
                 style="display: none"
                 ref="input"
@@ -32,13 +29,12 @@
           </v-avatar>
             <v-btn
               v-if="isImageSelected"
-              class="font-weight-bold d-flex justify-center"
               color="chip_color delete-btn"
-              absolute
+              class="font-weight-bold mx-n5 mt-n1"
               rounded
               x-small
               fab
-              bottom             
+              absolute
               depressed
               dark
               @click="cancelImage()"
@@ -62,6 +58,7 @@
     <v-divider class="mx-auto" :width="dividerWidth"></v-divider>
   </div>
 </template>
+
 <script>
 const imageDefault = "/images/noimage01.png"
 export default {
@@ -130,15 +127,3 @@ export default {
   }
 }
 </script>
-<style>
-.image {
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-.delete-btn {
-  top: 20px;
-  right: 10px;
-}
-</style>
