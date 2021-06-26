@@ -127,27 +127,27 @@ export default {
       ],
       names:[
         'Hidetsugu',
-        'Tsutsui',
-        'Mashino',
-        'Tomohiro'
+        'y221',
+        'オムレツ',
+        'ぽん'
       ],
       socialMedias:[
         '@bayashiiiiii',
-        '@221',
-        '@kabutomushi',
-        '@gapao'
+        '@y221',
+        '@comingsoon',
+        '@theponthface'
       ],
       links:[
         { url: 'https://www.yahoo.co.jp/' },
-        { url: 'https://www.google.co.jp/' },
-        { url: 'https://www.apple.com/jp/' },
-        { url: 'https://www.youtube.com/' }
+        { url: 'https://github.com/y221' },
+        { url: '' },
+        { url: 'https://www.instagram.com/theponthface/' }
       ],
       profiles:[
         '社会人一歩手前',
-        'フルギの伝道師',
-        'サイタマ地方に生息する伝説のポケモン',
-        'ヒュッゲしたい'
+        '家を買いました',
+        '卵っていいよね　スナフキンのシャツ買いました',
+        '定時退社クラブ会長'
       ]
     }
   }
