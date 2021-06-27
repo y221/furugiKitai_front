@@ -134,19 +134,19 @@ export default {
       socialMedias:[
         '@hidetsugu-o',
         '@y221',
-        '@comingsoon',
+        '@Mashino1123',
         '@theponthface'
       ],
       links:[
         { url: 'https://github.com/hidetsugu-o' },
         { url: 'https://github.com/y221' },
-        { url: '' },
+        { url: 'https://github.com/Mashino1123' },
         { url: 'https://www.instagram.com/theponthface/' }
       ],
       profiles:[
         'アラサーから始まる湘南ボーイ',
-        '家を買いました',
-        '卵っていいよね　スナフキンのシャツ買いました',
+        '古着の伝道師',
+        '卵っていいよね',
         '定時退社クラブ会長'
       ]
     }
