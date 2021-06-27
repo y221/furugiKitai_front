@@ -126,25 +126,25 @@ export default {
         { avatar: 'images/avatar04.jpg' }
       ],
       names:[
-        'Hidetsugu',
+        'osyame',
         'y221',
         'オムレツ',
         'ぽん'
       ],
       socialMedias:[
-        '@bayashiiiiii',
+        '@hidetsugu-o',
         '@y221',
         '@comingsoon',
         '@theponthface'
       ],
       links:[
-        { url: 'https://www.yahoo.co.jp/' },
+        { url: 'https://github.com/hidetsugu-o' },
         { url: 'https://github.com/y221' },
         { url: '' },
         { url: 'https://www.instagram.com/theponthface/' }
       ],
       profiles:[
-        '社会人一歩手前',
+        'アラサーから始まる湘南ボーイ',
         '家を買いました',
         '卵っていいよね　スナフキンのシャツ買いました',
         '定時退社クラブ会長'
