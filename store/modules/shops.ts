@@ -39,7 +39,7 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setShops', shops.shops);
     commit('setShopsCount', shops.count);
   },
-  async getPrefectures({ getters, commit }, ) {
+  async getPrefectures({ getters, commit }) {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
     commit('setConvertedPrefectures', prefectures);

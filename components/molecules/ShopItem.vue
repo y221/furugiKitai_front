@@ -113,7 +113,7 @@ export default {
       return ''
     },
     to () {
-      return `/shops/${this.id}`
+      return `/shops/${this.shop.id}`
     }
   },
   methods: {
