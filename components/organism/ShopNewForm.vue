@@ -19,11 +19,6 @@
       <div class="text-h5 font-weight-bold mt-15">画像情報</div>
       <v-row>
         <FormImage imagePath="" id="mainImage" v-on:change="changeValue" imageName="メイン" />
-        <FormImage imagePath="" id="subImage1" v-on:change="changeValue" imageName="1." />
-        <FormImage imagePath="" id="subImage2" v-on:change="changeValue" imageName="2." />
-        <FormImage imagePath="" id="subImage3" v-on:change="changeValue" imageName="3." />
-        <FormImage imagePath="" id="subImage4" v-on:change="changeValue" imageName="4." />
-        <FormImage imagePath="" id="subImage5" v-on:change="changeValue" imageName="5." />
       </v-row>
       <v-col align="center">
         <v-btn
