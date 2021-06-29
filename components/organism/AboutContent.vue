@@ -86,7 +86,8 @@ export default {
       return 'main-content mt-6 mx-12 pt-14 pb-16'
     },
     subTitle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold mt-8 px-8'
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold mt-8 px-8'
+      else if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold mt-8 px-8'
       return 'text-h5 font-weight-bold mt-12'
     },
     visionsCard () {
