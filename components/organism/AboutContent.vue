@@ -107,7 +107,7 @@ export default {
     return {
       images:[
         { image: 'images/vision01.png' },
-        { image: 'images/vision01.png' },
+        { image: 'images/vision02.png' },
         { image: 'images/vision03.png' },
       ],
       visions:[
