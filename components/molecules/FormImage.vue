@@ -31,7 +31,7 @@
   </v-col>
 </template>
 <script>
-const imageDefault = "/images/noimage02.png"
+const imageDefault = "/images/noimage.png"
 export default {
   data ()　{
     return {

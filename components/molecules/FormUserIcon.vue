@@ -60,7 +60,7 @@
 </template>
 
 <script>
-const imageDefault = "/images/noimage01.png"
+const imageDefault = "/images/noimage.png"
 export default {
   data () {
     return {
