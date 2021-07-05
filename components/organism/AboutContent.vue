@@ -13,7 +13,7 @@
               フルギがもっと好きになる古着ポータルサイト
             </div>
               <AboutDetailTop />
-            <div class="accent--text" :class="subTitle">
+            <div class="secondary--text" :class="subTitle">
               フルギキタイでやりたいこと
             </div>
               <v-row no-gutters justify="center">
@@ -35,7 +35,7 @@
                   </v-card>
                 </div>
               </v-row>
-            <div class="secondary--text" :class="subTitle">
+            <div class="accent--text" :class="subTitle">
               フルギキタイ運営チーム
             </div>
               <v-row no-gutters justify="center">
