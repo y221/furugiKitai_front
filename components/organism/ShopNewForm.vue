@@ -10,6 +10,8 @@
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue"/>
+        <FormTextfield columnName="緯度" label="例：35.710240" :required="false" id="latitude"  v-on:change="changeValue"/>
+        <FormTextfield columnName="経度" label="例：139.635291" :required="false" id="longitude"  v-on:change="changeValue"/>
         <FormTextfield columnName="アクセス" label="例：○○駅より徒歩3分" :required="false" id="access"  v-on:change="changeValue"/>
         <FormTextfield columnName="TEL" label="例：090-1234-5678" :required="false" id="phoneNumber" v-on:change="changeValue"/>
         <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagram" v-on:change="changeValue"/>
@@ -45,18 +47,15 @@ export default {
     address: '',
     building: '',
     access: '',
+    latitude: '',
+    longitude: '',
     phoneNumber: '',
     instagram: '',
     holiday: '',
     businessHour: '',
     errors: {},
     isCompleted: false,
-    mainImage: '',
-    subImage1: '',
-    subImage2: '',
-    subImage3: '',
-    subImage4: '',
-    subImage5: '',
+    mainImage: ''
   }),
   methods: {
     async registerShop() {
@@ -67,21 +66,20 @@ export default {
       formData.append('address', this.address);
       formData.append('building', this.building);
       formData.append('access', this.access);
+      formData.append('latitude', this.latitude);
+      formData.append('longitude', this.longitude);
       formData.append('phoneNumber', this.phoneNumber);
       formData.append('instagram', this.instagram);
       formData.append('holiday', this.holiday);
       formData.append('businessHour', this.businessHour);
       formData.append('mainImage', this.mainImage);
-      formData.append('subImage1', this.subImage1);
-      formData.append('subImage2', this.subImage2);
-      formData.append('subImage3', this.subImage3);
-      formData.append('subImage4', this.subImage4);
-      formData.append('subImage5', this.subImage5);
+      
       const response = await this.$accessor.modules.shops.registerShop(formData);
-      if (response.errors ?? true) {
+      if (!response.errors) {
+        this.isCompleted = true;
+      } else {
         this.errors = response.errors;
       }
-      this.isCompleted = true;
       window.scrollTo({
         top: 0
       });
