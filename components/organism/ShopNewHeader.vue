@@ -1,16 +1,20 @@
 <template>
-  <div class="main-wrapper">
-    <div :class="mainContent">
-      <div :class="header">古着屋を登録</div>
-      <div :class="headerText">
-        <div>入力項目の不明な箇所は未入力で登録できます。</div>
-        <br v-if="this.$vuetify.breakpoint.xs">
-        <div>一度登録した古着屋情報はログイン状態であれば誰でも編集可能です。</div>
-        <br v-if="this.$vuetify.breakpoint.xs">
-        <div>同じ古着屋が登録された場合、後から登録されたデータを削除しますのでご了承ください。</div>
+  <v-main class="main-background-color">
+    <v-container>
+      <div class="main-wrapper">
+        <div :class="mainContent">
+          <div :class="header">古着屋を登録</div>
+          <div :class="headerText">
+            <div>入力項目の不明な箇所は未入力で登録できます。</div>
+            <br v-if="this.$vuetify.breakpoint.xs">
+            <div>一度登録した古着屋情報はログイン状態であれば誰でも編集可能です。</div>
+            <br v-if="this.$vuetify.breakpoint.xs">
+            <div>同じ古着屋が登録された場合、後から登録されたデータを削除しますのでご了承ください。</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </v-container>
+  </v-main>
 </template>
 
 <script>
