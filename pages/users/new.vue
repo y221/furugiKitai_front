@@ -8,7 +8,3 @@
     </v-main>
   </div>
 </template>
-
-
-
-
