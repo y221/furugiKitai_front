@@ -84,7 +84,7 @@ export default {
   },
   computed: {
     formLine () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'px-1 mt-4'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'px-1 mt-3'
       return 'mx-2 pt-3'
     },
     columnNameStyle () {

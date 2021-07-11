@@ -1,7 +1,9 @@
 <template>
   <div class="main-wrapper">
     <div :class="mainContent">
-      <div :class="subHeader">ユーザー情報登録</div>
+      <div :class="header">
+        ユーザー情報登録
+      </div>
         <div>
           <FormUserIcon imagePath="" imageName="ユーザーアイコン" />
           <FormTextfield columnName="名前" label="例：古着大好きおじさん" :required="true" id="name" v-on:change="changeValue"/>
@@ -20,7 +22,7 @@
           >
             登録
           </v-btn>
-      </v-col>
+        </v-col>
     </div>
   </div>
 </template>
@@ -32,7 +34,7 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-4'
       return 'main-content mt-6 mx-12'
     },
-    subHeader () {
+    header () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-1 pt-4'
       if (this.$vuetify.breakpoint.mdAndDown) return 'font-weight-bold text-h5 pt-4'
       return 'font-weight-bold text-sm-h5 mx-2 mt-2 py-2'
