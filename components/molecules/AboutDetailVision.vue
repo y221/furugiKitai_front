@@ -52,19 +52,23 @@ export default {
   },
   computed: {
     imageSheetHeight () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '170'
+      if (this.$vuetify.breakpoint.xs) return '170'
+      else if (this.$vuetify.breakpoint.mdAndDown) return '150'
       return '180'
     },
     imageSheetWidth () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '170'
+      if (this.$vuetify.breakpoint.xs) return '170'
+      else if (this.$vuetify.breakpoint.mdAndDown) return '150'
       return '180'
     },
     imageSize () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '130'
+      if (this.$vuetify.breakpoint.xs) return '130'
+      else if (this.$vuetify.breakpoint.mdAndDown) return '110'
       return '140'
     },
     visionStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold'
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold'
+      else if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold'
       return 'text-h5 font-weight-bold my-1'
     },
     textStyle () {
@@ -74,5 +78,3 @@ export default {
   }
 }
 </script>
-
-

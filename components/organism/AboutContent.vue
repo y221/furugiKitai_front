@@ -21,7 +21,7 @@
                   <v-card
                     height=100%
                     :width="visionsCard"
-                    class="mx-4 px-4 py-10"
+                    :class="visionsCardMargin"
                     elevation="0"
                   >
                     <v-col>
@@ -43,8 +43,7 @@
                   <v-card
                     height=100%
                     :width="teamsCard"
-                    class="px-8 py-10"
-                    :class="cardMargin"
+                    :class="teamsCardMargin"
                     elevation="0"
                   >
                     <v-col>
@@ -91,17 +90,26 @@ export default {
       return 'text-h5 font-weight-bold mt-12'
     },
     visionsCard () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '180'
+      if (this.$vuetify.breakpoint.xs) return '180'
+      else if (this.$vuetify.breakpoint.mdAndDown) return '170'
       return '210'      
     },
+    visionsCardMargin () {
+      if (this.$vuetify.breakpoint.xs) return 'py-8'
+      else if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 px-3 py-10'
+      return 'mx-4 px-4 py-10'        
+    },
     teamsCard () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '165'
+      if (this.$vuetify.breakpoint.xs) return '118'
+      else if (this.$vuetify.breakpoint.mdAndDown) return '127'
       return '180'      
     },
-    cardMargin () {
-      if (this.$vuetify.breakpoint.sm) return 'mx-8'
-      return ''        
+    teamsCardMargin () {
+      if (this.$vuetify.breakpoint.xs) return 'mx-1 px-2 py-10'
+      else if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 px-3 py-10'
+      return 'mx-2 px-7 py-15'        
     }
+
   },
   data() {
     return {

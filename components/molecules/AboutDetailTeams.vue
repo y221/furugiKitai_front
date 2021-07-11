@@ -67,7 +67,7 @@ export default {
       return 'text-h6 font-weight-bold mt-6'
     },
     socialMediaStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption text-decoration-underline font-weight-bold mt-n1 pb-3'
       return 'text-subtitle-2 text-decoration-underline font-weight-bold mt-n1 pb-3'
     },
     profileStyle () {
@@ -77,5 +77,3 @@ export default {
   }
 }
 </script>
-
-
