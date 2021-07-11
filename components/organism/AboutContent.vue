@@ -86,27 +86,27 @@ export default {
     },
     subTitle () {
       if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold mt-8 px-8'
-      else if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold mt-8 px-8'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold mt-8 px-8'
       return 'text-h5 font-weight-bold mt-12'
     },
     visionsCard () {
       if (this.$vuetify.breakpoint.xs) return '180'
-      else if (this.$vuetify.breakpoint.mdAndDown) return '170'
+      if (this.$vuetify.breakpoint.mdAndDown) return '170'
       return '210'      
     },
     visionsCardMargin () {
       if (this.$vuetify.breakpoint.xs) return 'py-8'
-      else if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 px-3 py-10'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 px-3 py-10'
       return 'mx-4 px-4 py-10'        
     },
     teamsCard () {
       if (this.$vuetify.breakpoint.xs) return '118'
-      else if (this.$vuetify.breakpoint.mdAndDown) return '127'
+      if (this.$vuetify.breakpoint.mdAndDown) return '127'
       return '180'      
     },
     teamsCardMargin () {
       if (this.$vuetify.breakpoint.xs) return 'mx-1 px-2 py-10'
-      else if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 px-3 py-10'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mx-1 px-3 py-10'
       return 'mx-2 px-7 py-15'        
     }
 
