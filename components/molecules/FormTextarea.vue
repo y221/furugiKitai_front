@@ -81,7 +81,7 @@ export default {
       return 'mx-2 pt-3'
     },
     columnNameStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-button font-weight-bold px-2 ml-1'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 font-weight-bold px-2 ml-1'
       return 'ml-3 text-body-2 font-weight-bold'      
     },
     requiredStyle () {

@@ -36,7 +36,7 @@
 export default {
   computed: {
     mainContent () {
-      if (this.$vuetify.breakpoint.xs) return 'main-content mt-4'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'main-content mt-4'
       return 'main-content mt-6 mx-12'
     },
     header () {
