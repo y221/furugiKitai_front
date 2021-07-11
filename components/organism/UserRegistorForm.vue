@@ -52,6 +52,6 @@ export default {
       const [value, id] = values
       this[id] = value;
     }
-  },
+  }
 }
 </script>
