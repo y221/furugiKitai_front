@@ -13,7 +13,7 @@
         >
             <v-avatar
               tile
-              class="my-6"
+              class="my-5"
               :size="imageSize"
             >
               <img :src="image">
@@ -53,26 +53,28 @@ export default {
   computed: {
     imageSheetHeight () {
       if (this.$vuetify.breakpoint.xs) return '170'
+      if (this.$vuetify.breakpoint.mdAndDown) return '150'
       return '180'
     },
     imageSheetWidth () {
       if (this.$vuetify.breakpoint.xs) return '170'
+      if (this.$vuetify.breakpoint.mdAndDown) return '150'
       return '180'
     },
     imageSize () {
       if (this.$vuetify.breakpoint.xs) return '130'
+      if (this.$vuetify.breakpoint.mdAndDown) return '110'
       return '140'
     },
     visionStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'text-h6 font-weight-bold'
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-h6 font-weight-bold'
       return 'text-h5 font-weight-bold my-1'
     },
     textStyle () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mt-2'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 mt-2'
       return 'text-body-1 mt-2'
     }
   }
 }
 </script>
-
-

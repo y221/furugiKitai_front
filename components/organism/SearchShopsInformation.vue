@@ -80,7 +80,6 @@ const getPageLength = (count, page) => {
   return Math.ceil(count / page);
 }
 const getTotalVisible = (length) => {
-  console.log(length)
   return length >= 5 ? 5 : length;
 }
 </script>
