@@ -1,10 +1,13 @@
 <template>
   <div class="main-wrapper">
     <CompleteText v-if="isCompleted" text="登録"/>
-    <div class="main-content" v-if="!isCompleted">
-      <div class="text-h5 font-weight-bold">基本情報</div>
+    <div :class="mainContent" v-if="!isCompleted">
+      <div class="d-flex align-center flex-row">
+      <TitleBlock />
+      <div :class="subHeader">基本情報</div>
+      </div>
       <ErrorsText class="mt-4" :errors="errors" />
-      <div class="mt-5">
+      <div>
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue"/>
         <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefecture" :items="prefectures" v-on:change="changeValue"/>
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
@@ -16,7 +19,10 @@
         <FormTextarea columnName="定休日" label="例：水曜日" :required="false" id="holiday" v-on:change="changeValue"/>
         <FormTextarea columnName="営業時間" label="例：14時〜21時" :required="false" id="businessHour" v-on:change="changeValue"/>
       </div>
-      <div class="text-h5 font-weight-bold mt-15">画像情報</div>
+      <div class="d-flex align-center flex-row">
+      <TitleBlock />
+      <div :class="subHeader">画像情報</div>
+      </div>
       <v-row>
         <FormImage imagePath="" imageName="メイン" />
         <FormImage imagePath="" imageName="1." />
@@ -42,6 +48,16 @@
 </template>
 <script>
 export default {
+  computed: {
+    mainContent () {
+      if (this.$vuetify.breakpoint.xs) return 'main-content mt-4'
+      return 'main-content mt-6 mx-12'
+    },
+    subHeader () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h6 mx-2 my-4'
+      return 'font-weight-bold text-sm-h5 mx-2 py-4'
+    }
+  },
   data: () => ({
     prefectures: [],
     prefecture: '',
@@ -91,8 +107,3 @@ export default {
   },
 }
 </script>
-<style>
-.flex {
-  display: flex;
-}
-</style>
