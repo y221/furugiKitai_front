@@ -1,6 +1,6 @@
 <template>
   <div>
     <Header :isTop="false" />
-        <UserRegistorForm />
+    <UserRegistorForm />
   </div>
 </template>
