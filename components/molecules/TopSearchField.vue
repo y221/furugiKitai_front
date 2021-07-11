@@ -47,7 +47,6 @@ export default {
   methods: {
     async test() {
       const ip = await this.$axios.$get('/api/shops')
-      console.log(ip)
     }
   }
 }

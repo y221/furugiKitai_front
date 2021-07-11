@@ -7,5 +7,6 @@
         <ShopNewForm class="mt-10"/>
       </v-container>
     </v-main>
+    <Footer />
   </div>
 </template>

@@ -66,7 +66,7 @@ export default {
 const aboutButton = () => {
   return {
     text: 'フルギキタイとは？',
-    to: ''
+    to: '/about'
   }
 }
 
