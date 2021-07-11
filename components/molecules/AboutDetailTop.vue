@@ -22,9 +22,9 @@
 export default {
   computed: {
     mainText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 font-weight-medium pt-14 px-2'
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-1 font-weight-medium pt-14 px-2'
-      return 'text-h6 font-weight-medium px-5 mx-15 px-15 pt-8 py-10'
+      if (this.$vuetify.breakpoint.xs) return 'text-body-2 font-weight-medium pt-6 px-2'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-1 font-weight-medium pt-6 px-2'
+      return 'text-h6 font-weight-medium px-5 mx-15 px-15 pt-6 py-10'
     }
   }
 }

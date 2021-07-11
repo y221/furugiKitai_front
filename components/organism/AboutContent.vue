@@ -10,7 +10,7 @@
           />            
             <div class="primary--text" :class="subTitle">
               <div>古着屋を探せる！楽しめる！</div>
-              <div>フルギがもっと好きになる古着ポータルサイト</div>
+              <div>フルギがもっと好きになる<br v-if="this.$vuetify.breakpoint.xs">古着ポータルサイト</div>
             </div>
               <AboutDetailTop />
             <div class="secondary--text" :class="subTitle">
