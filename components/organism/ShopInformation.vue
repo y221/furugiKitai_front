@@ -31,7 +31,6 @@
               <ShopDetail
                 :shop="this.shop"
               />
-              <ShopImages />
             </v-tab-item>
             <v-tab-item key="review">
               <ShopReviews />
@@ -70,7 +69,7 @@ export default {
     }
   },
   async mounted() {
-    await this.$accessor.modules.shops.getShops(getShopParameters(this.$route.query.id));
+    await this.$accessor.modules.shops.getShops(getShopParameters(this.$route.params.shopId));
     this.shop = this.$accessor.modules.shops.shops[0];
   }
 }
