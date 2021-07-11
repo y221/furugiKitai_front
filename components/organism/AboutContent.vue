@@ -9,8 +9,8 @@
             :width="width"
           />            
             <div class="primary--text" :class="subTitle">
-              古着屋を探せる！楽しめる！<br>
-              フルギがもっと好きになる古着ポータルサイト
+              <div>古着屋を探せる！楽しめる！</div>
+              <div>フルギがもっと好きになる古着ポータルサイト</div>
             </div>
               <AboutDetailTop />
             <div class="secondary--text" :class="subTitle">
@@ -90,7 +90,7 @@ export default {
       return 'text-h5 font-weight-bold mt-12'
     },
     visionsCard () {
-      if (this.$vuetify.breakpoint.xs) return '180'
+      if (this.$vuetify.breakpoint.xs) return '220'
       if (this.$vuetify.breakpoint.mdAndDown) return '170'
       return '210'      
     },
