@@ -25,7 +25,7 @@ export const mutations = mutationTree(state, {
     state.prefectures = values;
   },
   setConvertedPrefectures(state, values): void {
-    const data = {};
+    const data:any = {};
     for (const value of values) {
       data[value.id] = value.prefecture;
     }
