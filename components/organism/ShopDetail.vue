@@ -6,7 +6,9 @@
       md="6"
       sm="6"
     >
-      <ShopMainImage />
+      <ShopMainImage
+        :imageUrl="this.shop.imageUrl"
+      />
       <ShopMap />
     </v-col>
     <v-col

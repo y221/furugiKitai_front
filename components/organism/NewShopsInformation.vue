@@ -65,7 +65,7 @@ const getShopParameters = () => {
   return {
     'limit': '5',
     'page': '1',
-    'orderby': 'created_at',
+    'orderby': 'id',
     'order': 'DESC'
   }
 }
