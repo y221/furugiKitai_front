@@ -10,6 +10,7 @@
         {{ columnName }}
       </v-col>
       <v-col
+        cols="auto"
         lg="1"
         class="d-flex align-center"
         :class="requiredStyle"
@@ -83,7 +84,7 @@ export default {
       return 'ml-3 text-body-2 font-weight-bold'      
     },
     requiredStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n4'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n3'
       return 'text-caption font-weight-bold text-center mx-2'
     },
     textFieldStyle () {

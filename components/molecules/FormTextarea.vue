@@ -10,7 +10,8 @@
         {{ columnName }}
       </v-col>
       <v-col
-        cols="1"
+        cols="auto"
+        lg="1"
         class="d-flex align-center"
         :class="requiredStyle"
       >
