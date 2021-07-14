@@ -3,8 +3,8 @@
     <CompleteText v-if="isCompleted" text="登録"/>
     <div :class="mainContent" v-if="!isCompleted">
       <div class="d-flex align-center flex-row">
-        <TitleBlock />
-        <div :class="subHeader">基本情報</div>
+      <TitleBlock />
+      <div :class="subHeader">基本情報</div>
       </div>
       <ErrorsText class="mt-4" :errors="errors" />
       <div>
@@ -22,8 +22,8 @@
         <FormTextarea columnName="営業時間" label="例：14時〜21時" :required="false" id="businessHour" v-on:change="changeValue"/>
       </div>
       <div class="d-flex align-center flex-row">
-        <TitleBlock />
-        <div :class="subHeader">画像情報</div>
+      <TitleBlock />
+      <div :class="subHeader">画像情報</div>
       </div>
       <v-row>
         <FormImage imagePath="" id="mainImage" v-on:change="changeValue" imageName="メイン" />
