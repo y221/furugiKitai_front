@@ -84,7 +84,7 @@ export default {
       return 'ml-3 text-body-2 font-weight-bold'      
     },
     requiredStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n3'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n4'
       return 'text-caption font-weight-bold text-center mx-2'
     },
     textFieldStyle () {
