@@ -1,35 +1,31 @@
 <template>
-  <v-main class="main-background-color">
-    <v-container>
-      <div class="main-wrapper">
-        <div :class="mainContent">
-          <div :class="header">
-            利用規約
-          </div>
-          <div :class="headerText">
-            この利用規約（以下、「本規約」といいます。）は、フルギキタイ（以下、「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に同意いただいた上で、本サービスを利用できるものとします。
-          </div>
-          <div v-for="(term, index) of terms" :key="index">
-            <TermsDetail
-              :term='term'
-              :texts='textsList[index]'
-              :numbers='numbersList[index]'
-              :index='index'
-            />
-          </div>
-          <div :class="yearMonth">
-            2021年7月1日 施行
-          </div>
-          <div :class="footer">
-            運営者
-          </div>
-          <div :class="footerText">
-            フルギキタイ運営チーム
-          </div>
-        </div>
+  <div class="main-wrapper">
+    <div :class="mainContent">
+      <div :class="header">
+        利用規約
       </div>
-    </v-container>
-  </v-main>  
+      <div :class="headerText">
+        この利用規約（以下、「本規約」といいます。）は、フルギキタイ（以下、「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に同意いただいた上で、本サービスを利用できるものとします。
+      </div>
+      <div v-for="(term, index) of terms" :key="index">
+        <TermsDetail
+          :term='term'
+          :texts='textsList[index]'
+          :numbers='numbersList[index]'
+          :index='index'
+        />
+      </div>
+      <div :class="yearMonth">
+        2021年8月1日 施行
+      </div>
+      <div :class="footer">
+        運営者
+      </div>
+      <div :class="footerText">
+        フルギキタイ運営チーム
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

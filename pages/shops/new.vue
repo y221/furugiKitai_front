@@ -1,8 +1,12 @@
 <template>
   <div>
     <Header :isTop="false" />
-    <ShopNewHeader />
-    <ShopNewForm />
+      <v-main class="main-background-color">
+      <v-container>
+        <ShopNewHeader />
+        <ShopNewForm />
+      </v-container>
+      </v-main>
     <Footer />
   </div>
 </template>

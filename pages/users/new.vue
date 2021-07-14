@@ -1,6 +1,10 @@
 <template>
   <div>
     <Header :isTop="false" />
-    <UserRegistorForm />
+      <v-main class="main-background-color">
+      <v-container>
+        <UserRegistorForm />
+      </v-container>
+      </v-main>
   </div>
 </template>

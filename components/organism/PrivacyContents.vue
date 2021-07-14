@@ -1,29 +1,25 @@
 <template>
-  <v-main class="main-background-color">
-    <v-container>
-      <div class="main-wrapper">
-        <div :class="mainContent">
-          <div :class="header">
-            プライバシーポリシー
-          </div>
-          <div :class="headerText">
-            フルギキタイ運営者（以下、「運営者」といいます。）は，本ウェブサイト上で提供するサービス（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
-          </div>
-          <div v-for="(term, index) of terms" :key="index">
-            <PrivacyDetail
-              :term='term'
-              :texts='textsList[index]'
-              :numbers='numbersList[index]'
-              :index='index'
-            />
-          </div>
-          <div :class="footerText">
-            2021年7月1日 施行
-          </div>
-        </div>
+  <div class="main-wrapper">
+    <div :class="mainContent">
+      <div :class="header">
+        プライバシーポリシー
       </div>
-    </v-container>
-  </v-main>  
+      <div :class="headerText">
+        フルギキタイ運営者（以下、「運営者」といいます。）は，本ウェブサイト上で提供するサービス（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
+      </div>
+      <div v-for="(term, index) of terms" :key="index">
+        <PrivacyDetail
+          :term='term'
+          :texts='textsList[index]'
+          :numbers='numbersList[index]'
+          :index='index'
+        />
+      </div>
+      <div :class="footerText">
+        2021年8月1日 施行
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

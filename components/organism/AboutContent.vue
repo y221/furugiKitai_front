@@ -1,68 +1,64 @@
 <template>
-  <v-main class="main-background-color">
-    <v-container>
-      <div class="main-wrapper" align="center">
-        <div :class="mainContent">
-          <FurugiKitaiLogo
-            class="logoSpace"
-            :height="height"
-            :width="width"
-          />            
-            <div class="primary--text" :class="subTitle">
-              <div>古着屋を探せる！楽しめる！</div>
-              <div>フルギがもっと好きになる<br v-if="this.$vuetify.breakpoint.xs">古着ポータルサイト</div>
-            </div>
-              <AboutDetailTop />
-            <div class="secondary--text" :class="subTitle">
-              フルギキタイでやりたいこと
-            </div>
-              <v-row no-gutters justify="center">
-                <div v-for="(vision, index) of visions" :key="index">
-                  <v-card
-                    height=100%
-                    :width="visionsCard"
-                    :class="visionsCardMargin"
-                    elevation="0"
-                  >
-                    <v-col>
-                      <AboutDetailVision
-                        :images='images[index]'
-                        :visions='visions[index]'
-                        :texts='texts[index]'
-                        :index='index'
-                      />
-                    </v-col>
-                  </v-card>
-                </div>
-              </v-row>
-            <div class="accent--text" :class="subTitle">
-              フルギキタイ運営チーム
-            </div>
-              <v-row no-gutters justify="center">
-                <div v-for="(name, index) of names" :key="index">
-                  <v-card
-                    height=100%
-                    :width="teamsCard"
-                    :class="teamsCardMargin"
-                    elevation="0"
-                  >
-                    <v-col>
-                      <AboutDetailTeams
-                        :avatars='avatars[index]'
-                        :names='names[index]'
-                        :socialMedias='socialMedias[index]'
-                        :links='links[index]'
-                        :profiles='profiles[index]'
-                        :index='index'
-                      />
-                    </v-col>
-                  </v-card>
-                </div>
-              </v-row>
+  <div class="main-wrapper" align="center">
+    <div :class="mainContent">
+      <FurugiKitaiLogo
+        class="logoSpace"
+        :height="height"
+        :width="width"
+      />            
+        <div class="primary--text" :class="subTitle">
+          <div>古着屋を探せる！楽しめる！</div>
+          <div>フルギがもっと好きになる<br v-if="this.$vuetify.breakpoint.xs">古着ポータルサイト</div>
         </div>
-      </div>
-    </v-container>
-  </v-main>  
+          <AboutDetailTop />
+        <div class="secondary--text" :class="subTitle">
+          フルギキタイでやりたいこと
+        </div>
+          <v-row no-gutters justify="center">
+            <div v-for="(vision, index) of visions" :key="index">
+              <v-card
+                height=100%
+                :width="visionsCard"
+                :class="visionsCardMargin"
+                elevation="0"
+              >
+                <v-col>
+                  <AboutDetailVision
+                    :images='images[index]'
+                    :visions='visions[index]'
+                    :texts='texts[index]'
+                    :index='index'
+                  />
+                </v-col>
+              </v-card>
+            </div>
+          </v-row>
+        <div class="accent--text" :class="subTitle">
+          フルギキタイ運営チーム
+        </div>
+        <v-row no-gutters justify="center">
+          <div v-for="(name, index) of names" :key="index">
+            <v-card
+              height=100%
+              :width="teamsCard"
+              :class="teamsCardMargin"
+              elevation="0"
+            >
+              <v-col>
+                <AboutDetailTeams
+                  :avatars='avatars[index]'
+                  :names='names[index]'
+                  :socialMedias='socialMedias[index]'
+                  :links='links[index]'
+                  :profiles='profiles[index]'
+                  :index='index'
+                />
+              </v-col>
+            </v-card>
+          </div>
+        </v-row>
+    </div>
+  </div> 
 </template>
 
 <script>
