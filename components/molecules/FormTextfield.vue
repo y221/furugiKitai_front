@@ -4,15 +4,14 @@
       <v-col
         cols="auto"
         lg="2"
-        class="d-flex align-center"
-        :class="name"
+        class="d-flex align-center text-body-2 font-weight-bold"
       >
         {{ columnName }}
       </v-col>
       <v-col
         cols="auto"
         lg="1"
-        class="d-flex align-center"
+        class="d-flex align-center text-caption font-weight-bold text-center"
         :class="requireTag"
       >
         <v-sheet
@@ -43,7 +42,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-divider class="mx-auto" :width="dividerWidth"></v-divider>
+    <v-divider></v-divider>
   </div>
 </template>
 <script>
@@ -76,25 +75,15 @@ export default {
   },
   computed: {
     formLine () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'px-1 mt-3'
-      return 'mx-2 pt-3'
-    },
-    name () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 font-weight-bold'
-      return 'ml-3 text-body-2 font-weight-bold'      
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-1'
     },
     requireTag () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n4'
-      return 'text-caption font-weight-bold text-center mx-2'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mx-n4'
     },
     textField () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n1'
-      return 'mx-n8 mt-3 mb-n3'       
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n2'
+      return 'mt-7'
     },
-    dividerWidth () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '100%'
-      return '95%'
-    }
   }
 }
 </script>

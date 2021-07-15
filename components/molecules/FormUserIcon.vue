@@ -4,7 +4,7 @@
       <v-col
         cols="auto"
         lg="3"
-        class="d-flex align-center"
+        class="d-flex align-center font-weight-bold"
         :class="imageNameText"
       >
         <div>{{ imageName }}</div>
@@ -12,7 +12,7 @@
         <v-col
           cols="12"
           lg="4"
-          :align="imagePosition"
+          :align="this.$vuetify.breakpoint.xs ? 'center' : ''"
         >
           <v-avatar
             :size="imageSize"
@@ -50,12 +50,12 @@
             class="font-weight-bold mx-auto"
             color="secondary"
             depressed
-            :width="selectImageSize"
+            width="233px"
             @click="selectImage()"
           >画像を選択</v-btn>
         </v-col>
     </v-row>
-    <v-divider class="mx-auto" :width="dividerWidth"></v-divider>
+    <v-divider></v-divider>
   </div>
 </template>
 
@@ -105,29 +105,17 @@ export default {
   },
   computed: {
     formLine () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-4 mb-4 px-1'
-      return 'mx-2 my-2 pt-3 '
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mb-4'
+      return 'my-2 pt-3'
     },
     imageNameText () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-button font-weight-bold px-2 ml-1'
-      return 'ml-3 text-body-2 font-weight-bold'      
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-button px-2 ml-1'
+      return 'text-body-2'
     },
     imageSize () {
       if (this.$vuetify.breakpoint.xs) return '75'
       return '85'
     },
-    imagePosition () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'center'
-      return 'center'
-    },
-    selectImageSize () {
-      if (this.$vuetify.breakpoint.xs) return '233px'
-      return '308px'
-    },
-    dividerWidth () {
-      if (this.$vuetify.breakpoint.mdAndDown) return '100%'
-      return '95%'
-    }
   }
 }
 </script>
