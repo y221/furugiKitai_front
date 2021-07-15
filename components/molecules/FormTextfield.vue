@@ -5,7 +5,7 @@
         cols="auto"
         lg="2"
         class="d-flex align-center"
-        :class="columnNameStyle"
+        :class="name"
       >
         {{ columnName }}
       </v-col>
@@ -13,7 +13,7 @@
         cols="auto"
         lg="1"
         class="d-flex align-center"
-        :class="requiredStyle"
+        :class="requireTag"
       >
         <v-sheet
           color="accent"
@@ -30,7 +30,7 @@
       <v-col
         cols="12"
         lg="9"
-        :class="textFieldStyle"
+        :class="textField"
       >
         <v-text-field
           v-model="value"
@@ -79,15 +79,15 @@ export default {
       if (this.$vuetify.breakpoint.mdAndDown) return 'px-1 mt-3'
       return 'mx-2 pt-3'
     },
-    columnNameStyle () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 font-weight-bold px-2 ml-1'
+    name () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 font-weight-bold'
       return 'ml-3 text-body-2 font-weight-bold'      
     },
-    requiredStyle () {
+    requireTag () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n4'
       return 'text-caption font-weight-bold text-center mx-2'
     },
-    textFieldStyle () {
+    textField () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n1'
       return 'mx-n8 mt-3 mb-n3'       
     },

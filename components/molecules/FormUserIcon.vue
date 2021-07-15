@@ -5,7 +5,7 @@
         cols="auto"
         lg="3"
         class="d-flex align-center"
-        :class="imageNameStyle"
+        :class="imageNameText"
       >
         <div>{{ imageName }}</div>
       </v-col>
@@ -108,7 +108,7 @@ export default {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mt-4 mb-4 px-1'
       return 'mx-2 my-2 pt-3 '
     },
-    imageNameStyle () {
+    imageNameText () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'text-button font-weight-bold px-2 ml-1'
       return 'ml-3 text-body-2 font-weight-bold'      
     },
