@@ -85,7 +85,7 @@ export default {
       if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-2 font-weight-bold'
       return 'ml-3 text-body-2 font-weight-bold'      
     },
-    requiredTag () {
+    requireTag () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'text-caption font-weight-bold text-center mx-n4'
       return 'text-caption font-weight-bold text-center mx-2'
     },
