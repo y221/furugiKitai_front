@@ -12,7 +12,7 @@
         <v-col
           cols="12"
           lg="4"
-          :align="this.$vuetify.breakpoint.xs ? 'center' : ''"
+          :align="this.$vuetify.breakpoint.mdAndDown ? 'center' : ''"
         >
           <v-avatar
             :size="imageSize"
