@@ -2,6 +2,7 @@
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
 export const state = () => ({
+  shop: [] as string[],
   shops: [] as string[],
   shopsCount: 1 as number,
   prefectures: [] as string[],
@@ -15,6 +16,9 @@ export const getters = getterTree(state, {
 })
 
 export const mutations = mutationTree(state, {
+  setShop(state, values: string[]): void {
+    state.shop = values;
+  },
   setShops(state, values: string[]): void {
     state.shops = values;
   },
@@ -43,6 +47,10 @@ export const actions = actionTree({ state, getters, mutations }, {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
     commit('setConvertedPrefectures', prefectures);
+  },
+  async getShop({ getters, commit }, id : string) {
+    const shop = await this.$axios.$get(`/api/shops/${id}`);
+    commit('setShop', shop);
   },
   async registerShop({ getters, commit}, shopData: object) {
     return await this.$axios.$post(
