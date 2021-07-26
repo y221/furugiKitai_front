@@ -5,7 +5,6 @@
         cols="auto"
         lg="2"
         class="d-flex align-center text-body-2 font-weight-bold"
-        :class="name"
       >
         {{ columnName }}
       </v-col>

@@ -1,7 +1,10 @@
 <template>
   <div class="main-wrapper">
     <CompleteText v-if="isCompleted" text="登録"/>
-    <div :class="mainContent" v-if="!isCompleted">
+    <div
+      class="main-content"
+      v-if="!isCompleted"
+    >
       <div class="d-flex align-center flex-row">
       <TitleBlock />
       <div :class="subHeader">基本情報</div>
@@ -47,10 +50,6 @@
 <script>
 export default {
   computed: {
-    mainContent () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'main-content mt-4'
-      return 'main-content mt-6 mx-12'
-    },
     subHeader () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h6 mx-2 my-4'
       return 'font-weight-bold text-sm-h5 mx-2 py-4'

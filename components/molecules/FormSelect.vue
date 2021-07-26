@@ -12,7 +12,7 @@
         cols="auto"  
         lg="1"
         class="d-flex align-center text-caption font-weight-bold text-center"
-        :class="requiredTag"
+        :class="requireTag"
       >
         <v-sheet
           color="accent"
@@ -86,7 +86,7 @@ export default {
     formLine () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mt-1'
     },
-    requiredTag () {
+    requireTag () {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mx-n4'
     },
     textSelect () {
