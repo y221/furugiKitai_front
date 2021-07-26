@@ -1,10 +1,7 @@
 <template>
   <div class="main-wrapper">
     <CompleteText v-if="isCompleted" text="登録"/>
-    <div
-      class="main-content"
-      v-if="!isCompleted"
-    >
+    <div class="main-content" v-if="!isCompleted">
       <div class="d-flex align-center flex-row">
       <TitleBlock />
       <div :class="subHeader">基本情報</div>
