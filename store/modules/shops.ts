@@ -62,5 +62,16 @@ export const actions = actionTree({ state, getters, mutations }, {
         },
       }
     );
+  },
+  async updateShop({ getters, commit}, updateData: any) {
+    return await this.$axios.$post(
+      `/api/shops/${updateData.id}`, 
+      updateData.formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+      }
+    );
   }
 })

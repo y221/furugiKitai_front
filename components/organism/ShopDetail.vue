@@ -35,7 +35,7 @@
         />
         <ShopDetailList
           title="Instagram"
-          :text="shop.instagram"
+          :text="shop.instagramUrl"
         />
         <ShopDetailList
           title="定休日"
