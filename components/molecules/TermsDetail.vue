@@ -1,8 +1,13 @@
 <template>
-  <div :class="termsWrapper">
+  <div :class="wrapper">
     <div class="d-flex align-center flex-row">
       <TitleBlock />
-      <div :class="sectionTitle">第{{section}}条.({{ term }})</div>
+      <div
+        :class="article"
+        class="font-weight-bold"
+      >
+        第{{section}}条.({{ term }})
+      </div>
     </div>
     <ol>
       <li
@@ -34,13 +39,13 @@ export default {
     numbers: Array,
   },
   computed: {
-    termsWrapper () {
-      if (this.$vuetify.breakpoint.xs) return 'pb-2 px-2 mt-4 mb-2'
-      return 'pb-8 px-4 mb-4'
+    wrapper () {
+      if (this.$vuetify.breakpoint.xs) return 'mx-2 my-6'
+      return 'mx-4 my-12'
     },
-    sectionTitle () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 my-3'
-      return 'font-weight-bold text-sm-h5 mx-1 my-5'
+    article () {
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 mx-2 my-3'
+      return 'text-sm-h5 mx-1 my-5'
     },
     sentence () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mb-5'

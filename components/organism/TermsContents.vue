@@ -1,7 +1,10 @@
 <template>
   <div class="main-wrapper">
-    <div :class="mainContent">
-      <div :class="header">
+    <div
+      class="main-content"
+      :class="this.$vuetify.breakpoint.mdAndDown ? 'mt-4' : 'mt-6 mx-12'"
+    >
+      <div :class="header" class="font-weight-bold">
         利用規約
       </div>
       <div :class="headerText">
@@ -18,7 +21,7 @@
       <div :class="yearMonth">
         2021年8月1日 施行
       </div>
-      <div :class="footer">
+      <div :class="footer" class="font-weight-bold">
         運営者
       </div>
       <div :class="footerText">
@@ -31,21 +34,17 @@
 <script>
 export default {
   computed: {
-    mainContent () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'main-content mt-4'
-      return 'main-content mt-6 mx-12'
-    },
     header () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 mx-2 my-5 pt-5'
-      return 'font-weight-bold text-sm-h4 mx-4 my-10'
+      if (this.$vuetify.breakpoint.xs) return 'text-h5 mx-2 my-5 pt-5'
+      return 'text-sm-h4 mx-4 my-10'
     },
     headerText () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
       return 'text-body-1 mx-4 mb-12'
     },
     footer () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 pt-5'
-      return 'font-weight-bold text-sm-h7 mx-4'
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 mx-2 pt-5'
+      return 'text-sm-h7 mx-4'
     },
     footerText () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10 pb-16'
