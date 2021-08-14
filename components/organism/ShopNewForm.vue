@@ -6,7 +6,7 @@
       <ErrorsText class="mt-4" :errors="errors" />
       <div class="mt-5">
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue"/>
-        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefecture" :items="prefectures" v-on:change="changeValue"/>
+        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" v-on:change="changeValue"/>
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue"/>
@@ -14,7 +14,7 @@
         <FormTextfield columnName="経度" label="例：139.635291" :required="false" id="longitude"  v-on:change="changeValue"/>
         <FormTextfield columnName="アクセス" label="例：○○駅より徒歩3分" :required="false" id="access"  v-on:change="changeValue"/>
         <FormTextfield columnName="TEL" label="例：090-1234-5678" :required="false" id="phoneNumber" v-on:change="changeValue"/>
-        <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagram" v-on:change="changeValue"/>
+        <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagramUrl" v-on:change="changeValue"/>
         <FormTextarea columnName="定休日" label="例：水曜日" :required="false" id="holiday" v-on:change="changeValue"/>
         <FormTextarea columnName="営業時間" label="例：14時〜21時" :required="false" id="businessHour" v-on:change="changeValue"/>
       </div>
@@ -41,7 +41,7 @@
 export default {
   data: () => ({
     prefectures: [],
-    prefecture: '',
+    prefectureId: '',
     name: '',
     city: '',
     address: '',
@@ -50,7 +50,7 @@ export default {
     latitude: '',
     longitude: '',
     phoneNumber: '',
-    instagram: '',
+    instagramUrl: '',
     holiday: '',
     businessHour: '',
     errors: {},
@@ -60,7 +60,7 @@ export default {
   methods: {
     async registerShop() {
       let formData = new FormData;
-      formData.append('prefecture', this.prefecture);
+      formData.append('prefectureId', this.prefectureId);
       formData.append('name', this.name);
       formData.append('city', this.city);
       formData.append('address', this.address);
@@ -69,7 +69,7 @@ export default {
       formData.append('latitude', this.latitude);
       formData.append('longitude', this.longitude);
       formData.append('phoneNumber', this.phoneNumber);
-      formData.append('instagram', this.instagram);
+      formData.append('instagramUrl', this.instagramUrl);
       formData.append('holiday', this.holiday);
       formData.append('businessHour', this.businessHour);
       formData.append('mainImage', this.mainImage);

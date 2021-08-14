@@ -53,6 +53,20 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    default:{
+      type: [String, Number],
+      required: false,
+      default: ''
+    }
+  },
+  watch: {
+    default: {
+      handler: function(newVal) {
+        this.value = newVal;
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
