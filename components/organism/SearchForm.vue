@@ -151,9 +151,7 @@ export default {
     prefectureSelected() {
       const prefectures = []
       this.areas.forEach(area => prefectures.push(...area.prefectures))
-      return prefectures.filter(prefecture => {
-        return this.selectedPrefectureIds.includes(prefecture.id)
-      })
+      return prefectures.filter(prefecture => this.selectedPrefectureIds.includes(prefecture.id))
     }
   }
 }
