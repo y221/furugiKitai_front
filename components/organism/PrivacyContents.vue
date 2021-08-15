@@ -19,7 +19,7 @@
         />
       </div>
       <div :class="footerText">
-        2021年8月1日 施行
+        2021年9月1日 施行
       </div>
     </div>
   </div>

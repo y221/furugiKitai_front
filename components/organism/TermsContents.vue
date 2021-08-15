@@ -19,7 +19,7 @@
         />
       </div>
       <div :class="yearMonth">
-        2021年8月1日 施行
+        2021年9月1日 施行
       </div>
       <div :class="footer" class="font-weight-bold">
         運営者
