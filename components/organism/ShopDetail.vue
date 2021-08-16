@@ -7,7 +7,7 @@
       sm="6"
     >
       <ShopMainImage
-        :imageUrl="!(this.shop.imageUrl) ? '/images/noimagecool.png' : this.shop.imageUrl"
+        :imageUrl="!(this.shop.imageUrl) ? '/images/subNoImage.png' : this.shop.imageUrl"
       />
       <ShopMap />
     </v-col>
