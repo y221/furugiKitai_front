@@ -7,7 +7,7 @@
       sm="6"
     >
       <ShopMainImage
-        :imageUrl="this.shop.imageUrl"
+        :imageUrl="!(this.shop.imageUrl) ? '/images/noimagecool.png' : this.shop.imageUrl"
       />
       <ShopMap />
     </v-col>
@@ -35,7 +35,7 @@
         />
         <ShopDetailList
           title="Instagram"
-          :text="shop.instagram"
+          :text="shop.instagramUrl"
         />
         <ShopDetailList
           title="定休日"
