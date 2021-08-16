@@ -7,7 +7,7 @@
       <div :class="header" class="font-weight-bold">
         利用規約
       </div>
-      <div :class="headerText">
+      <div :class="preface">
         この利用規約（以下、「本規約」といいます。）は、フルギキタイ（以下、「本サービス」といいます。）のご利用にあたり、この利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に同意いただいた上で、本サービスを利用できるものとします。
       </div>
       <div v-for="(term, index) of terms" :key="index">
@@ -18,14 +18,16 @@
           :index='index'
         />
       </div>
-      <div :class="yearMonth">
-        2021年9月2日 施行
-      </div>
-      <div :class="footer" class="font-weight-bold">
-        運営者
-      </div>
-      <div :class="footerText">
-        フルギキタイ運営チーム
+      <div :class="footer">
+        <div :class="this.$vuetify.breakpoint.xs ? 'my-13' : 'my-16'">
+          2021年9月1日 施行
+        </div>
+        <div class="font-weight-bold">
+          運営者
+        </div>
+        <div :class="this.$vuetify.breakpoint.xs ? 'pb-15' : 'mb-14'">
+          フルギキタイ運営チーム
+        </div>
       </div>
     </div>
   </div>
@@ -38,21 +40,13 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 mx-2 my-5 pt-5'
       return 'text-sm-h4 mx-4 my-10'
     },
-    headerText () {
+    preface () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
       return 'text-body-1 mx-4 mb-12'
     },
     footer () {
-      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 mx-2 pt-5'
-      return 'text-sm-h7 mx-4'
-    },
-    footerText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10 pb-16'
-      return 'text-body-1 mx-4 mb-12'      
-    },
-    yearMonth () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 py-8'
-      return 'text-body-1 mx-4 mb-16 py-9'
+      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2'
+      return 'text-body-1 mx-4'
     }
   },
   data() {

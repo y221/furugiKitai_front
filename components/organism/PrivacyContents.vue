@@ -7,7 +7,7 @@
       <div :class="header" class="font-weight-bold">
         プライバシーポリシー
       </div>
-      <div :class="headerText">
+      <div :class="preface">
         フルギキタイ運営者（以下、「運営者」といいます。）は，本ウェブサイト上で提供するサービス（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
       </div>
       <div v-for="(term, index) of terms" :key="index">
@@ -18,7 +18,7 @@
           :index='index'
         />
       </div>
-      <div :class="footerText">
+      <div :class="footer">
         2021年9月1日 施行
       </div>
     </div>
@@ -32,13 +32,13 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 mx-2 my-5 pt-5'
       return 'text-sm-h4 mx-4 my-10'
     },
-    headerText () {
+    preface () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
       return 'text-body-1 mx-4 mb-12'
     },
-    footerText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mt-15 pb-16'
-      return 'text-body-1 mx-4 mb-12'      
+    footer () {
+      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mt-16 pb-15'
+      return 'text-body-1 mx-4 my-16'   
     }
   },
   data() {
