@@ -69,13 +69,8 @@ export default {
     }
   },
   async mounted() {
-    await this.$accessor.modules.shops.getShops(getShopParameters(this.$route.params.shopId));
-    this.shop = this.$accessor.modules.shops.shops[0];
-  }
-}
-const getShopParameters = id => {
-  return {
-    'id': id
+    await this.$accessor.modules.shops.getShop(this.$route.params.shopId);
+    this.shop = this.$accessor.modules.shops.shop;
   }
 }
 </script>

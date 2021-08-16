@@ -119,7 +119,7 @@ export default {
   methods: {
     imageUrl(url) {
       if (!url) {
-        return '/images/noimage.png'
+        return '/images/noimagecool.png'
       }
       return url
     }
