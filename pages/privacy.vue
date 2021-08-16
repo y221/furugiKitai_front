@@ -1,7 +1,11 @@
 <template>
   <div>
     <Header :isTop="false" />
-    <PrivacyContents />
+      <v-main class="main-background-color">
+      <v-container>
+        <PrivacyContents />
+      </v-container>
+      </v-main>
     <Footer />
   </div>
 </template>

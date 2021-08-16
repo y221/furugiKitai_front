@@ -1,7 +1,11 @@
 <template>
   <div>
     <Header :isTop="false" />
-    <AboutContent />
+      <v-main class="main-background-color">
+        <v-container>
+          <AboutContent />
+        </v-container>
+      </v-main>
     <Footer />
   </div>
 </template>

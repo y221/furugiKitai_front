@@ -1,9 +1,15 @@
 <template>
-  <div :class="termsWrapper">
-    <div class="d-flex align-center flex-row">
-      <TitleBlock />
-      <div :class="sectionTitle">第{{section}}条.({{ term }})</div>
-    </div>
+  <div :class="wrapper">
+    <v-row class="d-flex align-center">
+      <v-col cols="1" lg="1">
+        <TitleBlock />
+      </v-col>
+      <v-col cols="11" lg="auto">  
+        <div :class="article" class="font-weight-bold">
+          第{{section}}条.({{ term }})
+        </div>
+      </v-col>
+    </v-row>
     <ol>
       <li
         class="ml-n5"
@@ -14,7 +20,7 @@
         {{ text }}
       </li>
       <li
-        class="numbers pl-4"
+        class="numbers pl-2"
         v-for="(number, index) in numbers"
         :key="`number-${index}`"
         :class="sentence"
@@ -34,13 +40,14 @@ export default {
     numbers: Array,
   },
   computed: {
-    termsWrapper () {
-      if (this.$vuetify.breakpoint.xs) return 'pb-2 px-2 mt-4 mb-2'
-      return 'pb-8 px-4 mb-4'
+    wrapper () {
+      if (this.$vuetify.breakpoint.xs) return 'mx-1 my-6'
+      return 'mx-4 my-12'
     },
-    sectionTitle () {
-      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-subtitle-1 mx-2 my-3'
-      return 'font-weight-bold text-sm-h5 mx-1 my-5'
+    article () {
+      if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 mx-n1 my-3'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'text-sm-h5 my-5 ml-n6'
+      return 'text-sm-h5 my-5 ml-n11'
     },
     sentence () {
       if (this.$vuetify.breakpoint.xs) return 'text-body-2 mb-5'

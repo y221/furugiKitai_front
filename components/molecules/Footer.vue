@@ -74,7 +74,7 @@ const footerButtons = () => {
   return [
     {
       text: '古着屋登録',
-      to: ''
+      to: '/shops/new'
     },
     {
       text: '利用規約',
