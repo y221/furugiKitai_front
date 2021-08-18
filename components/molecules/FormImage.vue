@@ -6,6 +6,7 @@
       style="display: none"
       ref="input"
       type="file"
+      :id="id"
       accept="image/jpeg, image/jpg, image/png"
       @change="selectedImage()"
     >
@@ -31,11 +32,10 @@
   </v-col>
 </template>
 <script>
-const imageDefault = "/images/noimage.png"
 export default {
   data ()　{
     return {
-      image: '',
+      image: "/images/noimage.png",
       isImageSelected: false
     }
   },
@@ -46,15 +46,24 @@ export default {
     },
     imagePath: {
       type: String,
-      default: ""
+      default: "",
+      required: false
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
-  mounted () {
-    this.image = imageDefault;
-    this.isImageSelected = false;
-    if (this.imagePath !== '') {
-      this.image = this.imagePath;
-      this.isImageSelected = true;
+  watch: {
+    imagePath: {
+      handler: function(newVal) {
+        if (newVal !== '') {
+          this.image = newVal;
+          this.isImageSelected = true;
+        }
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
@@ -67,6 +76,7 @@ export default {
       this.isImageSelected = !this.isImageSelected;
       if (this.isImageSelected) {
         this.image = window.URL.createObjectURL(file);
+        this.$emit("change", event.target.files[0], this.id);
       }
     },
     cancelImage() {

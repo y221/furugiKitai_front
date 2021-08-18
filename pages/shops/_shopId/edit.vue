@@ -1,12 +1,10 @@
 <template>
   <div>
-    <Header :isTop="false" />
     <v-main class="main-background-color">
       <v-container>
-        <ShopNewHeader />
-        <ShopNewForm />
+        <ShopNewHeader class="mt-10"/>
+        <ShopEditForm class="mt-10"/>
       </v-container>
     </v-main>
-    <Footer />
   </div>
 </template>

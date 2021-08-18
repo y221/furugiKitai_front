@@ -1,21 +1,36 @@
 <template>
-  <div class="mt-8">
-    <v-row>
-      <v-col cols="6" sm="2" md="2" class="mt-4">
+  <div>
+    <v-row :class="formLine">
+      <v-col
+        cols="auto"
+        lg="2"
+        class="d-flex align-center text-body-2 font-weight-bold"
+      >
         {{ columnName }}
       </v-col>
-      <v-col cols="6" sm="1" md="2" class="mt-4 required-tag">
-        <v-chip
+      <v-col
+        cols="auto"  
+        lg="1"
+        class="d-flex align-center text-caption font-weight-bold text-center"
+        :class="requireTag"
+      >
+        <v-sheet
           color="accent"
-          text-color="white"
+          rounded
+          height="19"
+          width="40"
           v-if="required"
-          label
-          small
         >
-          <strong>必須</strong>
-        </v-chip>
+          <div class="white--text">
+            必須
+          </div>
+        </v-sheet>  
       </v-col>
-      <v-col cols="12" sm="8" md="7">
+      <v-col
+        cols="12"
+        lg="9"
+        :class="textSelect"
+      >
         <v-select
           v-model="value"
           :label="label"
@@ -60,17 +75,38 @@ export default {
     items: {
       type: Array,
       required: true
+    },
+    default:{
+      type: [String, Number],
+      required: false,
+      default: ''
+    }
+  },
+  watch: {
+    default: {
+      handler: function(newVal) {
+        this.value = newVal;
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
     changed() {
       this.$emit("change", this.value, this.id);
     }
+  },
+  computed: {
+    formLine () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-1'
+    },
+    requireTag () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mx-n4'
+    },
+    textSelect () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n2'
+      return 'mt-7'
+    }
   }
 }
 </script>
-<style>
-.required-tag{
-  text-align: right;
-}
-</style>

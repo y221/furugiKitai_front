@@ -1,6 +1,19 @@
 <template>
   <div>
+    <v-row>
     <p :class="shopName">Circus Vintage</p>
+    <v-chip
+      outlined
+      small
+      active
+      color="chip_color"
+      text-color="chip_color"
+      class="mb-4 mr-4 mt-4 ml-auto"
+      :to=to
+    >
+      情報修正
+    </v-chip>
+    </v-row>
     <v-row>
       <v-col
         cols="12"
@@ -39,6 +52,12 @@
 </template>
 <script>
 export default {
+  data: () => ({
+    shopId: ''
+  }),
+  mounted() {
+    this.shopId = this.$route.params.shopId;
+  },
   computed: {
     shopName () {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium main-text-color pt-3 mb-0'
@@ -51,6 +70,9 @@ export default {
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
       return 'font-weight-bold'
+    },
+    to () {
+      return `/shops/${this.shopId}/edit`
     }
   }
 }

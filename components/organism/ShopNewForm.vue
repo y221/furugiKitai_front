@@ -1,27 +1,32 @@
 <template>
   <div class="main-wrapper">
-    <div class="main-content">
-      <div class="text-h5 font-weight-bold">基本情報</div>
-      <div class="mt-5">
+    <CompleteText v-if="isCompleted" text="登録"/>
+    <div class="main-content" v-if="!isCompleted">
+      <div class="d-flex align-center flex-row">
+      <TitleBlock />
+      <div :class="subHeader">基本情報</div>
+      </div>
+      <ErrorsText class="mt-4" :errors="errors" />
+      <div>
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue"/>
-        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="false" id="prefecture" :items="prefectures" v-on:change="changeValue"/>
+        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" v-on:change="changeValue"/>
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue"/>
+        <FormTextfield columnName="緯度" label="例：35.710240" :required="false" id="latitude"  v-on:change="changeValue"/>
+        <FormTextfield columnName="経度" label="例：139.635291" :required="false" id="longitude"  v-on:change="changeValue"/>
         <FormTextfield columnName="アクセス" label="例：○○駅より徒歩3分" :required="false" id="access"  v-on:change="changeValue"/>
         <FormTextfield columnName="TEL" label="例：090-1234-5678" :required="false" id="phoneNumber" v-on:change="changeValue"/>
-        <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagram" v-on:change="changeValue"/>
+        <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagramUrl" v-on:change="changeValue"/>
         <FormTextarea columnName="定休日" label="例：水曜日" :required="false" id="holiday" v-on:change="changeValue"/>
         <FormTextarea columnName="営業時間" label="例：14時〜21時" :required="false" id="businessHour" v-on:change="changeValue"/>
       </div>
-      <div class="text-h5 font-weight-bold mt-15">画像情報</div>
+      <div class="d-flex align-center flex-row">
+      <TitleBlock />
+      <div :class="subHeader">画像情報</div>
+      </div>
       <v-row>
-        <FormImage imagePath="" imageName="メイン" />
-        <FormImage imagePath="" imageName="1." />
-        <FormImage imagePath="" imageName="2." />
-        <FormImage imagePath="" imageName="3." />
-        <FormImage imagePath="" imageName="4." />
-        <FormImage imagePath="" imageName="5." />
+        <FormImage imagePath="" id="mainImage" v-on:change="changeValue" imageName="メイン" />
       </v-row>
       <v-col align="center">
         <v-btn
@@ -38,36 +43,59 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
+  computed: {
+    subHeader () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h6 mx-2 my-4'
+      return 'font-weight-bold text-sm-h5 mx-2 py-4'
+    }
+  },
   data: () => ({
     prefectures: [],
-    prefecture: '',
+    prefectureId: '',
     name: '',
     city: '',
     address: '',
     building: '',
     access: '',
+    latitude: '',
+    longitude: '',
     phoneNumber: '',
-    instagram: '',
+    instagramUrl: '',
     holiday: '',
     businessHour: '',
+    errors: {},
+    isCompleted: false,
+    mainImage: ''
   }),
   methods: {
     async registerShop() {
-      const shopData = {
-        prefecture: this.prefecture,
-        name: this.name,
-        city: this.city,
-        address: this.address,
-        building: this.building,
-        access: this.access,
-        phoneNumber: this.phoneNumber,
-        instagram: this.instagram,
-        holiday: this.holiday,
-        businessHour: this.businessHour,
+      let formData = new FormData;
+      formData.append('prefectureId', this.prefectureId);
+      formData.append('name', this.name);
+      formData.append('city', this.city);
+      formData.append('address', this.address);
+      formData.append('building', this.building);
+      formData.append('access', this.access);
+      formData.append('latitude', this.latitude);
+      formData.append('longitude', this.longitude);
+      formData.append('phoneNumber', this.phoneNumber);
+      formData.append('instagramUrl', this.instagramUrl);
+      formData.append('holiday', this.holiday);
+      formData.append('businessHour', this.businessHour);
+      formData.append('mainImage', this.mainImage);
+      
+      const response = await this.$accessor.modules.shops.registerShop(formData);
+      if (!response.errors) {
+        this.isCompleted = true;
+      } else {
+        this.errors = response.errors;
       }
-      await this.$accessor.modules.shopNew.registerShop(shopData);
+      window.scrollTo({
+        top: 0
+      });
     },
     changeValue(...values) {
       const [value, id] = values
@@ -75,13 +103,8 @@ export default {
     }
   },
   async mounted() {
-    await this.$accessor.modules.shopNew.getPrefectures();
-    this.prefectures = this.$accessor.modules.shopNew.prefectures;
+    await this.$accessor.modules.shops.getPrefectures();
+    this.prefectures = this.$accessor.modules.shops.prefectures;
   },
 }
 </script>
-<style>
-.flex {
-  display: flex;
-}
-</style>

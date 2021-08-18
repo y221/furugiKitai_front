@@ -28,8 +28,9 @@
               key="shopInformation"
               :class="this.$vuetify.breakpoint.xs ? 'pt-0 pb-6' : ''"
             >
-              <ShopDetail />
-              <ShopImages />
+              <ShopDetail
+                :shop="this.shop"
+              />
             </v-tab-item>
             <v-tab-item key="review">
               <ShopReviews />
@@ -42,22 +43,21 @@
 </template>
 <script>
 export default {
-  data () {
-    return {
-      tab: null,
-      reviewCount: 345,
-      items: {
-        shopInformation: {
-          text: '店舗情報',
-          key: 'shopInformation'  
-        },
-        review: {
-          text: 'クチコミ',
-          key: 'review'  
-        }
+  data: () => ({
+    shop: {},
+    tab: null,
+    reviewCount: 345,
+    items: {
+      shopInformation: {
+        text: '店舗情報',
+        key: 'shopInformation'  
+      },
+      review: {
+        text: 'クチコミ',
+        key: 'review'  
       }
     }
-  },
+  }),
   computed: {
     mainContent () {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-2'
@@ -67,6 +67,10 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
       return 'font-weight-bold'
     }
+  },
+  async mounted() {
+    await this.$accessor.modules.shops.getShop(this.$route.params.shopId);
+    this.shop = this.$accessor.modules.shops.shop;
   }
 }
 </script>

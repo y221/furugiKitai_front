@@ -23,7 +23,7 @@
           レディース・メンズ
         </v-chip>
         <v-img
-          src="/images/shop.jpg"
+          :src="imageUrl(shop.imageUrl)"
           :max-height="maxHeight"
         >
         </v-img>
@@ -34,13 +34,12 @@
         md="7"
         sm="6"
       >
-        <p class="text-h5 font-weight-medium main-text-color mb-0">Circus Vintage</p>
-        <p :class="address">神奈川県鎌倉市極楽寺3丁目6-14</p>
+        <p class="text-h5 font-weight-medium main-text-color mb-0">{{ shop.name }}</p>
+        <p :class="address">{{prefectures[shop.prefectureId]}}{{ shop.city }}{{ shop.address }}{{ shop.building }}</p>
         <p :class="time">
           <span>営業時間</span>
-          <span class="ml-1">12:00</span>
-          <span class="ml-1">〜</span>
-          <span class="ml-1">18:00</span>
+          <span class="ml-1" v-if="shop.businessHour">{{ shop.businessHour }}</span>
+          <span class="ml-1" v-if="!shop.businessHour">未登録</span>
         </p>
         <v-chip
           outlined
@@ -87,9 +86,13 @@
 <script>
 export default {
   props: {
-    id: {
-      type: Number,
+    shop: {
+      type: Object,
       required: true,
+    },
+    prefectures: {
+      type: Object,
+      required: true
     }
   },
   computed: {
@@ -110,7 +113,15 @@ export default {
       return ''
     },
     to () {
-      return `/shops/${this.id}`
+      return `/shops/${this.shop.id}`
+    }
+  },
+  methods: {
+    imageUrl(url) {
+      if (!url) {
+        return '/images/subNoImage.png'
+      }
+      return url
     }
   }
 }
