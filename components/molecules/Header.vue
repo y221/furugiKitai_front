@@ -57,13 +57,14 @@
         :class="btn"
         text
         v-if="!$vuetify.breakpoint.xs"
-        to="login"
+        to="/login"
       >
         ログイン
       </v-btn>
       <v-btn
         text
         v-if="!$vuetify.breakpoint.xs"
+        to='/users/new'
       >
         新規登録
       </v-btn>
@@ -92,6 +93,7 @@
             color="secondary"
             outlined
             class="font-weight-bold caption ml-5"
+            to='/login'
           >
             ログイン
           </v-btn>
@@ -99,6 +101,7 @@
             depressed
             color="secondary"
             class="font-weight-bold caption"
+            to='/users/new'
           >
             新規登録
           </v-btn>
