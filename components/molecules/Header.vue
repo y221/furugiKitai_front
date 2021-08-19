@@ -80,7 +80,12 @@
         <v-list-item-group
           v-model="group"
         >
-          <v-btn text>✕</v-btn>
+          <v-btn
+            @click="drawer = !drawer"
+            text
+          >
+            ✕
+          </v-btn>
           <v-divider class="my-4"></v-divider>
           <v-btn
             depressed
@@ -109,6 +114,7 @@
     </v-navigation-drawer>
   </div>
 </template>
+
 <script>
 export default {
   data: () => ({
@@ -121,6 +127,11 @@ export default {
       required: true
     }
   },
+  data () {
+      return {
+        drawer: null
+      }
+    },
   computed: {
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'caption'
