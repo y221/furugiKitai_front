@@ -8,7 +8,7 @@
         お問い合わせ
       </div>
       <div :class="preface">
-        下記フォームを入力し、プライバシーポリシーをご確認の上「送信する」ボタンを押してください。運営の都合上、返信には数日から数週間などお時間を頂く場合がございますので、予めご了承ください。
+        下記フォームを入力し、プライバシーポリシーをご確認の上「送信する」ボタンを押してください。<br v-if="this.$vuetify.breakpoint.xs">運営の都合上、返信には数日から数週間などお時間を頂く場合がございますので、予めご了承ください。
       </div>
       <div>
         <FormTextfield columnName="名前" label="例：フルギ　キタイ" :required="true" id="name" v-on:change="changeValue"/>
@@ -16,11 +16,11 @@
         <FormTextarea columnName="お問い合わせ内容" label="例：お問い合わせ内容を入力してください" :required="true" id="inquiry" v-on:change="changeValue"/>
       </div>
       <v-row>
-      <v-col cols="0" lg="3"></v-col>
-      <v-col cols="auto" lg="9">
-        <v-checkbox label="プライバシーポリシーに同意する">
-        </v-checkbox>
-      </v-col>
+        <v-col cols="0" lg="3"></v-col>
+        <v-col cols="auto" lg="9">
+          <v-checkbox label="プライバシーポリシーに同意する">
+          </v-checkbox>
+        </v-col>
       </v-row>
       <v-col align="center">
         <v-btn
