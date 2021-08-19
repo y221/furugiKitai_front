@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar
-      :app="this.$vuetify.breakpoint.xs"
+      :app="this.$vuetify.breakpoint.xs && !isTop"
       color='main_background'
       dense
       flat
@@ -58,7 +58,7 @@
         :class="btn"
         text
         v-if="!$vuetify.breakpoint.xs"
-        to="/login"
+        to='/login'
       >
         ログイン
       </v-btn>
