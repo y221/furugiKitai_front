@@ -13,7 +13,7 @@
       <div>
         <FormTextfield columnName="名前" label="例：フルギ　キタイ" :required="true" id="name" v-on:change="changeValue"/>
         <FormTextfield columnName="メールアドレス" label="例：info@furugikitai.com" :required="true" id="mail" v-on:change="changeValue"/>
-        <FormTextarea columnName="お問い合わせ内容" label="例：お問い合わせ内容を入力してください" :required="true" id="inquiry" v-on:change="changeValue"/>
+        <FormTextarea columnName="お問い合わせ内容" label="お問い合わせ内容を入力してください" :required="true" id="inquiry" v-on:change="changeValue"/>
       </div>
       <v-row>
         <v-col cols="0" lg="3"></v-col>
