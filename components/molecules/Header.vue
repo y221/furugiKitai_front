@@ -103,12 +103,9 @@
             新規登録
           </v-btn>
           <v-divider class="my-4"></v-divider>
-          <v-list-item class="ml-4">
-            <v-list-item-title>フルギキタイとは？</v-list-item-title>
-          </v-list-item>
-          <v-list-item class="ml-4">
-            <v-list-item-title>古着屋登録</v-list-item-title>
-          </v-list-item>
+            <v-list-item class="ml-4" v-for="menu in menus" :key="menu.title" :to="menu.url">
+                <v-list-item-title>{{ menu.title }}</v-list-item-title>
+            </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -129,7 +126,13 @@ export default {
   },
   data () {
       return {
-        drawer: null
+        drawer: null,
+        group: null,
+        menus: [
+          { title: 'フルギキタイとは', url: '/about' },
+          { title: '古着屋登録', url: '/shops/new' },
+          { title: 'お問い合わせ', url: '/contact' }
+        ]
       }
     },
   computed: {
