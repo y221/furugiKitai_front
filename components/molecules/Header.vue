@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-app-bar
+      :app="this.$vuetify.breakpoint.xs"
       color='main_background'
       dense
       flat
@@ -71,7 +72,7 @@
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      absolute
+      fixed
       temporary
     >
       <v-list
