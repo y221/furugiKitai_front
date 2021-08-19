@@ -1,6 +1,4 @@
 <template>
-  <v-main class="main-background-color">
-    <v-container>
       <div class="main-wrapper">
         <div :class="mainContent">
           <v-col>
@@ -128,8 +126,6 @@
           </v-col>
         </div>
       </div>
-    </v-container>
-  </v-main>  
 </template>
 
 <script>
