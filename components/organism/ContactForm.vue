@@ -15,7 +15,13 @@
         <FormTextfield columnName="メールアドレス" label="例：info@furugikitai.com" :required="true" id="mail" v-on:change="changeValue"/>
         <FormTextarea columnName="お問い合わせ内容" label="例：お問い合わせ内容を入力してください" :required="true" id="inquiry" v-on:change="changeValue"/>
       </div>
-
+      <v-row>
+      <v-col cols="0" lg="3"></v-col>
+      <v-col cols="auto" lg="9">
+        <v-checkbox label="プライバシーポリシーに同意する">
+        </v-checkbox>
+      </v-col>
+      </v-row>
       <v-col align="center">
         <v-btn
           class="mx-auto my-6 font-weight-bold"
@@ -23,7 +29,7 @@
           depressed
           rounded
           width="200px"
-          @click="registerUsers()"
+          @click="hogehoge()"
         >
           送信する
         </v-btn>
@@ -48,7 +54,13 @@ export default {
     name: '',
     mail: '',
     inquiry: ''
-  })
+  }),
+  methods: {
+    changeValue(...values) {
+      const [value, id] = values
+      this[id] = value;
+    }
+  }
 }
 </script>
 
