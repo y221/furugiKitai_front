@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-app-bar
+      :app="this.$vuetify.breakpoint.xs && !isTop"
       color='main_background'
       dense
       flat
@@ -57,20 +58,21 @@
         :class="btn"
         text
         v-if="!$vuetify.breakpoint.xs"
-        to="login"
+        to='/login'
       >
         ログイン
       </v-btn>
       <v-btn
         text
         v-if="!$vuetify.breakpoint.xs"
+        to='/users/new'
       >
         新規登録
       </v-btn>
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      absolute
+      fixed
       temporary
     >
       <v-list
@@ -80,13 +82,19 @@
         <v-list-item-group
           v-model="group"
         >
-          <v-btn text>✕</v-btn>
+          <v-btn
+            @click="drawer = !drawer"
+            text
+          >
+            ✕
+          </v-btn>
           <v-divider class="my-4"></v-divider>
           <v-btn
             depressed
             color="secondary"
             outlined
             class="font-weight-bold caption ml-5"
+            to='/login'
           >
             ログイン
           </v-btn>
@@ -94,21 +102,20 @@
             depressed
             color="secondary"
             class="font-weight-bold caption"
+            to='/users/new'
           >
             新規登録
           </v-btn>
           <v-divider class="my-4"></v-divider>
-          <v-list-item class="ml-4">
-            <v-list-item-title>フルギキタイとは？</v-list-item-title>
-          </v-list-item>
-          <v-list-item class="ml-4">
-            <v-list-item-title>古着屋登録</v-list-item-title>
-          </v-list-item>
+            <v-list-item class="ml-4" v-for="menu in menus" :key="menu.title" :to="menu.url">
+                <v-list-item-title>{{ menu.title }}</v-list-item-title>
+            </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
   </div>
 </template>
+
 <script>
 export default {
   data: () => ({
@@ -121,6 +128,17 @@ export default {
       required: true
     }
   },
+  data () {
+      return {
+        drawer: null,
+        group: null,
+        menus: [
+          { title: 'フルギキタイとは', url: '/about' },
+          { title: '古着屋登録', url: '/shops/new' },
+          { title: 'お問い合わせ', url: '/contact' }
+        ]
+      }
+    },
   computed: {
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'caption'
