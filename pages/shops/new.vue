@@ -3,8 +3,8 @@
     <Header :isTop="false" />
     <v-main class="main-background-color">
       <v-container>
-        <ShopNewHeader class="mt-10"/>
-        <ShopNewForm class="mt-10"/>
+        <ShopNewHeader />
+        <ShopNewForm />
       </v-container>
     </v-main>
     <Footer />

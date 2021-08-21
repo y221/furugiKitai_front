@@ -3,7 +3,7 @@
     <Header :isTop="false" />
     <v-main class="main-background-color">
       <v-container>
-        <UserRegistorForm />
+        <ContactForm />
       </v-container>
     </v-main>
     <Footer />

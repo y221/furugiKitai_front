@@ -1,68 +1,65 @@
 <template>
-  <v-main class="main-background-color">
-    <v-container>
-      <div class="main-wrapper" align="center">
-        <div :class="mainContent">
-          <FurugiKitaiLogo
-            class="logoSpace"
-            :height="height"
-            :width="width"
-          />            
-            <div class="primary--text" :class="subTitle">
-              <div>古着屋を探せる！楽しめる！</div>
-              <div>フルギがもっと好きになる<br v-if="this.$vuetify.breakpoint.xs">古着ポータルサイト</div>
-            </div>
-              <AboutDetailTop />
-            <div class="secondary--text" :class="subTitle">
-              フルギキタイでやりたいこと
-            </div>
-              <v-row no-gutters justify="center">
-                <div v-for="(vision, index) of visions" :key="index">
-                  <v-card
-                    height=100%
-                    :width="visionsCard"
-                    :class="visionsCardMargin"
-                    elevation="0"
-                  >
-                    <v-col>
-                      <AboutDetailVision
-                        :images='images[index]'
-                        :visions='visions[index]'
-                        :texts='texts[index]'
-                        :index='index'
-                      />
-                    </v-col>
-                  </v-card>
-                </div>
-              </v-row>
-            <div class="accent--text" :class="subTitle">
-              フルギキタイ運営チーム
-            </div>
-              <v-row no-gutters justify="center">
-                <div v-for="(name, index) of names" :key="index">
-                  <v-card
-                    height=100%
-                    :width="teamsCard"
-                    :class="teamsCardMargin"
-                    elevation="0"
-                  >
-                    <v-col>
-                      <AboutDetailTeams
-                        :avatars='avatars[index]'
-                        :names='names[index]'
-                        :socialMedias='socialMedias[index]'
-                        :links='links[index]'
-                        :profiles='profiles[index]'
-                        :index='index'
-                      />
-                    </v-col>
-                  </v-card>
-                </div>
-              </v-row>
-        </div>
+  <div class="main-wrapper" align="center">
+    <div class="main-content">
+      <div class="pt-8">
+        <FurugiKitaiLogo
+          :height="height"
+          :width="width"
+        />
       </div>
-    </v-container>
-  </v-main>  
+      <div class="primary--text" :class="subTitle">
+        <div>古着屋を探せる！楽しめる！</div>
+        <div>フルギがもっと好きになる<br v-if="this.$vuetify.breakpoint.xs">古着ポータルサイト</div>
+      </div>
+      <AboutDetailTop />
+      <div class="secondary--text" :class="subTitle">
+        フルギキタイでやりたいこと
+      </div>
+      <v-row no-gutters justify="center">
+        <div v-for="(vision, index) of visions" :key="index">
+          <v-card
+            height=100%
+            :width="visionsCard"
+            :class="visionsCardMargin"
+            elevation="0"
+          >
+            <v-col>
+              <AboutDetailVision
+                :images='images[index]'
+                :visions='visions[index]'
+                :texts='texts[index]'
+                :index='index'
+              />
+            </v-col>
+          </v-card>
+        </div>
+      </v-row>
+      <div class="accent--text" :class="subTitle">
+        フルギキタイ運営チーム
+      </div>
+      <v-row no-gutters justify="center">
+        <div v-for="(name, index) of names" :key="index">
+          <v-card
+            height=100%
+            :width="teamsCard"
+            :class="teamsCardMargin"
+            elevation="0"
+          >
+            <v-col>
+              <AboutDetailTeams
+                :avatars='avatars[index]'
+                :names='names[index]'
+                :socialMedias='socialMedias[index]'
+                :links='links[index]'
+                :profiles='profiles[index]'
+                :index='index'
+              />
+            </v-col>
+          </v-card>
+        </div>
+      </v-row>
+    </div>
+  </div> 
 </template>
 
 <script>
@@ -76,13 +73,9 @@ export default {
       if (this.$vuetify.breakpoint.mdAndDown) return '199'
       return '329'
     },
-    logoSpace () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mb-10'
+    logo () {
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-10'
       return 'mt-10'
-    },
-    mainContent () {
-      if (this.$vuetify.breakpoint.xs) return 'main-content pt-9 mt-4'
-      return 'main-content mt-6 mx-12 pt-14 pb-16'
     },
     subTitle () {
       if (this.$vuetify.breakpoint.xs) return 'text-subtitle-1 font-weight-bold mt-8 px-8'
