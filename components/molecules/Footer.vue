@@ -86,7 +86,7 @@ const footerButtons = () => {
     },
     {
       text: 'お問い合わせ',
-      to: ''
+      to: '/contact'
     }
   ]
 }
