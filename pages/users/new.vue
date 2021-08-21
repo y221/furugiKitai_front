@@ -6,5 +6,6 @@
         <UserRegistorForm />
       </v-container>
     </v-main>
+    <Footer />
   </div>
 </template>
