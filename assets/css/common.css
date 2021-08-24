@@ -2,6 +2,10 @@
 body {
   font-family: 'Noto Sans JP', sans-serif;
 }
+.input label{
+  font-size: 14px;
+}
+
 /*色定義*/
 .main-background-color {
   background-color: #FBF8F4;

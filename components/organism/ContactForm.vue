@@ -18,7 +18,7 @@
       <v-row>
         <v-col cols="0" lg="3"></v-col>
         <v-col cols="auto" lg="9">
-          <v-checkbox label="プライバシーポリシーに同意する">
+          <v-checkbox class="input" label="プライバシーポリシーに同意する">
           </v-checkbox>
         </v-col>
       </v-row>
