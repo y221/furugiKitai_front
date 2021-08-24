@@ -32,6 +32,7 @@
         :class="textField"
       >
         <v-textarea
+          class="font-size-input"
           v-model="value"
           :label="label"
           :id="id"
@@ -97,7 +98,7 @@ export default {
       if (this.$vuetify.breakpoint.mdAndDown) return 'mx-n4'
     },
     textField () {
-      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n5 mb-n2'
+      if (this.$vuetify.breakpoint.mdAndDown) return 'mt-n3 mb-n2'
       return 'mt-7'
     }
   }

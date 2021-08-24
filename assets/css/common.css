@@ -32,6 +32,9 @@ body {
   background-color: #FBF8F4;
   height:100vh;
 }
+.font-size-input label{
+  font-size: 14px;
+}
 
 @media only screen and (max-width:600px) {
   .main-content {
