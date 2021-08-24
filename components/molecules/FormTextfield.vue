@@ -32,7 +32,7 @@
         :class="textField"
       >
         <v-text-field
-          class="input"
+          class="font-size-input"
           v-model="value"
           :label="label"
           :id="id"

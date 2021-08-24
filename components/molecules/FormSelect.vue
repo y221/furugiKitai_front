@@ -32,7 +32,7 @@
         :class="textSelect"
       >
         <v-select
-          class="input"
+          class="font-size-input"
           v-model="value"
           :label="label"
           :id="id"

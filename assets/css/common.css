@@ -2,10 +2,6 @@
 body {
   font-family: 'Noto Sans JP', sans-serif;
 }
-.input label{
-  font-size: 14px;
-}
-
 /*色定義*/
 .main-background-color {
   background-color: #FBF8F4;
@@ -35,6 +31,9 @@ body {
 .fill-height {
   background-color: #FBF8F4;
   height:100vh;
+}
+.font-size-input label{
+  font-size: 14px;
 }
 
 @media only screen and (max-width:600px) {
