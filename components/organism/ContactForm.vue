@@ -18,11 +18,12 @@
       <v-row>
         <v-col cols="0" lg="3"></v-col>
         <v-col cols="auto" lg="9">
-          <v-checkbox label="プライバシーポリシーに同意する">
+          <v-checkbox v-model="agree" label="プライバシーポリシーに同意する">
           </v-checkbox>
         </v-col>
       </v-row>
       <v-col align="center">
+        <div v-if="agree">
         <v-btn
           class="mx-auto my-6 font-weight-bold"
           color="primary"
@@ -33,6 +34,18 @@
         >
           送信する
         </v-btn>
+        </div>
+        <div v-else>
+        <v-btn
+          disabled
+          class="mx-auto my-6 font-weight-bold"
+          depressed
+          rounded
+          width="200px"
+        >
+          送信する
+        </v-btn>
+        </div>      
       </v-col>
     </div>
   </div>
@@ -55,6 +68,11 @@ export default {
     mail: '',
     inquiry: ''
   }),
+  data() {
+    return {
+      agree: false
+    }
+  },
   methods: {
     changeValue(...values) {
       const [value, id] = values
