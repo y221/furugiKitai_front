@@ -42,7 +42,7 @@
             <SNSLoginButtons />
               <v-col cols="10">
                 <v-card-text class="text-left">
-                  SNSアカウントが連携していない状態で、各外部サービスでログインを行うと新規登録扱いになります。アカウントを新規作成する場合は、利用規約に同意するものとします。
+                  SNSアカウントが連携していない状態で、各外部サービスでログインを行うと新規登録扱いになります。アカウントを新規作成する場合は、<nuxt-link to='/terms'>利用規約</nuxt-link>に同意するものとします。
                 </v-card-text>
               </v-col>
         </div>
@@ -51,7 +51,7 @@
             <SNSLoginButtons />
               <v-col cols="10">
                 <v-card-text class="text-left">
-                  新規登録するにあたっては、利用規約に同意するものとします。
+                  新規登録するにあたっては、<nuxt-link to='/terms'>利用規約</nuxt-link>に同意するものとします。
                 </v-card-text>
               </v-col>
         </div>
