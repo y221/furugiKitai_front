@@ -69,12 +69,12 @@ export default {
   },
   computed: {
     height () {
-      if (this.$vuetify.breakpoint.xs) return '129'
-      return '258'
+      if (this.$vuetify.breakpoint.xs) return '121'
+      return '200'
     },
     width () {
-      if (this.$vuetify.breakpoint.xs) return '212.5'
-      return '425'
+      if (this.$vuetify.breakpoint.xs) return '199'
+      return '329'
     },
     login_width () {
       if (this.$vuetify.breakpoint.xs) return '100%'
