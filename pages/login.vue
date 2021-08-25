@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Login />
+    <v-app>
+      <v-main class="main-background-color">
+        <v-container>
+          <Login />
+        </v-container>
+      </v-main>
+    </v-app>
   </div>
 </template>
 
