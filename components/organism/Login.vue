@@ -3,7 +3,7 @@
     <div class="main-content" :class="this.$vuetify.breakpoint.xs ? 'mt-n10' : ''">
       <v-card
         :width="login_width"
-        class="mx-auto my-10 py-5"
+        class="mx-auto mt-10 py-5"
         flat
         align="center"
         border

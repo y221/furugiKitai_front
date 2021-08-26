@@ -1,12 +1,10 @@
 <template>
   <div>
-    <v-app>
-      <v-main class="main-background-color">
+      <v-main class="main-background-color display">
         <v-container>
           <Login />
         </v-container>
       </v-main>
-    </v-app>
   </div>
 </template>
 
@@ -15,6 +13,8 @@ import Vue from 'vue'
 
 export default Vue.extend({})
 </script>
-
 <style>
+.display {
+  min-height: 100vh;
+}
 </style>
