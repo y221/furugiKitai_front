@@ -99,4 +99,7 @@ export default {
       families: ['Noto+Sans+JP']
     }
   },
+  publicRuntimeConfig: {
+    googleApiKey: process.env.GOOGLE_API_KEY
+  }
 }

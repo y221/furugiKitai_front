@@ -9,7 +9,10 @@
       <ShopMainImage
         :imageUrl="!(this.shop.imageUrl) ? '/images/subNoImage.png' : this.shop.imageUrl"
       />
-      <ShopMap />
+      <ShopMap
+        :latitude="shop.latitude"
+        :longitude="shop.longitude"
+      />
     </v-col>
     <v-col
       cols="12"
