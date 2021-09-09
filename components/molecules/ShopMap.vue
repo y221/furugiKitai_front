@@ -47,14 +47,19 @@ export default {
   },
   methods: {
     initializeMap() {
-      const mapConfig = {
-        center: {
+      const latLng = {
           lat: this.latitude,
           lng: this.longitude
-        },
+        }
+      const mapConfig = {
+        center: latLng,
         zoom: 17
       }
-      new this.google.maps.Map(this.$refs.googleMap, mapConfig);
+      const map = new this.google.maps.Map(this.$refs.googleMap, mapConfig);
+      new this.google.maps.Marker({ 
+        position: latLng,
+        map: map
+      });
     }
   }
 }

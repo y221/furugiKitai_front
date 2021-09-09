@@ -26,7 +26,7 @@
       >
         <ShopDetailList
           title="住所"
-          :text="`${shop.prefecture}${shop.city}${shop.address}${shop.building}`"
+          :text="this.address"
         />
         <ShopDetailList
           title="アクセス"
@@ -54,8 +54,16 @@
 </template>
 <script>
 export default {
+  data:() => ({
+    address: ''
+  }),
   props: {
     shop: Object
+  },
+  created() {
+    this.$watch(() => this.shop, () => {
+        this.address = `${this.shop.prefecture}${this.shop.city}${this.shop.address}${this.shop.building}`
+    })
   }
 }
 </script>
