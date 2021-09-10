@@ -8,7 +8,7 @@
         お問い合わせ
       </div>
       <div :class="preface">
-        下記フォームを入力し、プライバシーポリシーをご確認の上「送信する」ボタンを押してください。<br v-if="this.$vuetify.breakpoint.xs">運営の都合上、返信には数日から数週間などお時間を頂く場合がございますので、予めご了承ください。
+        下記フォームを入力し、<nuxt-link to='/privacy'>プライバシーポリシー</nuxt-link>をご確認の上「送信する」ボタンを押してください。<br v-if="this.$vuetify.breakpoint.xs">運営の都合上、返信には数日から数週間などお時間を頂く場合がございますので、予めご了承ください。
       </div>
       <div>
         <FormTextfield columnName="名前" label="例：フルギ　キタイ" :required="true" id="name" v-on:change="changeValue"/>
@@ -18,11 +18,12 @@
       <v-row>
         <v-col cols="0" lg="3"></v-col>
         <v-col cols="auto" lg="9">
-          <v-checkbox class="font-size-input" label="プライバシーポリシーに同意する">
+          <v-checkbox v-model="agree" class="font-size-input" label="プライバシーポリシーに同意する">
           </v-checkbox>
         </v-col>
       </v-row>
       <v-col align="center">
+        <div v-if="agree">
         <v-btn
           class="mx-auto my-6 font-weight-bold"
           color="primary"
@@ -33,6 +34,18 @@
         >
           送信する
         </v-btn>
+        </div>
+        <div v-else>
+        <v-btn
+          disabled
+          class="mx-auto my-6 font-weight-bold"
+          depressed
+          rounded
+          width="200px"
+        >
+          送信する
+        </v-btn>
+        </div>      
       </v-col>
     </div>
   </div>
@@ -55,6 +68,11 @@ export default {
     mail: '',
     inquiry: ''
   }),
+  data() {
+    return {
+      agree: false
+    }
+  },
   methods: {
     changeValue(...values) {
       const [value, id] = values
