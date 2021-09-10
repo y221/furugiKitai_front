@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-    <p :class="shopName">{{ name }}</p>
+    <p class="ml-3 main-text-color" :class="shopName">{{ name }}</p>
     <v-chip
       outlined
       small
@@ -63,8 +63,8 @@ export default {
   },
   computed: {
     shopName () {
-      if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium main-text-color pt-3 mb-0'
-      return 'text-h4 ml-3 font-weight-medium main-text-color'
+      if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium pt-3 mb-0'
+      return 'text-h4 font-weight-medium'
     },
     gender () {
       if (this.$vuetify.breakpoint.xs) return 'sub-text-color caption mb-0'
