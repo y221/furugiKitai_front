@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-    <p :class="shopName">Circus Vintage</p>
+    <p :class="shopName">{{ name }}</p>
     <v-chip
       outlined
       small
@@ -55,13 +55,16 @@ export default {
   data: () => ({
     shopId: ''
   }),
+  props: {
+    name: String
+  },
   mounted() {
     this.shopId = this.$route.params.shopId;
   },
   computed: {
     shopName () {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium main-text-color pt-3 mb-0'
-      return 'text-h4 font-weight-medium main-text-color'
+      return 'text-h4 ml-3 font-weight-medium main-text-color'
     },
     gender () {
       if (this.$vuetify.breakpoint.xs) return 'sub-text-color caption mb-0'

@@ -3,7 +3,9 @@
     <v-container>
       <div class="main-wrapper">
         <div :class="mainContent">
-          <ShopHeader />
+          <ShopHeader
+            :name="this.shop.name"
+          />
           <v-tabs
             v-model="tab"
             color="accent"
