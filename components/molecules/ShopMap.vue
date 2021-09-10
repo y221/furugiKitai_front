@@ -5,7 +5,7 @@
       :aspect-ratio="4/3"
     > 
       <div v-show="this.isMap">
-        <div class="map" ref="googleMap" />
+        <div :class="this.$vuetify.breakpoint.xs ? 'map-responsive' : 'map'" ref="googleMap" />
       </div>
       <v-img
         v-show="this.noMap"
@@ -68,5 +68,8 @@ export default {
 <style scoped>
 .map {
   height: 372px;
+}
+.map-responsive {
+  height: 230px;
 }
 </style>
