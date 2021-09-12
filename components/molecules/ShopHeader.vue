@@ -9,7 +9,7 @@
       color="chip_color"
       text-color="chip_color"
       class="mb-4 mr-4 mt-4 ml-auto"
-      :to=to
+      :to="to"
     >
       情報修正
     </v-chip>
@@ -21,7 +21,9 @@
         md="6"
         sm="6"
       >
-        <p :class="gender">レディース・メンズ</p>
+        <p :class="this.$vuetify.breakpoint.xs ? 'sub-text-color caption mb-0' : 'sub-text-color'">
+          {{ gender }}
+        </p>
       </v-col>
       <v-col
         cols="12"
@@ -56,7 +58,8 @@ export default {
     shopId: ''
   }),
   props: {
-    name: String
+    name: String,
+    gender: String
   },
   mounted() {
     this.shopId = this.$route.params.shopId;
@@ -65,10 +68,6 @@ export default {
     shopName () {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium pt-3 mb-0'
       return 'text-h4 font-weight-medium'
-    },
-    gender () {
-      if (this.$vuetify.breakpoint.xs) return 'sub-text-color caption mb-0'
-      return 'sub-text-color'
     },
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'

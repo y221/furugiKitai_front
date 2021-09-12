@@ -6,7 +6,8 @@
       <ErrorsText class="mt-4" :errors="errors" />
       <div class="mt-5">
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue" :default="name" />
-        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" v-on:change="changeValue" :default="prefectureId" />
+        <FormSelect columnName="取扱" label="取扱（レディース・メンズ）を選択してください" :required="true" id="genderId" :items="genders" itemText="gender" v-on:change="changeValue"/>
+        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" itemText="prefecture" v-on:change="changeValue" :default="prefectureId" />
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue" :default="city" />
         <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue" :default="address" />
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue" :default="building" />
@@ -42,8 +43,10 @@ export default {
   data: () => ({
     shop: [],
     prefectures: [],
-    id: '',
     prefectureId: '',
+    genders: [],
+    genderId: '',
+    id: '',
     name: '',
     city: '',
     address: '',
@@ -63,6 +66,7 @@ export default {
     async registerShop() {
       let formData = new FormData;
       formData.append('_method', 'put');
+      formData.append('genderId', this.genderId);
       formData.append('prefectureId', this.prefectureId);
       formData.append('name', this.name);
       formData.append('city', this.city);
@@ -97,11 +101,14 @@ export default {
   },
   async mounted() {
     const getPrefectures = this.$accessor.modules.shops.getPrefectures();
+    const getGenders = this.$accessor.modules.shops.getGenders();
     const getShop = this.$accessor.modules.shops.getShop(this.$route.params.shopId);
-    await Promise.all([getPrefectures, getShop]);
+    await Promise.all([getGenders, getPrefectures, getShop]);
     this.prefectures = this.$accessor.modules.shops.prefectures;
+    this.genders = this.$accessor.modules.shops.genders;
     const shop = this.$accessor.modules.shops.shop;
     this.id = shop.id ?? '',
+    this.genderId = shop.genderId ?? '';
     this.prefectureId = shop.prefectureId ?? '';
     this.name = shop.name ?? '';
     this.city = shop.city ?? '';

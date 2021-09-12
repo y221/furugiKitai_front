@@ -11,7 +11,6 @@
             <div v-for="shop in shops">
               <ShopItem 
                 :shop="shop"
-                :prefectures="prefectures"
               />
             </div>
             <v-col align="center">
@@ -56,7 +55,6 @@ export default {
     const shopParameters = getShopParameters();
     const getShops = this.$accessor.modules.shops.getShops(shopParameters);
     await Promise.all([getPrefectures, getShops]);
-    this.prefectures = this.$accessor.modules.shops.convertedPrefectures
     this.shops = this.$accessor.modules.shops.shops;
   }
 }
