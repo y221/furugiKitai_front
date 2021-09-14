@@ -5,6 +5,7 @@
         <div :class="mainContent">
           <ShopHeader
             :name="this.shop.name"
+            :gender="this.shop.gender"
           />
           <v-tabs
             v-model="tab"

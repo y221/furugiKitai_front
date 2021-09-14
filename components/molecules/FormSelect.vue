@@ -37,7 +37,7 @@
           :label="label"
           :id="id"
           :items="items"
-          item-text="prefecture"
+          :item-text="itemText"
           item-value="id"
           outlined
           solo
@@ -81,6 +81,10 @@ export default {
       type: [String, Number],
       required: false,
       default: ''
+    },
+    itemText: {
+      type: String,
+      required: true
     }
   },
   watch: {

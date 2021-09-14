@@ -6,7 +6,7 @@ export const state = () => ({
   shops: [] as string[],
   shopsCount: 1 as number,
   prefectures: [] as string[],
-  convertedPrefectures: {} as object
+  genders: [] as string[],
 })
 
 export type RootState = ReturnType<typeof state>
@@ -28,13 +28,9 @@ export const mutations = mutationTree(state, {
   setPrefectures(state, values: string[]): void {
     state.prefectures = values;
   },
-  setConvertedPrefectures(state, values): void {
-    const data:any = {};
-    for (const value of values) {
-      data[value.id] = value.prefecture;
-    }
-    state.convertedPrefectures = data
-  }
+  setGenders(state, values: string[]): void {
+    state.genders = values;
+  },
 })
 
 export const actions = actionTree({ state, getters, mutations }, {
@@ -46,7 +42,10 @@ export const actions = actionTree({ state, getters, mutations }, {
   async getPrefectures({ getters, commit }) {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
-    commit('setConvertedPrefectures', prefectures);
+  },
+  async getGenders({ getters, commit }) {
+    const genders = await this.$axios.$get('/api/genders');
+    commit('setGenders', genders);
   },
   async getShop({ getters, commit }, id : string) {
     const shop = await this.$axios.$get(`/api/shops/${id}`);

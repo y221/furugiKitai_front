@@ -9,7 +9,8 @@
       <ErrorsText class="mt-4" :errors="errors" />
       <div>
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue"/>
-        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" v-on:change="changeValue"/>
+        <FormSelect columnName="お取扱" label="取扱（レディース・メンズ）を選択してください" :required="true" id="genderId" :items="genders" itemText="gender" v-on:change="changeValue"/>
+        <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" itemText="prefecture" v-on:change="changeValue"/>
         <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue"/>
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue"/>
@@ -55,6 +56,8 @@ export default {
   data: () => ({
     prefectures: [],
     prefectureId: '',
+    genders: [],
+    genderId: '',
     name: '',
     city: '',
     address: '',
@@ -73,6 +76,7 @@ export default {
   methods: {
     async registerShop() {
       let formData = new FormData;
+      formData.append('genderId', this.genderId);
       formData.append('prefectureId', this.prefectureId);
       formData.append('name', this.name);
       formData.append('city', this.city);
@@ -103,8 +107,11 @@ export default {
     }
   },
   async mounted() {
-    await this.$accessor.modules.shops.getPrefectures();
+    const getPrefectures = this.$accessor.modules.shops.getPrefectures();
+    const getGenders = this.$accessor.modules.shops.getGenders();
+    await Promise.all([getPrefectures, getGenders]);
     this.prefectures = this.$accessor.modules.shops.prefectures;
+    this.genders = this.$accessor.modules.shops.genders;
   },
 }
 </script>
