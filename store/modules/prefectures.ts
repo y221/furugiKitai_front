@@ -46,7 +46,6 @@ export const actions = actionTree({ state, mutations }, {
         )
         prefecturesGroupByRegion.push({name: regionName, prefectures: groupedPrefectures})
       }
-      console.log(prefecturesGroupByRegion)
       commit('setPrefecturesGroupByRegion', prefecturesGroupByRegion)
     } catch (error: any) {
       throw error
