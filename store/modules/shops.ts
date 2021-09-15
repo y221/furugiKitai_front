@@ -1,18 +1,23 @@
 
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
+type condition = {[key: string]: any}
+type conditions = {[key:string]: condition}
+
 export const state = () => ({
   shop: [] as string[],
   shops: [] as string[],
   shopsCount: 1 as number,
   prefectures: [] as string[],
   genders: [] as string[],
+  conditions: {} as conditions,
 })
 
 export type RootState = ReturnType<typeof state>
 
 export const getters = getterTree(state, {
   prefectures: state => state.prefectures,
+  conditions: state => state.conditions
 })
 
 export const mutations = mutationTree(state, {
@@ -31,11 +36,21 @@ export const mutations = mutationTree(state, {
   setGenders(state, values: string[]): void {
     state.genders = values;
   },
+  setConditions(state, condition: condition): void {
+    const key = Object.keys(condition)[0]
+    state.conditions[key] = condition[key]
+  }
 })
 
 export const actions = actionTree({ state, getters, mutations }, {
   async getShops({ getters, commit }, parameter: object) {
     const shops = await this.$axios.$get('/api/shops', {params: parameter});
+    commit('setShops', shops.shops);
+    commit('setShopsCount', shops.count);
+  },
+  // 希望：検索条件をstoreで管理してみたい！
+  async searchShops({ getters, commit }) {
+    const shops = await this.$axios.$get('/api/shops', {params: getters.conditions});
     commit('setShops', shops.shops);
     commit('setShopsCount', shops.count);
   },
@@ -72,5 +87,8 @@ export const actions = actionTree({ state, getters, mutations }, {
         },
       }
     );
+  },
+  assignCondition({ commit }, condition: condition) {
+    commit('setConditions', condition)
   }
 })

@@ -2,6 +2,7 @@ import { getAccessorType } from 'typed-vuex';
 
 // store配下のサブモジュールはここでimportする
 import * as shops from '~/store/modules/shops';
+import * as prefectures from '~/store/modules/prefectures';
 
 // state, getters, mutations, actionsは不要でも空で作成する
 export const state = () => {
@@ -28,5 +29,6 @@ export const accessorType = getAccessorType({
   modules: {
     //importしたサブモジュールは下記に記載
     shops,
+    prefectures,
   },
 })
