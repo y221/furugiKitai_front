@@ -1,9 +1,19 @@
 
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
-type prefecture = {id: number, regionId: number, prefecture: string}
-type region = {id: number, name: string}
-type prefecturesGroupByRegion = {name: string, prefectures: prefecture[]}[]
+type prefecture = {
+  id: number,
+  regionId: number,
+  prefecture: string
+}
+type region = {
+  id: number,
+  name: string
+}
+type prefecturesGroupByRegion = {
+  name: string,
+  prefectures: prefecture[]
+}[]
 
 export const state = () => ({
   prefecturesGroupByRegion: [] as prefecturesGroupByRegion,
@@ -23,32 +33,15 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, mutations }, {
   async fetchPrefecturesGroupByRegion({ commit }) {
-    try {
-      const regions: region[] = await this.$axios
-        .get('/api/regions')
-        .then(response => (response.data))
-        .catch(error => {
-          throw error;
-        })
-      const prefectures: prefecture[] = await this.$axios
-        .get('/api/prefectures')
-        .then(response => (response.data))
-        .catch(error => {
-          throw error;
-        })
-      const prefecturesGroupByRegion = [] as prefecturesGroupByRegion;
-      // prefectureをregionごとにグループ分けして格納
-      for (const regionIndex in regions) {
-        const regionId = regions[regionIndex].id
-        const regionName = regions[regionIndex].name
-        const groupedPrefectures: prefecture[] = prefectures.filter(
-          (target: prefecture) => regionId === target.regionId
-        )
-        prefecturesGroupByRegion.push({name: regionName, prefectures: groupedPrefectures})
-      }
-      commit('setPrefecturesGroupByRegion', prefecturesGroupByRegion)
-    } catch (error: any) {
-      throw error
+    const regionsPromise = this.$axios.get('/api/regions')
+    const prefecturesPromise = this.$axios.get('/api/prefectures')
+    const [ regionsResponse, prefecturesResponse ] = await Promise.all([regionsPromise, prefecturesPromise])
+    // prefectureをregionごとにグループ分けして格納
+    const prefecturesGroupByRegion = [] as prefecturesGroupByRegion;
+    for (const region of regionsResponse.data as region[]) {
+      const groupedPrefectures: prefecture[] = prefecturesResponse.data.filter((target: prefecture) => region.id === target.regionId)
+      prefecturesGroupByRegion.push({name: region.name, prefectures: groupedPrefectures})
     }
+    commit('setPrefecturesGroupByRegion', prefecturesGroupByRegion)
   }
 })
