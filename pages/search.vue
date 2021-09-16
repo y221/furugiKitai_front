@@ -22,7 +22,7 @@ export default {
   },
   async created() {
     try {
-      await Promise.all([this.$accessor.modules.prefectures.fetchPrefecturesGroupByRegion()]);
+      await this.$accessor.modules.prefectures.fetchPrefecturesGroupByRegion();
       this.regions = this.$accessor.modules.prefectures.prefecturesGroupByRegion
     } catch (error) {
       // createdでエラーあったらエラー画面出した方がいいかも？
