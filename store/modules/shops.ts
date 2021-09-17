@@ -48,7 +48,6 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setShops', shops.shops);
     commit('setShopsCount', shops.count);
   },
-  // 希望：検索条件をstoreで管理してみたい！
   async searchShops({ getters, commit }) {
     const shops = await this.$axios.$get('/api/shops', {params: getters.conditions});
     commit('setShops', shops.shops);

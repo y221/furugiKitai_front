@@ -15,8 +15,6 @@
               :class="this.$vuetify.breakpoint.xs ? 'mx-2' : '' "
             >
             </v-text-field>
-            <!-- `:disabled="regions.length <= 0"`は仮実装 -->
-            <!-- 店舗等含め、全体の読み込みが終わるまでpages自体loading画面とか？ -->
             <v-btn
               button=""
               :class="prefectureBtn"
@@ -25,7 +23,6 @@
               color="secondary"
               depressed
               outlined
-              :disabled="regions.length <= 0"
               @click="selectPrefectures()"
             >
               <fa :class="this.$vuetify.breakpoint.xs ? 'mr-1 body-2' : 'text-h5 mr-1 mb-1'" :icon="plusCircle" />

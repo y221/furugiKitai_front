@@ -17,7 +17,6 @@ export default {
     return {
       regions: [],
       conditions: [],
-      errored: false,
     }
   },
   async created() {
@@ -25,10 +24,7 @@ export default {
       await this.$accessor.modules.prefectures.fetchPrefecturesGroupByRegion();
       this.regions = this.$accessor.modules.prefectures.prefecturesGroupByRegion
     } catch (error) {
-      // createdでエラーあったらエラー画面出した方がいいかも？
-      this.errored = true
-
-      // フロントエンドのログファイルってどうなってるんだろう...？,勉強がてら書き出してみる？
+      // ここでエラー対応
       console.error(error)
       console.error(error.response)
     }
