@@ -18,14 +18,14 @@
     </v-card-title>
     <v-divider class="mt-1"></v-divider>
     <v-card-text style="height: 500px;">
-      <template v-for="area in areas">
+      <template v-for="region in regions">
         <v-row class="mt-2">
           <v-col
             md="3"
             cols="12"
           >
             <p :class="$vuetify.breakpoint.xs ? 'body-2 mb-0 font-weight-bold' : 'ml-4 body-1 font-weight-bold'">
-              {{ area.name }}
+              {{ region.name }}
             </p>
           </v-col>
           <v-col
@@ -34,10 +34,10 @@
           >
             <v-row class="pr-5">
               <v-checkbox
-                v-for="prefecture in area.prefectures"
+                v-for="prefecture in region.prefectures"
                 :key="prefecture.id"
                 :class="$vuetify.breakpoint.xs ? 'ml-2 mr-4 mt-2' :'ml-4 mt-2'"
-                :label="prefecture.text"
+                :label="prefecture.prefecture"
                 :value="prefecture.id"
                 v-model="selected"
               ></v-checkbox>
@@ -73,7 +73,7 @@ export default {
     }
   },
   props: {
-    areas: {
+    regions: {
       type: Array,
       required: true,
     },
@@ -90,11 +90,11 @@ export default {
   },
   methods: {
     closeDialog() {
-      this.$emit('closeDialog');
+      this.$emit('closeDialog')
     },
     selectPrefectureCompleted() {
       this.$emit('closeDialog')
-      // ここで検索の処理も発火？
+      this.$emit('searchShops')
     },
   }
 }
