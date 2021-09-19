@@ -51,10 +51,8 @@ export default {
     }
   },
   async mounted() {
-    const getPrefectures = this.$accessor.modules.shops.getPrefectures();
     const shopParameters = getShopParameters();
-    const getShops = this.$accessor.modules.shops.getShops(shopParameters);
-    await Promise.all([getPrefectures, getShops]);
+    const getShops = await this.$accessor.modules.shops.getShops(shopParameters);
     this.shops = this.$accessor.modules.shops.shops;
   }
 }
