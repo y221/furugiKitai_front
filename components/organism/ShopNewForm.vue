@@ -11,11 +11,9 @@
         <FormTextfield columnName="名称" label="例：フルギキタイ" :required="true" id="name" v-on:change="changeValue"/>
         <FormSelect columnName="お取扱" label="取扱（レディース・メンズ）を選択してください" :required="true" id="genderId" :items="genders" itemText="gender" v-on:change="changeValue"/>
         <FormSelect columnName="都道府県" label="都道府県を選択してください" :required="true" id="prefectureId" :items="prefectures" itemText="prefecture" v-on:change="changeValue"/>
-        <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="false" id="city"  v-on:change="changeValue"/>
-        <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="false" id="address"  v-on:change="changeValue"/>
-        <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue"/>
-        <FormTextfield columnName="緯度" label="例：35.710240" :required="false" id="latitude"  v-on:change="changeValue"/>
-        <FormTextfield columnName="経度" label="例：139.635291" :required="false" id="longitude"  v-on:change="changeValue"/>
+        <FormTextfield columnName="住所1" label="市区　例：渋谷区" :required="true" id="city"  v-on:change="changeValue"/>
+        <FormTextfield columnName="住所2" label="町村番地　例：笹塚2-34-5" :required="true" id="address"  v-on:change="changeValue"/>
+        <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="true" id="building"  v-on:change="changeValue"/>
         <FormTextfield columnName="アクセス" label="例：○○駅より徒歩3分" :required="false" id="access"  v-on:change="changeValue"/>
         <FormTextfield columnName="TEL" label="例：090-1234-5678" :required="false" id="phoneNumber" v-on:change="changeValue"/>
         <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagramUrl" v-on:change="changeValue"/>
