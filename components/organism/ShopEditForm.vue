@@ -19,7 +19,7 @@
       </div>
       <div class="text-h5 font-weight-bold mt-15">画像情報</div>
       <v-row>
-        <FormImage imagePath="" id="mainImage" v-on:change="changeValue" imageName="メイン" :imagePath="mainImage" />
+        <FormImage id="mainImage" v-on:change="changeValue" imageName="メイン" :imagePath="mainImage" />
       </v-row>
       <v-col align="center">
         <v-btn
