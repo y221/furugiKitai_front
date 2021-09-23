@@ -36,6 +36,7 @@ export default {
   data ()　{
     return {
       image: "/images/noimage.png",
+      imageDefault: "/images/noimage.png",
       isImageSelected: false
     }
   },
@@ -45,7 +46,6 @@ export default {
       required: true
     },
     imagePath: {
-      type: String,
       default: "",
       required: false
     },
@@ -57,7 +57,7 @@ export default {
   watch: {
     imagePath: {
       handler: function(newVal) {
-        if (newVal !== '') {
+        if (newVal !== '' && typeof(newVal) === 'string') {
           this.image = newVal;
           this.isImageSelected = true;
         }
@@ -80,7 +80,7 @@ export default {
       }
     },
     cancelImage() {
-      this.image = imageDefault;
+      this.image = this.imageDefault;
       this.isImageSelected = false;
     }
   }
