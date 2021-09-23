@@ -1,12 +1,30 @@
 
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
+type shop = {
+  id: number,
+  prefectureId: number,
+  prefecture: string,
+  genderId: number,
+  gender: string,
+  address: string,
+  building: string,
+  latitude: number,
+  longitude: number,
+  access: string,
+  city: string,
+  phoneNumber: string,
+  instagramUrl: string,
+  holiday: string,
+  businessHour: string,
+  imageUrl: string
+}
 type condition = {[key: string]: any}
 type conditions = {[key:string]: condition}
 
 export const state = () => ({
-  shop: [] as string[],
-  shops: [] as string[],
+  shop: {} as shop,
+  shops: {} as shop[],
   shopsCount: 1 as number,
   prefectures: [] as string[],
   genders: [] as string[],
@@ -21,10 +39,10 @@ export const getters = getterTree(state, {
 })
 
 export const mutations = mutationTree(state, {
-  setShop(state, values: string[]): void {
+  setShop(state, values: shop): void {
     state.shop = values;
   },
-  setShops(state, values: string[]): void {
+  setShops(state, values: shop[]): void {
     state.shops = values;
   },
   setShopsCount(state, value: number): void {

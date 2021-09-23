@@ -42,6 +42,7 @@ export const actions = actionTree({ state, mutations }, {
       const groupedPrefectures: prefecture[] = prefecturesResponse.data.filter((target: prefecture) => region.id === target.regionId)
       prefecturesGroupByRegion.push({name: region.name, prefectures: groupedPrefectures})
     }
+    console.log(prefecturesGroupByRegion);
     commit('setPrefecturesGroupByRegion', prefecturesGroupByRegion)
   }
 })
