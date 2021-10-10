@@ -1,14 +1,10 @@
 <template>
   <div class="main-wrapper">
-    <div
-      class="main-content"
-      :class="this.$vuetify.breakpoint.mdAndDown ? 'mt-4' : 'mt-6 mx-12'"
-    >
-      <div :class="header" class="font-weight-bold">
-        お問い合わせ
-      </div>
-      <div :class="preface">
-        下記フォームを入力し、<nuxt-link to='/privacy'>プライバシーポリシー</nuxt-link>をご確認の上「送信する」ボタンを押してください。<br v-if="this.$vuetify.breakpoint.xs">運営の都合上、返信には数日から数週間などお時間を頂く場合がございますので、予めご了承ください。
+    <CompleteText v-if="isCompleted" text="お問い合わせ"/>
+    <div class="main-content" v-if="!isCompleted" :class="this.$vuetify.breakpoint.mdAndDown ? 'mt-4' : 'mt-6 mx-12'">
+      <div class="d-flex align-center flex-row">
+      <TitleBlock />
+      <div :class="subHeader">入力フォーム</div>
       </div>
       <ErrorsText class="mt-4" :errors="errors" />
       <div>
@@ -55,20 +51,17 @@
 <script>
 export default {
   computed: {
-    header () {
-      if (this.$vuetify.breakpoint.xs) return 'text-h5 mx-2 my-5 pt-5'
-      return 'text-sm-h4 mx-4 my-10'
-    },
-    preface () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
-      return 'text-body-1 mx-4 mb-12'
-    },
+    subHeader () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h6 mx-2 my-4'
+      return 'font-weight-bold text-sm-h5 mx-2 py-4'
+    }
   },
   data: () => ({
     name: '',
     email: '',
     content: '',
     errors: {},
+    isCompleted: false,
     agree: false
   }),
   methods: {

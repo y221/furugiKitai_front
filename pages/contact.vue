@@ -3,6 +3,7 @@
     <Header :isTop="false" />
     <v-main class="main-background-color display">
       <v-container>
+        <ContactHeader />
         <ContactForm />
       </v-container>
       <Footer />
