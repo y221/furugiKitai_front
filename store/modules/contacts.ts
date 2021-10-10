@@ -6,19 +6,15 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
     email: string,
     content: string,
   }
-  type condition = {[key: string]: any}
-  type conditions = {[key:string]: condition}
-
+ 
   export const state = () => ({
     contact: {} as contact,
     contacts: {} as contact[],
-    conditions: {} as conditions,    
   })
 
   export type RootState = ReturnType<typeof state>
 
   export const getters = getterTree(state, {
-    conditions: state => state.conditions
   })
 
   export const mutations = mutationTree(state, {
@@ -28,10 +24,6 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
     setContacts(state, values: contact[]): void{
       state.contacts = values;
     },
-    setConditions(state, condition: condition): void {
-      const key = Object.keys(condition)[0]
-      state.conditions[key] = condition[key]
-    }
   })
 
   export const actions = actionTree({ state, getters, mutations }, {
@@ -53,19 +45,5 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
           },
         }
       );
-    },
-    async updateContact({ getters, commit }, updateData: any) {
-      return await this.$axios.$post(
-        `/api/contatcs/${updateData.id}`,
-        updateData.formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-        }
-      );
-    },
-    assignCondition({ commit }, condition: condition) {
-      commit('setConditions', condition)
     }
   })
