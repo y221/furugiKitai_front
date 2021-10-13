@@ -6,14 +6,15 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
     email: string,
     content: string,
   }
- 
+
   export const state = () => ({
     contacts: {} as contact[],
   })
 
   export type RootState = ReturnType<typeof state>
-
+  
   export const getters = getterTree(state, {
+    contact: state => state.contacts,
   })
 
   export const mutations = mutationTree(state, {
@@ -23,7 +24,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
   })
 
   export const actions = actionTree({ state, getters, mutations }, {
-    async submitContact({ getters, commit }, contactData: object) {
+    async submitContact({ commit }, contactData: object) {
       return await this.$axios.$post(
         '/api/contacts',
         contactData,
