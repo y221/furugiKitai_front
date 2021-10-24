@@ -48,6 +48,7 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-webfontloader',
     'nuxt-fontawesome',
+    '@nuxtjs/auth',
   ],
   fontawesome: {
     component: 'fa'
@@ -63,6 +64,50 @@ export default {
       pathRewrite: {
         '^/api': '/',
       },
+    },
+  },
+
+  // authモジュール
+  auth: {
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/callback',
+      home: '/users/new'
+    },
+    strategies: {
+      google: {
+        _scheme: 'oauth2',
+        authorization_endpoint: process.env.GOOGLE_AUTH_ENDPOINT,
+        userinfo_endpoint: process.env.GOOGLE_AUTH_USERINFO_ENDPOINT,
+        scope: [
+          'email',
+          'profile',
+          'openid',
+        ],
+        access_type: undefined,
+        access_token_endpoint: undefined,
+        response_type: 'token',
+        token_type: 'Bearer',
+        client_id: process.env.GOOGLE_AUTH_CLIENT_ID,
+        token_key: 'access_token'
+      },
+      line: {
+        _scheme: 'oauth2',
+        authorization_endpoint: process.env.LINE_AUTH_ENDPOINT,
+        access_token_endpoint: process.env.LINE_AUTH_ACCESS_TOKEN_ENDPOINT,
+        userinfo_endpoint: process.env.LINE_AUTH_USERINFO_ENDPOINT,
+        client_secret : process.env.LINE_AUTH_CLIENT_SECRET,
+        scope: [
+          'profile',
+          'openid',
+        ],
+        response_type: 'code',
+        grant_type: 'authorization_code',
+        token_type: 'Bearer',
+        client_id: process.env.LINE_AUTH_CLIENT_ID,
+        token_key: 'access_token'
+      }
     },
   },
 
