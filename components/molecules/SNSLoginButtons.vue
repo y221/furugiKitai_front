@@ -1,6 +1,7 @@
 <template>
   <v-col cols="9">
     <v-btn
+      @click.stop="authenticate"
       block
       color="line_image"
       depressed
@@ -19,6 +20,11 @@ export default {
       return faLine
     },
   },
+  methods: {
+    authenticate() {
+      this.$auth.loginWith('google')
+    }
+  }
 }
 </script>
 
