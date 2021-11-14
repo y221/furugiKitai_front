@@ -38,7 +38,9 @@
           color="primary"
           outlined
           :class="btn"
+          @click="toggleShopLike"
         >
+          <fa :icon="check" />
           お気に入り 117
         </v-btn>
         <v-btn
@@ -53,6 +55,7 @@
   </div>
 </template>
 <script>
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 export default {
   data: () => ({
     shopId: ''
@@ -65,6 +68,9 @@ export default {
     this.shopId = this.$route.params.shopId;
   },
   computed: {
+    check () {
+      return faCheck
+    },
     shopName () {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium pt-3 mb-0'
       return 'text-h4 font-weight-medium'
@@ -75,6 +81,18 @@ export default {
     },
     to () {
       return `/shops/${this.shopId}/edit`
+    }
+  },
+  methods: {
+    async oggleShopLike () {
+      let formData = new FormData;
+      formData.append('shopId', this.shopId);
+      const response = await this.$accessor.modules.shopLike.toggleShopLike(formData);
+      if (!response.errors) {
+        this.isCompleted = true;
+      } else {
+        this.errors = response.errors;
+      }
     }
   }
 }
