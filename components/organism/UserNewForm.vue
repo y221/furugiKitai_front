@@ -79,7 +79,7 @@ export default {
     }
   },
   async created() {
-    this.name = this.$auth.user.family_name + " "+ this.$auth.user.given_name
+    this.name = this.$accessor.modules.users.user.name
     this.icon = this.$accessor.modules.users.user.icon
   }
 }
