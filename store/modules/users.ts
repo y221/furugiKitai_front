@@ -25,15 +25,13 @@ export const actions = actionTree({ state, getters, mutations }, {
     );
     commit('setUser', user);
   },
-  // async updateUser({ getters, commit}, userData: object) {
-  //   return await this.$axios.$post(
-  //     '/api/users', 
-  //     userData,
-  //     {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data'
-  //       },
-  //     }
-  //   );
-  // }
+  async updateUser({ getters, commit }, {id, ...userData}) {
+    const user = await this.$axios.$post(
+      `/api/users/${id}`, 
+      userData,
+    );
+    commit('setUser', user);
+
+    return user;
+  }
 })

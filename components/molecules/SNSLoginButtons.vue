@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     authenticate() {
-      this.$auth.loginWith('google')
+      this.$auth.loginWith('line')
     }
   }
 }
