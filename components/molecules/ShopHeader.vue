@@ -39,7 +39,7 @@
           outlined
           :class="btn"
         >
-          お気に入り 117
+          お気に入り {{ shop.likesNumber }}
         </v-btn>
         <v-btn
           depressed
@@ -59,7 +59,8 @@ export default {
   }),
   props: {
     name: String,
-    gender: String
+    gender: String,
+    shop: Object
   },
   mounted() {
     this.shopId = this.$route.params.shopId;

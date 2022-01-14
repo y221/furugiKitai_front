@@ -17,7 +17,9 @@ type shop = {
   instagramUrl: string,
   holiday: string,
   businessHour: string,
-  imageUrl: string
+  imageUrl: string,
+  likesNumber: number,
+  reviewsNumber: number
 }
 type condition = {[key: string]: any}
 type conditions = {[key:string]: condition}

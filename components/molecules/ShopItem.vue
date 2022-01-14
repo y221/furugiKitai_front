@@ -50,7 +50,7 @@
           class="mt-n3"
         >
           お気に入り
-          <span class="ml-2 accent-color font-weight-bold">117</span>
+          <span class="ml-2 accent-color font-weight-bold">{{ shop.likesNumber }}</span>
         </v-chip>
         <v-chip
           outlined
@@ -60,7 +60,7 @@
           class="mt-n3"
         >
           クチコミ
-          <span class="ml-2 accent-color font-weight-bold">117</span>
+          <span class="ml-2 accent-color font-weight-bold">{{ shop.reviewsNumber }}</span>
         </v-chip>
       </v-col>
       <v-col
