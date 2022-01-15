@@ -16,7 +16,7 @@
 			</v-col>
 		</v-row>
 
-
+		
 		
 		<div class="font-weight-bold">プロフィール</div>
 		<div class="font-weight-bold">Instagram</div>
@@ -26,7 +26,27 @@
 
 <script>
 export default {
-	computed: {
+	data () {
+		return {
+			items: [
+				{
+					title: '好きな古着',
+					text: ''
+				},
+				{
+					title: '',
+					text: ''
+				},
+				{
+					title: '',
+					text: ''
+				},
+				{
+					title: '',
+					text: ''
+				},
+			]
+		}
 	}
 }
 </script>
