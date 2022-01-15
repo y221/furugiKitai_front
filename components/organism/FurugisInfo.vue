@@ -1,8 +1,8 @@
 <template>
 	<div class="main-wrapper">
 		<div class="main-content">
-			<div class="mx-16 my-6">
-				<div></div>
+			<div :class="this.$vuetify.breakpoint.xs ? 'mx-1 py-2' : 'mx-16'" class="my-6">
+				<FurugisRegister />
 				<FurugisAvatar />
 				<div></div>
 				<div></div>

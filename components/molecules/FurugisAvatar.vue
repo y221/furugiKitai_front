@@ -1,5 +1,5 @@
 <template>
-	<v-row>
+	<v-row class="my-2">
 		<v-col
 			:class="this.$vuetify.breakpoint.xs ? 'd-flex justify-center' : ''"
 			cols="12"
