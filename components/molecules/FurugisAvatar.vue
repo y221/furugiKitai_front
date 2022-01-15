@@ -1,5 +1,5 @@
 <template>
-	<v-row class="my-4">
+	<v-row class="my-6">
 		<v-col
 			class="d-flex justify-center"
 			cols="12"
