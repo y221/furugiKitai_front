@@ -1,5 +1,20 @@
 <template>
 	<div :class="this.$vuetify.breakpoint.xs ? 'text-caption' : 'text-body-2'">	
+		<v-card>
+			<v-row>
+				<v-col
+					cols="auto"
+					lg="2"
+				>
+				</v-col>
+				<v-col
+					cols="auto"
+					lg="10">
+				</v-col>
+			</v-row>
+		</v-card>
+
+			
 		<ul class="mb-5">
 			<li
 				v-for="item in items"
@@ -21,6 +36,13 @@
 
 <script>
 export default {
+	props: {
+		profile: {
+			type: Object,
+			required: true,
+		}
+	},
+
 	data () {
 		return {
 			items: [
