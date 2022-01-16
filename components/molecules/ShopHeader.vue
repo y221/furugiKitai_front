@@ -10,6 +10,7 @@
       text-color="chip_color"
       class="mb-4 mr-4 mt-4 ml-auto"
       :to="to"
+      v-if="this.$auth.loggedIn"
     >
       情報修正
     </v-chip>
@@ -32,6 +33,7 @@
         sm="6"
         :align="this.$vuetify.breakpoint.xs ? 'start' : 'end'"
         :class="this.$vuetify.breakpoint.xs ? 'pt-0' : '' "
+        v-if="this.$auth.loggedIn"
       >
         <v-btn
           depressed
