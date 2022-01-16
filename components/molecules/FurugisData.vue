@@ -1,26 +1,21 @@
 <template>
-	<div :class="this.$vuetify.breakpoint.xs ? 'text-caption' : 'text-body-2'">
-		<v-row class="mb-2">
-			<v-col
-				class="font-weight-bold"
-				cols="auto"
-				lg="2"
+	<div :class="this.$vuetify.breakpoint.xs ? 'text-caption' : 'text-body-2'">	
+		<ul class="mb-5">
+			<li
+				v-for="item in items"
+				:key="item.title"
+				class="d-flex"
 			>
-				好きな古着
-			</v-col>
-			<v-col
-				cols="auto"
-				lg="10"
-			>
-				hogehoge
-			</v-col>
-		</v-row>
-
-		
-		
-		<div class="font-weight-bold">プロフィール</div>
-		<div class="font-weight-bold">Instagram</div>
-		<div class="font-weight-bold">リンク</div>
+				<span
+					v-text="item.title"
+					class="font-weight-bold d-block"
+				></span>
+				<span
+					v-text="item.text"
+					class=""
+				></span>
+			</li>
+		</ul>
 	</div>
 </template>
 
@@ -31,19 +26,19 @@ export default {
 			items: [
 				{
 					title: '好きな古着',
-					text: ''
+					text: 'hogehoge'
 				},
 				{
-					title: '',
-					text: ''
+					title: 'プロフィール',
+					text: 'hogehoge'
 				},
 				{
-					title: '',
-					text: ''
+					title: 'Instagram',
+					text: 'hogehoge'
 				},
 				{
-					title: '',
-					text: ''
+					title: 'リンク',
+					text: 'hogehoge'
 				},
 			]
 		}
