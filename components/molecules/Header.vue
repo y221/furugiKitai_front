@@ -54,10 +54,12 @@
       </nuxt-link>
       </v-col>
       <v-spacer v-if="isTop"></v-spacer>
+      <!-- 未ログイン時に出るボタン -->
       <v-btn
         :class="btn"
         text
         v-if="!$vuetify.breakpoint.xs"
+        v-show="!isLoggedIn"
         to='/login'
       >
         ログイン
@@ -65,9 +67,28 @@
       <v-btn
         text
         v-if="!$vuetify.breakpoint.xs"
-        to='/users/new'
+        v-show="!isLoggedIn"
+        to='/login'
       >
         新規登録
+      </v-btn>
+      <!-- ログイン中に出るボタン -->
+      <v-btn
+        text
+        v-if="!$vuetify.breakpoint.xs"
+        v-show="isLoggedIn"
+        to='/users/mypage'
+      >
+        マイページ
+      </v-btn>
+      <v-btn
+        :class="btn"
+        text
+        v-if="!$vuetify.breakpoint.xs"
+        v-show="isLoggedIn"
+        @click="logout"
+      >
+        ログアウト
       </v-btn>
     </v-app-bar>
     <v-navigation-drawer
@@ -89,11 +110,13 @@
             ✕
           </v-btn>
           <v-divider class="my-4"></v-divider>
+          <!-- 未ログイン時に出るボタン -->
           <v-btn
             depressed
             color="secondary"
             outlined
             class="font-weight-bold caption ml-5"
+            v-show="!isLoggedIn"
             to='/login'
           >
             ログイン
@@ -102,9 +125,30 @@
             depressed
             color="secondary"
             class="font-weight-bold caption"
+            v-show="!isLoggedIn"
             to='/users/new'
           >
             新規登録
+          </v-btn>
+          <!-- ログイン中に出るボタン -->
+          <v-btn
+            depressed
+            color="secondary"
+            outlined
+            class="font-weight-bold caption ml-5"
+            v-show="isLoggedIn"
+            to='/users/mypage'
+          >
+            マイページ
+          </v-btn>
+          <v-btn
+            depressed
+            color="secondary"
+            class="font-weight-bold caption"
+            v-show="isLoggedIn"
+            @click="logout"
+          >
+            ログアウト
           </v-btn>
           <v-divider class="my-4"></v-divider>
             <v-list-item class="ml-4" v-for="menu in menus" :key="menu.title" :to="menu.url">
@@ -151,6 +195,14 @@ export default {
     width () {
       if (this.$vuetify.breakpoint.xs) return '54'
       return '106'
+    },
+    isLoggedIn () {
+      return this.$auth.loggedIn
+    }
+  },
+  methods: {
+    logout () {
+      this.$auth.logout()
     }
   }
 }

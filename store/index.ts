@@ -4,6 +4,7 @@ import { getAccessorType } from 'typed-vuex';
 import * as shops from '~/store/modules/shops';
 import * as prefectures from '~/store/modules/prefectures';
 import * as shopLikes from '~/store/modules/shopLikes';
+import * as users from '~/store/modules/users';
 
 // state, getters, mutations, actionsは不要でも空で作成する
 export const state = () => {
@@ -31,6 +32,7 @@ export const accessorType = getAccessorType({
     //importしたサブモジュールは下記に記載
     shops,
     prefectures,
-    shopLikes
+    shopLikes,
+    users,
   },
 })

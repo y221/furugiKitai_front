@@ -43,7 +43,7 @@
           @click="toggleShopLike"
         >
           <fa :icon="check" />
-          お気に入り 117
+          お気に入り {{ shop.likesNumber }}
         </v-btn>
         <v-btn
           depressed
@@ -64,7 +64,8 @@ export default {
   }),
   props: {
     name: String,
-    gender: String
+    gender: String,
+    shop: Object
   },
   mounted() {
     this.shopId = this.$route.params.shopId;
@@ -86,7 +87,7 @@ export default {
     }
   },
   methods: {
-    async oggleShopLike () {
+    async toggleShopLike () {
       let formData = new FormData;
       formData.append('shopId', this.shopId);
       const response = await this.$accessor.modules.shopLike.toggleShopLike(formData);
