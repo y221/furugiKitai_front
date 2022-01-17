@@ -10,6 +10,10 @@
 					:title='title'
 				/>
 				</div>
+				<v-divider
+					class="mx-auto"
+					:class="this.$vuetify.breakpoint.xs ? 'mb-2 mt-10' : 'mb-2 mt-16'"
+				></v-divider>
 				<div></div>
 			</div>
 		</div>
