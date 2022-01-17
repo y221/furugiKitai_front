@@ -6,10 +6,11 @@
 			lg="2"
 			>
 			<v-avatar
+				color="red"
 				:size="imageSize"
 				style="position: relative;"
-				color="primary"
-			></v-avatar>
+			>
+			</v-avatar>
 		</v-col>
 		<v-col
 			:class="this.$vuetify.breakpoint.xs ? 'd-flex justify-center' : 'd-flex align-center'"
@@ -25,8 +26,8 @@
 export default {
 	computed: {
 		imageSize () {
-      if (this.$vuetify.breakpoint.xs) return '75'
-      return '85'
+    if (this.$vuetify.breakpoint.xs) return '75'
+    return '85'
     }
 	}
 }
