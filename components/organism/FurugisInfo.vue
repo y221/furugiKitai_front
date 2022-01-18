@@ -14,7 +14,20 @@
 					class="mx-auto"
 					:class="this.$vuetify.breakpoint.xs ? 'mb-2 mt-10' : 'mb-2 mt-16'"
 				></v-divider>
-				<div></div>
+				<div :class="this.$vuetify.breakpoint.xs ? 'mt-n2 mb-n2' : 'mt-n2 mb-n5'">
+				<v-tabs
+					v-model="tab"
+					color="accent"
+				>
+					<v-tab
+						v-for="item in items"
+						:key="item.key"
+						:class="tabFont"
+					>
+						{{ item.text }}
+					</v-tab>
+				</v-tabs>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -24,6 +37,17 @@
 	export default {
 		data() {
 			return {
+				tab: null,
+				items: {
+					review: {
+						text: 'クチコミ',
+						key: 'review'
+					},
+					favorite: {
+						text: 'お気に入り',
+						key: 'favorite'
+					}
+				},
 				titles:[
 					'好きな古着',
 					'プロフィール',
@@ -31,6 +55,13 @@
 					'リンク'
 				]
 			}
+		},
+		computed: {
+			tabFont () {
+			if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
+      return 'font-weight-bold'
+			}
 		}
 	}
+	
 </script>
