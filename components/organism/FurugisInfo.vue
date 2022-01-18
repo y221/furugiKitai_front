@@ -5,28 +5,31 @@
 				<FurugisRegister />
 				<FurugisAvatar />
 				<div v-for="(title, index) of titles" :key="index">
-				<FurugisData
-					:index='index'
-					:title='title'
-				/>
+					<FurugisData
+						:index='index'
+						:title='title'
+					/>
 				</div>
-				<v-divider
-					class="mx-auto"
-					:class="this.$vuetify.breakpoint.xs ? 'mb-2 mt-10' : 'mb-2 mt-16'"
-				></v-divider>
+					<v-divider
+						class="mx-auto"
+						:class="this.$vuetify.breakpoint.xs ? 'mb-2 mt-10' : 'mb-2 mt-16'"
+					></v-divider>
 				<div :class="this.$vuetify.breakpoint.xs ? 'mt-n2 mb-n2' : 'mt-n2 mb-n5'">
-				<v-tabs
-					v-model="tab"
-					color="accent"
-				>
-					<v-tab
-						v-for="item in items"
-						:key="item.key"
-						:class="tabFont"
+					<v-tabs
+						v-model="tab"
+						color="accent"
 					>
-						{{ item.text }}
-					</v-tab>
-				</v-tabs>
+						<v-tab
+							v-for="item in items"
+							:key="item.key"
+							:class="tabFont"
+						>
+							{{ item.text }}
+							<span class="blue-grey lighten-5 py-1 px-2 ml-1 review-count">
+								{{ item.count }}
+							</span>
+						</v-tab>
+					</v-tabs>
 				</div>
 			</div>
 		</div>
@@ -41,11 +44,13 @@
 				items: {
 					review: {
 						text: 'クチコミ',
-						key: 'review'
+						key: 'review',
+						count: '123'
 					},
 					favorite: {
 						text: 'お気に入り',
-						key: 'favorite'
+						key: 'favorite',
+						count: '456'
 					}
 				},
 				titles:[
