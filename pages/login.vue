@@ -9,9 +9,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({})
+export default {
+  created () {
+    if (this.$auth.loggedIn) {
+      this.$router.push('/');
+    } 
+  }
+}
 </script>
 <style>
 .display {
