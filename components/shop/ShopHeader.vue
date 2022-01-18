@@ -10,6 +10,7 @@
       text-color="chip_color"
       class="mb-4 mr-4 mt-4 ml-auto"
       :to="to"
+      v-if="this.$auth.loggedIn"
     >
       情報修正
     </v-chip>
@@ -32,14 +33,17 @@
         sm="6"
         :align="this.$vuetify.breakpoint.xs ? 'start' : 'end'"
         :class="this.$vuetify.breakpoint.xs ? 'pt-0' : '' "
+        v-if="this.$auth.loggedIn"
       >
         <v-btn
           depressed
           color="primary"
           outlined
           :class="btn"
+          @click="toggleShopLike"
         >
-          お気に入り 117
+          <fa :icon="check" />
+          お気に入り {{ shop.likesNumber }}
         </v-btn>
         <v-btn
           depressed
@@ -53,18 +57,23 @@
   </div>
 </template>
 <script>
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 export default {
   data: () => ({
     shopId: ''
   }),
   props: {
     name: String,
-    gender: String
+    gender: String,
+    shop: Object
   },
   mounted() {
     this.shopId = this.$route.params.shopId;
   },
   computed: {
+    check () {
+      return faCheck
+    },
     shopName () {
       if (this.$vuetify.breakpoint.xs) return 'text-h5 font-weight-medium pt-3 mb-0'
       return 'text-h4 font-weight-medium'
@@ -75,6 +84,18 @@ export default {
     },
     to () {
       return `/shops/${this.shopId}/edit`
+    }
+  },
+  methods: {
+    async toggleShopLike () {
+      let formData = new FormData;
+      formData.append('shopId', this.shopId);
+      const response = await this.$accessor.modules.shopLike.toggleShopLike(formData);
+      if (!response.errors) {
+        this.isCompleted = true;
+      } else {
+        this.errors = response.errors;
+      }
     }
   }
 }

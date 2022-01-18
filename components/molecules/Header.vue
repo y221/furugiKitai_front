@@ -31,7 +31,7 @@
       </v-btn>
       <v-btn
         text
-        v-if="!$vuetify.breakpoint.xs"
+        v-if="!$vuetify.breakpoint.xs && this.$auth.loggedIn"
         to='/shops/new'
       >
         古着屋登録
