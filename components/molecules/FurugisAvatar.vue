@@ -17,7 +17,9 @@
 			cols="12"
 			lg="10"
 		>
-			名前
+			<p class="font-weight-bold">
+				ユーザー名持ってくる
+			</p>
 		</v-col>
 	</v-row>
 </template>

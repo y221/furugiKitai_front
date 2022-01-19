@@ -3,7 +3,7 @@
 		<Header :isTop="false" />
 		<v-main class="main-background-color display">
 			<v-container>
-				<FurugisInfo />
+				<FurugisDetail />
 			</v-container>
 		</v-main>
 		<Footer />

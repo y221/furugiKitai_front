@@ -14,7 +14,7 @@
 					cols="8"
 					lg="10"
 				>
-					hogehoge
+					登録情報持ってくる
 				</v-col>
 			</v-row>
 		</v-card>
