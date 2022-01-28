@@ -201,8 +201,8 @@ export default {
     }
   },
   methods: {
-    logout () {
-      this.$auth.logout()
+    async logout () {
+      this.$accessor.modules.users.logoutUser();
     }
   }
 }
