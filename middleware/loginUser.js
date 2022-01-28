@@ -14,6 +14,5 @@ export default async function ({ store, redirect }) {
     name: store.state.auth.user.displayName,
   };
 
-  const getUser = store.dispatch('modules/users/loginUser', formData);
-  await Promise.all([getUser]);
+  store.dispatch('modules/users/loginUser', formData);
 }
