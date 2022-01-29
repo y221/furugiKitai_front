@@ -82,7 +82,7 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setGenders', genders);
   },
   async getShop({ getters, commit }, id : string) {
-    const shop = await this.$axios.$get(`/api/api/shops/${id}`, { withCredentials: true });
+    const shop = await this.$axios.$get(`/api/api/shops/${id}`);
     commit('setShop', shop);
   },
   async registerShop({ getters, commit}, shopData: object) {
