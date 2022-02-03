@@ -64,14 +64,14 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, getters, mutations }, {
   async getShops({ getters, commit }, parameter: object) {
-    const shops = await this.$axios.$get('/api/api/shops', {params: parameter});
-    commit('setShops', shops.shops);
-    commit('setShopsCount', shops.count);
+    const response = await this.$axios.$get('/api/api/shops', {params: parameter});
+    commit('setShops', response.data.shops);
+    commit('setShopsCount', response.data.count);
   },
   async searchShops({ getters, commit }) {
-    const shops = await this.$axios.$get('/api/api/shops', {params: getters.conditions});
-    commit('setShops', shops.shops);
-    commit('setShopsCount', shops.count);
+    const response = await this.$axios.$get('/api/api/shops', {params: getters.conditions});
+    commit('setShops', response.data.shops);
+    commit('setShopsCount', response.data.count);
   },
   async getPrefectures({ getters, commit }) {
     const prefectures = await this.$axios.$get('/api/api/prefectures');
@@ -82,8 +82,8 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setGenders', genders);
   },
   async getShop({ getters, commit }, id : string) {
-    const shop = await this.$axios.$get(`/api/api/shops/${id}`);
-    commit('setShop', shop);
+    const response = await this.$axios.$get(`/api/api/shops/${id}`);
+    commit('setShop', response.data);
   },
   async registerShop({ getters, commit}, shopData: object) {
     return await this.$axios.$post(
