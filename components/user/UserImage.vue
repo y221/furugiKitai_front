@@ -28,9 +28,9 @@
 export default {
 	computed: {
 		imageSize () {
-    if (this.$vuetify.breakpoint.xs) return '75'
-    return '85'
-    }
+			if (this.$vuetify.breakpoint.xs) return '75'
+			return '85'
+		}
 	}
 }
 </script>
