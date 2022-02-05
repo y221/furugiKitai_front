@@ -11,6 +11,6 @@
 </template>
 <script>
 export default {
-  middleware: 'registerUser'
+  middleware: 'loginUser'
 }
 </script>

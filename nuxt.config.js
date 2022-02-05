@@ -49,6 +49,7 @@ export default {
     'nuxt-webfontloader',
     'nuxt-fontawesome',
     '@nuxtjs/auth',
+    'nuxt-basic-auth-module',
   ],
   fontawesome: {
     component: 'fa'
@@ -116,6 +117,12 @@ export default {
     manifest: {
       lang: 'en'
     }
+  },
+
+  basic: {
+    name: process.env.BASIC_AUTH_NAME,
+    pass: process.env.BASIC_AUTH_PASS,
+    enabled: process.env.ENABLE_BASIC_AUTH === 'true'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
