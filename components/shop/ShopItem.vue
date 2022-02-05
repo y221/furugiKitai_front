@@ -114,7 +114,6 @@ export default {
   },
   methods: {
     imageUrl(url) {
-      console.log(url);
       if (!url) {
         return '/images/subNoImage.png'
       }
