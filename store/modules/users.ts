@@ -18,21 +18,22 @@ export const mutations = mutationTree(state, {
 })
 
 export const actions = actionTree({ state, getters, mutations }, {
-  async loginUser({ getters, commit }, userData: object) {
-    this.$axios.get('/api/sanctum/csrf-cookie', { withCredentials: true }).then(async response => {
+  async loginUser({ commit }, userData: object) {
+    this.$axios.get('/api/sanctum/csrf-cookie', { withCredentials: true }).then(
+      async response => {
       const user = await this.$axios.$post(
         '/api/login', 
         userData,
         { withCredentials: true }
       );
       commit('setUser', user);
-      this.$router.push('/users/new');
-    });
+      this.$router.push('/users/new');}
+      );
   },
 
-  async updateUser({ getters, commit }, {id, ...userData}) {
+  async updateUser({ commit }, {id, ...userData}) {
     const user = await this.$axios.$post(
-      `/api/users/${id}`, 
+      `/api/api/users/${id}`, 
       userData,
     );
     commit('setUser', user);
@@ -40,12 +41,16 @@ export const actions = actionTree({ state, getters, mutations }, {
     return user;
   },
 
-  async logoutUser({ getters, commit }) {
+  async logoutUser({ commit }) {
     this.$axios.$post(`/api/logout`).then(() => {
       // @ts-ignore
       this.$auth.logout();
       const user = {}
       commit('setUser', user);
     })
+  },
+
+  async getUser({ commit }, id: number) {
+      const user = await this.$axios.$get(`/api/api/users/${id}`);
   }
 })
