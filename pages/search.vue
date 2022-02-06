@@ -6,7 +6,7 @@
       @assignCondition="assignCondition"
       :regions="regions"
     />
-    <SearchShopsInformation />
+    <SearchShopsInformation :searchShops="shops"/>
     <Footer />
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
     return {
       regions: [],
       conditions: [],
+      shops: [],
     }
   },
   async created() {
@@ -37,7 +38,7 @@ export default {
       await this.$accessor.modules.shops.searchShops()
 
       // 確認用。<SearchShopsInformation />と繋ぎ込む際に削除してください
-      console.log(this.$accessor.modules.shops.shops)
+      this.shops = this.$accessor.modules.shops.shops;
       console.log(this.$accessor.modules.shops.shopsCount)
     }
   },

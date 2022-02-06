@@ -37,6 +37,12 @@ export default {
     length: 1,
     totalVisible: 1
   }),
+  props: {
+    searchShops: {
+      type: Array,
+      default: []
+    },
+  },
   computed: {
     header () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 ml-2'
@@ -65,6 +71,11 @@ export default {
       window.scrollTo({
         top: 0
       });
+    }
+  },
+  watch: {
+    searchShops: function(shops) {
+      this.shops = shops;
     }
   }
 }

@@ -22,7 +22,13 @@ type shop = {
   reviewsNumber: number
 }
 type condition = {[key: string]: any}
-type conditions = {[key:string]: condition}
+type conditions = {
+  limit: number,
+  page: number,
+  orderby: string,
+  order: string,
+  prefectureIds: number[]
+}
 
 export const state = () => ({
   shop: {} as shop,
@@ -30,7 +36,13 @@ export const state = () => ({
   shopsCount: 1 as number,
   prefectures: [] as string[],
   genders: [] as string[],
-  conditions: {} as conditions,
+  conditions: {
+    limit: 10,
+    page: 1,
+    orderby: 'created_at',
+    order: 'DESC',
+    prefectureIds: []
+  } as conditions,
 })
 
 export type RootState = ReturnType<typeof state>
@@ -56,9 +68,8 @@ export const mutations = mutationTree(state, {
   setGenders(state, values: string[]): void {
     state.genders = values;
   },
-  setConditions(state, condition: condition): void {
-    const key = Object.keys(condition)[0]
-    state.conditions[key] = condition[key]
+  setConditions(state, conditions: conditions): void {
+    state.conditions = conditions
   }
 })
 
@@ -107,7 +118,7 @@ export const actions = actionTree({ state, getters, mutations }, {
       }
     );
   },
-  assignCondition({ commit }, condition: condition) {
-    commit('setConditions', condition)
+  assignCondition({ commit }, conditions: conditions) {
+    commit('setConditions', conditions)
   }
 })
