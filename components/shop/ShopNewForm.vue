@@ -88,16 +88,16 @@ export default {
       formData.append('holiday', this.holiday);
       formData.append('businessHour', this.businessHour);
       formData.append('mainImage', this.mainImage);
-      
-      const response = await this.$accessor.modules.shops.registerShop(formData);
-      if (!response.errors) {
-        this.isCompleted = true;
-      } else {
-        this.errors = response.errors;
-      }
-      window.scrollTo({
-        top: 0
+      const response = await this.$accessor.modules.shops.registerShop(formData).catch(err => {
+        this.errors = err.response.data.errors;
+        window.scrollTo({
+          top: 0
+        });
       });
+      if (response) {
+        this.isCompleted = true;
+      }
+        
     },
     changeValue(...values) {
       const [value, id] = values
