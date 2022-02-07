@@ -166,9 +166,7 @@ export default {
   },
   watch: {
     selectedPrefectureIds: function(ids) {
-      let conditions = this.$accessor.modules.shops.conditions;
-      conditions.prefectureIds = ids;
-      this.$emit('assignCondition', conditions);
+      this.$emit('assignCondition', ids)
     },
     deep: true,
     immediate: true

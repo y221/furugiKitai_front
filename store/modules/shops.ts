@@ -21,13 +21,13 @@ type shop = {
   likesNumber: number,
   reviewsNumber: number
 }
-type condition = {[key: string]: any}
+type prefectureIds = number[]
 type conditions = {
   limit: number,
   page: number,
   orderby: string,
   order: string,
-  prefectureIds: number[]
+  prefectureIds: prefectureIds,
 }
 
 export const state = () => ({
@@ -68,8 +68,8 @@ export const mutations = mutationTree(state, {
   setGenders(state, values: string[]): void {
     state.genders = values;
   },
-  setConditions(state, conditions: conditions): void {
-    state.conditions = conditions
+  setConditionsPrefectureIds(state, prefectureIds: prefectureIds): void{
+    state.conditions.prefectureIds = prefectureIds;
   }
 })
 
@@ -80,6 +80,7 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setShopsCount', response.data.count);
   },
   async searchShops({ getters, commit }) {
+    console.log(getters.conditions);
     const response = await this.$axios.$get('/api/api/shops', {params: getters.conditions});
     commit('setShops', response.data.shops);
     commit('setShopsCount', response.data.count);
@@ -118,7 +119,7 @@ export const actions = actionTree({ state, getters, mutations }, {
       }
     );
   },
-  assignCondition({ commit }, conditions: conditions) {
-    commit('setConditions', conditions)
+  assignConditionPrefectureIds({ commit }, prefectureIds: prefectureIds) {
+    commit('setConditionsPrefectureIds', prefectureIds)
   }
 })

@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     assignCondition(keyValue) {
-      this.$accessor.modules.shops.assignCondition(keyValue)
+      this.$accessor.modules.shops.assignConditionPrefectureIds(keyValue)
     },
     async searchShops() {
       await this.$accessor.modules.shops.searchShops()
