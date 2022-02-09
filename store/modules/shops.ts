@@ -21,13 +21,15 @@ type shop = {
   likesNumber: number,
   reviewsNumber: number
 }
-type condition = {[key: string]: any}
+type prefectureIds = number[]
+type areaIds = number[]
 type conditions = {
   limit: number,
   page: number,
   orderby: string,
   order: string,
-  prefectureIds: number[]
+  prefectureIds: prefectureIds,
+  areaIds: areaIds,
 }
 
 export const state = () => ({
@@ -41,7 +43,8 @@ export const state = () => ({
     page: 1,
     orderby: 'created_at',
     order: 'DESC',
-    prefectureIds: []
+    prefectureIds: [],
+    areaIds: []
   } as conditions,
 })
 
@@ -68,8 +71,11 @@ export const mutations = mutationTree(state, {
   setGenders(state, values: string[]): void {
     state.genders = values;
   },
-  setConditions(state, conditions: conditions): void {
-    state.conditions = conditions
+  setConditionsPrefectureIds(state, prefectureIds: prefectureIds): void{
+    state.conditions.prefectureIds = prefectureIds;
+  },
+  setConditionsAreaIds(state, areaIds: areaIds): void{
+    state.conditions.areaIds = areaIds;
   }
 })
 
@@ -118,7 +124,10 @@ export const actions = actionTree({ state, getters, mutations }, {
       }
     );
   },
-  assignCondition({ commit }, conditions: conditions) {
-    commit('setConditions', conditions)
+  assignConditionPrefectureIds({ commit }, prefectureIds: prefectureIds) {
+    commit('setConditionsPrefectureIds', prefectureIds)
+  },
+  assignConditionAreaIds({ commit }, areaIds: areaIds) {
+    commit('setConditionsAreaIds', areaIds)
   }
 })
