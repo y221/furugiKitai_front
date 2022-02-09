@@ -33,9 +33,19 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, mutations }, {
   async fetchAreasGroupByPrefecture({ commit }) {
-    const prefecturesPromise = this.$axios.get('/api/api/prefectures')
-    const areasPromise = this.$axios.get('/api/api/areas')
-    const [ prefecturesResponse, areasResponse ] = await Promise.all([prefecturesPromise, areasPromise])
+    
+    // エリアが登録されている都道府県IDの抽出
+    const areasResponse = await this.$axios.get('/api/api/areas');
+    let prefectureIds: number[] = [];
+    for (const area of areasResponse.data) {
+        if (prefectureIds.includes(area.prefectureId)) {
+            continue;
+        }
+        prefectureIds.push(area.prefectureId);
+    }
+
+    const prefecturesPromise = this.$axios.get('/api/api/prefectures', {params: {ids: prefectureIds}})
+    const [ prefecturesResponse ] = await Promise.all([prefecturesPromise])
     // areaをprefectureごとにグループ分けして格納
     const areasGroupByPrefecture = [] as areasGroupByPrefecture;
     for (const prefecture of prefecturesResponse.data as prefecture[]) {
