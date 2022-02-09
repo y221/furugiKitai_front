@@ -17,9 +17,9 @@
             </v-text-field>
             <v-btn
               button=""
-              :class="prefectureBtn"
-              :width="prefectureWidth"
-              :height="prefectureHeight"
+              :class="conditionBtn"
+              :width="conditionWidth"
+              :height="conditionHeight"
               color="secondary"
               depressed
               outlined
@@ -30,13 +30,13 @@
             </v-btn>
             <v-btn
               button=""
-              :class="prefectureBtn"
-              :width="prefectureWidth"
-              :height="prefectureHeight"
+              :class="conditionBtn"
+              :width="conditionWidth"
+              :height="conditionHeight"
               color="secondary"
               depressed
               outlined
-              @click="selectPrefectures()"
+              @click="selectAreas()"
             >
               <fa :class="this.$vuetify.breakpoint.xs ? 'mr-1 body-2' : 'text-h5 mr-1 mb-1'" :icon="plusCircle" />
               エリアを選択
@@ -50,9 +50,22 @@
               color="chip_color"
               text-color="white"
               :class="$vuetify.breakpoint.xs ? 'ml-2 mt-2 caption' : 'ml-1 mt-1'"
-              @click:close="closeChip(chip.id)"
+              @click:close="closePrefectureChip(chip.id)"
             >
               {{ chip.prefecture }}
+            </v-chip>
+          </v-row>
+          <v-row :class="this.$vuetify.breakpoint.xs ? '' : 'mt-n5 mb-2'">
+            <v-chip
+              v-for="chip in areaSelected"
+              :key="chip.id"
+              close
+              color="chip_color"
+              text-color="white"
+              :class="$vuetify.breakpoint.xs ? 'ml-2 mt-2 caption' : 'ml-1 mt-4'"
+              @click:close="closeAreaChip(chip.id)"
+            >
+              {{ chip.name }}
             </v-chip>
           </v-row>
           <v-row :class="this.$vuetify.breakpoint.xs ? 'mt-4' : 'mt-0' ">
@@ -82,12 +95,20 @@
         </div>
       </div>
     </v-container>
-    <v-dialog v-model="dialog" max-width="800" scrollable>
+    <v-dialog v-model="prefectureDialog" max-width="800" scrollable>
       <PrefectureCheckbox
-        @closeDialog="closeDialog"
+        @closeDialog="closePrefectureDialog"
         @searchShops="searchShops"
         :regions="regions"
         :selectedPrefectureIds.sync="selectedPrefectureIds"
+      />
+    </v-dialog>
+    <v-dialog v-model="areaDialog" max-width="800" scrollable>
+      <AreaCheckbox
+        @closeDialog="closeAreaDialog"
+        @searchShops="searchShops"
+        :prefectures="prefectures"
+        :selectedAreaIds.sync="selectedAreaIds"
       />
     </v-dialog>
   </v-main>
@@ -100,7 +121,9 @@ export default {
     return {
       genderSelected: [],
       selectedPrefectureIds: [],
-      dialog: false,
+      selectedAreaIds: [],
+      prefectureDialog: false,
+      areaDialog: false
     }
   },
   props: {
@@ -108,16 +131,29 @@ export default {
       type: Array,
       required: true
     },
+    prefectures: {
+      type: Array,
+      required: true
+    },
   },
   methods: {
     selectPrefectures() {
-      this.dialog = true
+      this.prefectureDialog = true
     },
-    closeDialog() {
-      this.dialog = false
+    selectAreas() {
+      this.areaDialog = true
     },
-    closeChip(targetId) {
+    closePrefectureDialog() {
+      this.prefectureDialog = false
+    },
+    closePrefectureChip(targetId) {
       this.selectedPrefectureIds = this.selectedPrefectureIds.filter(id => id !== targetId)
+    },
+    closeAreaDialog() {
+      this.areaDialog = false
+    },
+    closeAreaChip(targetId) {
+      this.selectedAreaIds = this.selectedAreaIds.filter(id => id !== targetId)
     },
     searchShops() {
       this.$emit('searchShops')
@@ -146,15 +182,15 @@ export default {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-2 pt-3 pb-7'
       return 'main-content mt-6'
     },
-    prefectureWidth () {
+    conditionWidth () {
       if (this.$vuetify.breakpoint.xs) return '95%'
       return '176'
     },
-    prefectureHeight () {
+    conditionHeight () {
       if (this.$vuetify.breakpoint.xs) return '40'
       return '58'
     },
-    prefectureBtn () {
+    conditionBtn () {
       if (this.$vuetify.breakpoint.xs) return 'caption font-weight-bold mt-n4'
       return 'ml-1 font-weight-bold'
     },
@@ -163,10 +199,18 @@ export default {
       this.regions.forEach(region => prefectures.push(...region.prefectures))
       return prefectures.filter(prefecture => this.selectedPrefectureIds.includes(prefecture.id))
     },
+    areaSelected() {
+      const areas = []
+      this.prefectures.forEach(prefecture => areas.push(...prefecture.areas))
+      return areas.filter(area => this.selectedAreaIds.includes(area.id))
+    }
   },
   watch: {
     selectedPrefectureIds: function(ids) {
-      this.$emit('assignCondition', ids)
+      this.$emit('assignConditionPrefecture', ids)
+    },
+    selectedAreaIds: function(ids) {
+      this.$emit('assignConditionArea', ids)
     },
     deep: true,
     immediate: true

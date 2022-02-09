@@ -22,12 +22,14 @@ type shop = {
   reviewsNumber: number
 }
 type prefectureIds = number[]
+type areaIds = number[]
 type conditions = {
   limit: number,
   page: number,
   orderby: string,
   order: string,
   prefectureIds: prefectureIds,
+  areaIds: areaIds,
 }
 
 export const state = () => ({
@@ -41,7 +43,8 @@ export const state = () => ({
     page: 1,
     orderby: 'created_at',
     order: 'DESC',
-    prefectureIds: []
+    prefectureIds: [],
+    areaIds: []
   } as conditions,
 })
 
@@ -70,6 +73,9 @@ export const mutations = mutationTree(state, {
   },
   setConditionsPrefectureIds(state, prefectureIds: prefectureIds): void{
     state.conditions.prefectureIds = prefectureIds;
+  },
+  setConditionsAreaIds(state, areaIds: areaIds): void{
+    state.conditions.areaIds = areaIds;
   }
 })
 
@@ -80,7 +86,6 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setShopsCount', response.data.count);
   },
   async searchShops({ getters, commit }) {
-    console.log(getters.conditions);
     const response = await this.$axios.$get('/api/api/shops', {params: getters.conditions});
     commit('setShops', response.data.shops);
     commit('setShopsCount', response.data.count);
@@ -121,5 +126,8 @@ export const actions = actionTree({ state, getters, mutations }, {
   },
   assignConditionPrefectureIds({ commit }, prefectureIds: prefectureIds) {
     commit('setConditionsPrefectureIds', prefectureIds)
+  },
+  assignConditionAreaIds({ commit }, areaIds: areaIds) {
+    commit('setConditionsAreaIds', areaIds)
   }
 })
