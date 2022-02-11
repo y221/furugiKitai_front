@@ -6,6 +6,7 @@
           <ShopHeader
             :name="this.shop.name"
             :gender="this.shop.gender"
+            :shop="this.shop"
           />
           <v-tabs
             v-model="tab"
@@ -22,7 +23,7 @@
                 class="blue-grey lighten-5 py-1 px-2 ml-1 review-count"
                 v-if="item.key === 'review'"
               >
-                {{ reviewCount }}
+                {{ shop.reviewsNumber }}
               </span>
             </v-tab>
           </v-tabs>

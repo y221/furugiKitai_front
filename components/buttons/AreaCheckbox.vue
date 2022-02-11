@@ -18,14 +18,14 @@
     </v-card-title>
     <v-divider class="mt-1"></v-divider>
     <v-card-text style="height: 500px;">
-      <template v-for="region in regions">
+      <template v-for="prefecture in prefectures">
         <v-row class="mt-2">
           <v-col
             md="3"
             cols="12"
           >
             <p :class="$vuetify.breakpoint.xs ? 'body-2 mb-0 font-weight-bold' : 'ml-4 body-1 font-weight-bold'">
-              {{ region.name }}
+              {{ prefecture.prefecture }}
             </p>
           </v-col>
           <v-col
@@ -34,11 +34,11 @@
           >
             <v-row class="pr-5">
               <v-checkbox
-                v-for="prefecture in region.prefectures"
-                :key="prefecture.id"
+                v-for="area in prefecture.areas"
+                :key="area.id"
                 :class="$vuetify.breakpoint.xs ? 'ml-2 mr-4 mt-2' :'ml-4 mt-2'"
-                :label="prefecture.prefecture"
-                :value="prefecture.id"
+                :label="area.name"
+                :value="area.id"
                 v-model="selected"
               ></v-checkbox>
             </v-row>
@@ -54,7 +54,7 @@
           depressed
           rounded
           class="font-weight-bold"
-          @click="selectPrefectureCompleted()"
+          @click="selectAreaCompleted()"
         >
           このエリアで絞り込む
         </v-btn>
@@ -73,26 +73,26 @@ export default {
     }
   },
   props: {
-    regions: {
+    prefectures: {
       type: Array,
       required: true,
     },
-    selectedPrefectureIds: {
+    selectedAreaIds: {
       type: Array,
       required: true,
     }
   },
   computed: {
     selected: {
-      get: function() { return this.selectedPrefectureIds },
-      set: function(value) { this.$emit('update:selectedPrefectureIds', value) }
+      get: function() { return this.selectedAreaIds },
+      set: function(value) { this.$emit('update:selectedAreaIds', value) }
     }
   },
   methods: {
     closeDialog() {
       this.$emit('closeDialog')
     },
-    selectPrefectureCompleted() {
+    selectAreaCompleted() {
       this.$emit('closeDialog')
       this.$emit('searchShops')
     },
