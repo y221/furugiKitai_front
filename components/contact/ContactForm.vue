@@ -1,19 +1,16 @@
 <template>
   <div class="main-wrapper">
-    <div
-      class="main-content"
-      :class="this.$vuetify.breakpoint.mdAndDown ? 'mt-4' : 'mt-6 mx-12'"
-    >
-      <div :class="header" class="font-weight-bold">
-        お問い合わせ
+    <CompleteText v-if="isCompleted" text="お問い合わせ"/>
+    <div class="main-content" v-if="!isCompleted" :class="this.$vuetify.breakpoint.mdAndDown ? 'mt-4' : 'mt-6 mx-12'">
+      <div class="d-flex align-center flex-row">
+      <TitleBlock />
+      <div :class="subHeader">入力フォーム</div>
       </div>
-      <div :class="preface">
-        下記フォームを入力し、<nuxt-link to='/privacy'>プライバシーポリシー</nuxt-link>をご確認の上「送信する」ボタンを押してください。<br v-if="this.$vuetify.breakpoint.xs">運営の都合上、返信には数日から数週間などお時間を頂く場合がございますので、予めご了承ください。
-      </div>
+      <ErrorsText class="mt-4" :errors="errors" />
       <div>
         <FormTextfield columnName="名前" label="例：フルギ　キタイ" :required="true" id="name" v-on:change="changeValue"/>
-        <FormTextfield columnName="メールアドレス" label="例：info@furugikitai.com" :required="true" id="mail" v-on:change="changeValue"/>
-        <FormTextarea columnName="お問い合わせ内容" label="お問い合わせ内容を入力してください" :required="true" id="inquiry" v-on:change="changeValue"/>
+        <FormTextfield columnName="メールアドレス" label="例：info@furugikitai.com" :required="true" id="email" v-on:change="changeValue"/>
+        <FormTextarea columnName="お問い合わせ内容" label="お問い合わせ内容を入力してください" :required="true" id="content" v-on:change="changeValue"/>
       </div>
       <v-row>
         <v-col cols="0" lg="3"></v-col>
@@ -30,7 +27,7 @@
           depressed
           rounded
           width="200px"
-          @click="hogehoge()"
+          @click="submitContact()"
         >
           送信する
         </v-btn>
@@ -54,26 +51,36 @@
 <script>
 export default {
   computed: {
-    header () {
-      if (this.$vuetify.breakpoint.xs) return 'text-h5 mx-2 my-5 pt-5'
-      return 'text-sm-h4 mx-4 my-10'
-    },
-    preface () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 mx-2 mb-10'
-      return 'text-body-1 mx-4 mb-12'
-    },
+    subHeader () {
+      if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h6 mx-2 my-4'
+      return 'font-weight-bold text-sm-h5 mx-2 py-4'
+    }
   },
   data: () => ({
     name: '',
-    mail: '',
-    inquiry: ''
+    email: '',
+    content: '',
+    errors: {},
+    isCompleted: false,
+    agree: false
   }),
-  data() {
-    return {
-      agree: false
-    }
-  },
   methods: {
+    async submitContact() {
+      let formData = new FormData;
+      formData.append('name', this.name);
+      formData.append('email', this.email);
+      formData.append('content', this.content);
+
+      const response = await this.$accessor.modules.contacts.submitContact(formData);
+      if (!response.errors) {
+        this.isCompleted = true;
+      } else {
+        this.errors = response.errors;
+      }
+      window.scrollTo({
+        top: 0
+      });
+    },
     changeValue(...values) {
       const [value, id] = values
       this[id] = value;
