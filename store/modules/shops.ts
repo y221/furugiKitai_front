@@ -21,8 +21,10 @@ type shop = {
   likesNumber: number,
   reviewsNumber: number
 }
-type prefectureIds = number[]
-type areaIds = number[]
+type prefectureIds = number[];
+type areaIds = number[];
+type genders = string[];
+type genderIds = number[];
 type conditions = {
   limit: number,
   page: number,
@@ -30,7 +32,14 @@ type conditions = {
   order: string,
   prefectureIds: prefectureIds,
   areaIds: areaIds,
+  genderIds: genderIds,
 }
+
+// チェックボックスで入る値とAPIで渡す値のマッピング
+const gendersMap:{[key:string]:number} = {
+  'ladies':2,
+  'mens': 3
+};
 
 export const state = () => ({
   shop: {} as shop,
@@ -44,7 +53,8 @@ export const state = () => ({
     orderby: 'created_at',
     order: 'DESC',
     prefectureIds: [],
-    areaIds: []
+    areaIds: [],
+    genderIds: []
   } as conditions,
 })
 
@@ -76,6 +86,9 @@ export const mutations = mutationTree(state, {
   },
   setConditionsAreaIds(state, areaIds: areaIds): void{
     state.conditions.areaIds = areaIds;
+  },
+  setConditionsGenders(state, genderIds: genderIds): void {
+    state.conditions.genderIds = genderIds;
   }
 })
 
@@ -129,5 +142,18 @@ export const actions = actionTree({ state, getters, mutations }, {
   },
   assignConditionAreaIds({ commit }, areaIds: areaIds) {
     commit('setConditionsAreaIds', areaIds)
+  },
+  assignConditionGenders({ commit }, genders: genders) {
+    let genderIds:genderIds = [];
+    // 性別の指定がある場合
+    if (genders) {
+      // 1はレディース、メンズ両方
+      genderIds.push(1);
+      // レディース(ladies)とメンズ(mens)に対応するIDを設定
+      for (const gender of genders) {
+        genderIds.push(gendersMap[gender]);
+      }
+    }
+    commit('setConditionsGenders', genderIds)
   }
 })

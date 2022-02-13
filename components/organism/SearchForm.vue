@@ -70,13 +70,13 @@
           </v-row>
           <v-row :class="this.$vuetify.breakpoint.xs ? 'mt-4' : 'mt-0' ">
             <v-checkbox
-              v-model="genderSelected"
+              v-model="selectedGenders"
               :class="this.$vuetify.breakpoint.xs ? 'ml-4 mt-0' : 'ml-2 mt-0'"
               label="レディース"
               value="ladies"
             ></v-checkbox>
             <v-checkbox
-              v-model="genderSelected"
+              v-model="selectedGenders"
               class="ml-4 mt-0"
               label="メンズ"
               value="mens"
@@ -119,7 +119,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 export default {
   data () {
     return {
-      genderSelected: [],
+      selectedGenders: [],
       selectedPrefectureIds: [],
       selectedAreaIds: [],
       prefectureDialog: false,
@@ -211,6 +211,9 @@ export default {
     },
     selectedAreaIds: function(ids) {
       this.$emit('assignConditionArea', ids)
+    },
+    selectedGenders: function() {
+      this.$emit('assignConditionGender', this.selectedGenders)
     },
     deep: true,
     immediate: true

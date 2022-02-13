@@ -5,6 +5,7 @@
       @searchShops="searchShops"
       @assignConditionPrefecture="assignConditionPrefecture"
       @assignConditionArea="assignConditionArea"
+      @assignConditionGender="assignConditionGender"
       :regions="regions"
       :prefectures="prefectures"
     />
@@ -41,6 +42,9 @@ export default {
     },
     assignConditionArea(keyValue) {
       this.$accessor.modules.shops.assignConditionAreaIds(keyValue)
+    },
+    assignConditionGender(keyValue) {
+      this.$accessor.modules.shops.assignConditionGenders(keyValue)
     },
     async searchShops() {
       await this.$accessor.modules.shops.searchShops()
