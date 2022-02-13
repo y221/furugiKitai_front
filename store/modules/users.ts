@@ -18,8 +18,9 @@ export const mutations = mutationTree(state, {
 })
 
 export const actions = actionTree({ state, getters, mutations }, {
-  async loginUser({ commit }, userData: object) {
-    this.$axios.get('/api/sanctum/csrf-cookie', { withCredentials: true }).then(
+  async loginUser({ commit, dispatch }, userData: object) {
+    await this.$axios.get('/api/sanctum/csrf-cookie', { withCredentials: true })
+    .then(
       async response => {
       const user = await this.$axios.$post(
         '/api/login', 
@@ -27,8 +28,11 @@ export const actions = actionTree({ state, getters, mutations }, {
         { withCredentials: true }
       );
       commit('setUser', user);
-      this.$router.push('/users/new');}
-      );
+      this.$router.push('/users/new');
+    })
+    .catch(
+      error => this.$router.push('/login')
+    );
   },
 
   async updateUser({ commit }, {id, ...userData}) {

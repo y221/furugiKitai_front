@@ -80,7 +80,7 @@ export default {
       this[id] = value;
     }
   },
-  async created() {
+  created() {
     this.name = this.$accessor.modules.users.user.name
     this.icon = this.$accessor.modules.users.user.icon
     this.favorite = this.$accessor.modules.users.user.favorite
