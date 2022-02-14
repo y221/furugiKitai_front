@@ -2,7 +2,7 @@
 	<div class="main-wrapper">
 		<div class="main-content">
 			<div :class="this.$vuetify.breakpoint.xs ? 'mx-1 py-2' : 'mx-16'">
-				<UserRegister />
+				<UserRegister :user="user" />
 				<UserImage />
 				<div v-for="(title, index) of titles" :key="index">
 					<UserData
@@ -51,6 +51,12 @@
 
 <script>
 export default {
+	props: {
+		user: {
+			type: Object,
+			required: true,
+		}
+	},
 	data() {
 		return {
 			tab: null,

@@ -4,7 +4,7 @@
     {{user}}
     <v-main class="main-background-color display">
       <v-container>
-        <UserDetail />
+        <UserDetail :user="user" />
       </v-container>
     </v-main>
     <Footer />
@@ -18,9 +18,16 @@ export default {
     user: []
   }),
   async created() {
-    console.log(this.$route.params.userId)
-    const response = await this.$axios.get(`/api/api/users/`+this.$route.params.userId);
-    this.user = response.data;
+    var userId = this.$route.params.userId;
+    if (userId == 'my') {
+      userId = this.$accessor.modules.users.user.id;
+    }
+    console.log(userId);
+
+    await this.$axios.get(`/api/api/users/${userId}`)
+    .then(response => (this.user = response.data))
+    .catch(error => console.log(error))
+
   }
 }
 </script>
