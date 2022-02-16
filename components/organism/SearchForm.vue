@@ -13,6 +13,8 @@
               color="grey"
               :dense="this.$vuetify.breakpoint.xs"
               :class="this.$vuetify.breakpoint.xs ? 'mx-2' : '' "
+              v-model="text"
+              @change="changeText(text)"
             >
             </v-text-field>
             <v-btn
@@ -123,7 +125,8 @@ export default {
       selectedPrefectureIds: [],
       selectedAreaIds: [],
       prefectureDialog: false,
-      areaDialog: false
+      areaDialog: false,
+      text: ''
     }
   },
   props: {
@@ -158,6 +161,9 @@ export default {
     searchShops() {
       this.$emit('searchShops')
     },
+    changeText(text) {
+      this.$emit('changeText', text)
+    }
   },
   computed: {
     searchMap () {

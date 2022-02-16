@@ -3,6 +3,7 @@
     <Header :isTop="false" />
     <SearchForm
       @searchShops="searchShops"
+      @changeText="changeText"
       @assignConditionPrefecture="assignConditionPrefecture"
       @assignConditionArea="assignConditionArea"
       @assignConditionGender="assignConditionGender"
@@ -26,6 +27,7 @@ export default {
   },
   async created() {
     try {
+      console.log(this.$accessor.modules.prefectures.prefecturesGroupByRegion);
       await this.$accessor.modules.prefectures.fetchPrefecturesGroupByRegion();
       await this.$accessor.modules.areas.fetchAreasGroupByPrefecture();
       this.regions = this.$accessor.modules.prefectures.prefecturesGroupByRegion
@@ -37,6 +39,9 @@ export default {
     }
   },
   methods: {
+    changeText(text) {
+      this.$accessor.modules.shops.assignConditionText(text);
+    },
     assignConditionPrefecture(keyValue) {
       this.$accessor.modules.shops.assignConditionPrefectureIds(keyValue)
     },

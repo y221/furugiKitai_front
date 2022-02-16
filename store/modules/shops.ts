@@ -33,6 +33,7 @@ type conditions = {
   prefectureIds: prefectureIds,
   areaIds: areaIds,
   genderIds: genderIds,
+  text: string
 }
 
 // チェックボックスで入る値とAPIで渡す値のマッピング
@@ -54,7 +55,8 @@ export const state = () => ({
     order: 'DESC',
     prefectureIds: [],
     areaIds: [],
-    genderIds: []
+    genderIds: [],
+    text:''
   } as conditions,
 })
 
@@ -89,6 +91,9 @@ export const mutations = mutationTree(state, {
   },
   setConditionsGenders(state, genderIds: genderIds): void {
     state.conditions.genderIds = genderIds;
+  },
+  setConditionsText(state, text:string): void {
+    state.conditions.text = text;
   }
 })
 
@@ -136,6 +141,9 @@ export const actions = actionTree({ state, getters, mutations }, {
         },
       }
     );
+  },
+  assignConditionText({ commit }, text:string) {
+    commit('setConditionsText', text);
   },
   assignConditionPrefectureIds({ commit }, prefectureIds: prefectureIds) {
     commit('setConditionsPrefectureIds', prefectureIds)
