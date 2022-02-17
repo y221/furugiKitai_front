@@ -3,6 +3,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
 export const state = () => ({
   user: {} as { [s: string]: string },
+  otherUser: {} as { [s: string]: string },
 })
 
 export type RootState = ReturnType<typeof state>
@@ -14,6 +15,9 @@ export const getters = getterTree(state, {
 export const mutations = mutationTree(state, {
   setUser(state, values: { [s: string]: string }): void {
     state.user = values;
+  },
+  setOtherUser(state, values: { [s: string]: string}): void {
+    state.otherUser = values
   }
 })
 
@@ -41,8 +45,6 @@ export const actions = actionTree({ state, getters, mutations }, {
       userData,
     );
     commit('setUser', user);
-
-    return user;
   },
 
   async logoutUser({ commit }) {
@@ -56,5 +58,6 @@ export const actions = actionTree({ state, getters, mutations }, {
 
   async getUser({ commit }, id: number) {
       const user = await this.$axios.$get(`/api/api/users/${id}`);
+      commit('setOtherUser', user);
   }
 })
