@@ -1,18 +1,25 @@
-// TODO:mypageの画面で呼び出す(普通のユーザ画面は/user/idにする。ログイン後はmypage)
-export default async function ({ store, redirect }) {
-  
-  // ログインしてない場合
-  if (!store.state.auth.user) {
+export default async function ({ store, params, redirect }) {
+
+  const isMyPage = (params.userId == 'me');
+  const isSnsAuthed = (store.state.auth.loggedIn);
+  const isLoggedIn = store.state.modules.users.user; // なぜか読めない...
+
+  if (!isMyPage) {
+    return;
+  }
+
+  if (!isSnsAuthed) {
     redirect('/login');
     return;
   }
 
-  // フォームデータ作成
+  // ログイン処理
   const formData = {
     uid: store.state.auth.user.userId,
     icon: store.state.auth.user.pictureUrl,
     name: store.state.auth.user.displayName,
   };
 
-  store.dispatch('modules/users/loginUser', formData);
+  await store.dispatch('modules/users/loginUser', formData);
+
 }
