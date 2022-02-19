@@ -77,7 +77,7 @@
         text
         v-if="!$vuetify.breakpoint.xs"
         v-show="isLoggedIn"
-        to='/users/mypage'
+        to='/users/me'
       >
         マイページ
       </v-btn>

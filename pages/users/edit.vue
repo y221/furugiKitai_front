@@ -3,14 +3,9 @@
     <Header :isTop="false" />
     <v-main class="main-background-color">
       <v-container>
-        <UserNewForm />
+        <UserEditForm />
       </v-container>
     </v-main>
     <Footer />
   </div>
 </template>
-<script>
-export default {
-  middleware: 'loginUser'
-}
-</script>

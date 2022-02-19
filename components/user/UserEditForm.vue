@@ -7,8 +7,7 @@
       :class="this.$vuetify.breakpoint.mdAndDown ? 'mt-4' : 'mt-6 mx-12'"
     >
       <div :class="header">
-        登録が完了しました<br>
-        ユーザー情報追加登録（ホントはマイページに飛びたい）
+        プロフィール編集
       </div>
       <ErrorsText class="mt-4" :errors="errors" />
       <div>

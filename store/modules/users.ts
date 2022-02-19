@@ -32,7 +32,6 @@ export const actions = actionTree({ state, getters, mutations }, {
         { withCredentials: true }
       );
       commit('setUser', user);
-      this.$router.push('/users/new');
     })
     .catch(
       error => this.$router.push('/login')
@@ -57,7 +56,10 @@ export const actions = actionTree({ state, getters, mutations }, {
   },
 
   async getUser({ commit }, id: number) {
-      const user = await this.$axios.$get(`/api/api/users/${id}`);
+      const user = await this.$axios.$get(`/api/api/users/${id}`).
+      catch(
+        error => this.$router.push('/') //TODO 404エラーへ
+      );
       commit('setOtherUser', user);
   }
 })

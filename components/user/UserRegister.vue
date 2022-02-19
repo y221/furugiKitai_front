@@ -1,13 +1,9 @@
 <template>
 	<div class="d-flex justify-space-between text-caption">
-		<div class="pa-1">{{ user.created_at }}</div>
-		<v-btn
-			text
-			small
-			to="/"
-		>
+		<div class="pa-1">{{registerdDate}} 登録</div>
+		<nuxt-link to="edit">
 			プロフィールを編集
-		</v-btn>
+		</nuxt-link>
 	</div>
 </template>
 
@@ -21,7 +17,8 @@ export default {
 	},
 	computed: {
 		registerdDate () {
-			return user.created_at
+			var date = new Date(this.user.created_at);
+			return date.toLocaleDateString();
 		}
 	}
 }

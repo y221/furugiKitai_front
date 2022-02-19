@@ -14,7 +14,7 @@
 					cols="8"
 					lg="10"
 				>
-					登録情報持ってくる
+					{{ content }}
 				</v-col>
 			</v-row>
 		</v-card>
@@ -25,7 +25,8 @@
 <script>
 export default {
 	props: {
-		title: String
+		title: String,
+		content: String
 	}
 }
 </script>

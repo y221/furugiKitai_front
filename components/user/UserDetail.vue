@@ -2,12 +2,12 @@
 	<div class="main-wrapper">
 		<div class="main-content">
 			<div :class="this.$vuetify.breakpoint.xs ? 'mx-1 py-2' : 'mx-16'">
-				<UserRegister :user="user" />
-				<UserImage />
-				<div v-for="(title, index) of titles" :key="index">
+				<UserRegister :user="this.user" />
+				<UserImage :user="this.user" />
+				<div v-for="(content, title) of contents" :key="title">
 					<UserData
-						:index='index'
 						:title='title'
+						:content='content'
 					/>
 				</div>
 					<v-divider
@@ -51,14 +51,9 @@
 
 <script>
 export default {
-	props: {
-		user: {
-			type: Object,
-			required: true,
-		}
-	},
 	data() {
 		return {
+			user: {},
 			tab: null,
 			items: {
 				review: {
@@ -72,19 +67,31 @@ export default {
 					count: '456'
 				}
 			},
-			titles:[
-				'好きな古着',
-				'プロフィール',
-				'Instagram',
-				'リンク'
-			]
 		}
 	},
 	computed: {
 		tabFont () {
 			if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
 			return 'font-weight-bold'
+		},
+		contents() {
+			return {
+				'好きな古着': this.user.favorite ?? '未登録',
+				'プロフィール': this.user.profile ?? '未登録',
+				'Instagram': this.user.instagram ?? '未登録',
+			}
 		}
+	},
+	async created() {
+		var userId = this.$route.params.userId;
+
+		if (userId == 'me') {
+			this.user = this.$accessor.modules.users.user;
+			return;
+		}
+
+		await this.$accessor.modules.users.getUser(userId);
+		this.user = this.$accessor.modules.users.otherUser;
 	}
 }
 	

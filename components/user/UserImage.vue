@@ -10,6 +10,7 @@
 				:size="imageSize"
 				style="position: relative;"
 			>
+				<v-img :src="user.icon"></v-img>
 			</v-avatar>
 		</v-col>
 		<v-col
@@ -18,7 +19,7 @@
 			lg="10"
 		>
 			<p class="font-weight-bold">
-				ユーザー名持ってくる
+				{{user.name}}
 			</p>
 		</v-col>
 	</v-row>
@@ -26,6 +27,12 @@
 
 <script>
 export default {
+	props: {
+		user: {
+			type: Object,
+			required: true,
+		}
+	},
 	computed: {
 		imageSize () {
 			if (this.$vuetify.breakpoint.xs) return '75'
