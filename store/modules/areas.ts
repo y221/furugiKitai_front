@@ -6,10 +6,6 @@ type area = {
   prefectureId: number,
   name: string
 }
-type prefecture = {
-  id: number,
-  prefecture: string
-}
 type areasGroupByPrefecture = {
   prefecture: string,
   areas: area[]
@@ -17,6 +13,7 @@ type areasGroupByPrefecture = {
 
 export const state = () => ({
   areasGroupByPrefecture: [] as areasGroupByPrefecture,
+  areas: [] as area[]
 })
 
 export type RootState = ReturnType<typeof state>
@@ -26,8 +23,9 @@ export const getters = getterTree(state, {
 })
 
 export const mutations = mutationTree(state, {
-  setAreasGroupByPrefecture(state, values): void {
+  setAreasGroupByPrefecture(state, values:areasGroupByPrefecture): void {
     state.areasGroupByPrefecture = values
+    values.forEach(region => state.areas.push(...region.areas));
   }
 })
 

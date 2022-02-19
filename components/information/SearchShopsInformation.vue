@@ -8,7 +8,6 @@
           <div v-for="shop in shops">
             <ShopItem 
               :shop="shop"
-              :prefectures="prefectures"
             />
           </div>
           <div class="text-center my-10">
@@ -33,7 +32,6 @@ export default {
   data: () => ({
     page: 1,
     shops: [],
-    prefectures: [],
     length: 1,
     totalVisible: 1
   }),
@@ -54,19 +52,20 @@ export default {
     }
   },
   async mounted() {
-    const getPrefectures = this.$accessor.modules.shops.getPrefectures();
-    const shopParameters = getShopParameters('1');
-    const getShops = this.$accessor.modules.shops.getShops(shopParameters);
-    await Promise.all([getPrefectures, getShops]);
-    this.prefectures = this.$accessor.modules.shops.convertedPrefectures
+    const conditions = this.$route.query;
+    // 条件があれば
+    if (Object.keys(conditions)) {
+      this.$accessor.modules.shops.assignConditions(conditions);
+    }
+    await this.$accessor.modules.shops.searchShops();
     this.shops = this.$accessor.modules.shops.shops;
     this.length = getPageLength(this.$accessor.modules.shops.shopsCount, displayNumber);
     this.totalVisible = getTotalVisible(this.length);
   },
   methods: {
     async changePage(page) {
-      const shopParameters = getShopParameters(page);
-      await this.$accessor.modules.shops.getShops(shopParameters);
+      this.$accessor.modules.shops.setPage(page);
+      await this.$accessor.modules.shops.searchShops();
       this.shops = this.$accessor.modules.shops.shops;
       window.scrollTo({
         top: 0
