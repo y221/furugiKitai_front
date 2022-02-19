@@ -25,6 +25,9 @@ export const getters = getterTree(state, {
 export const mutations = mutationTree(state, {
   setAreasGroupByPrefecture(state, values:areasGroupByPrefecture): void {
     state.areasGroupByPrefecture = values
+    if (state.areas.length) {
+        return;
+    }
     values.forEach(region => state.areas.push(...region.areas));
   }
 })
