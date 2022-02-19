@@ -73,20 +73,14 @@ const genderIdsMap:{[key:number]:string} = {
 const limit = 10 as number;
 // 並び替え順
 const orderby = 'created_at' as string;
-// 条件初期値
-const initConditions = {
-  page: 1,
-  order: 'DESC',
-  prefectureIds: [],
-  areaIds: [],
-  genderIds: [],
-  keyword:''
-} as conditions
 
 export const state = () => ({
   shop: {} as shop,
   shops: {} as shop[],
   shopsCount: 1 as number,
+  displayNumber: 10 as number,
+  pageLength: 1 as number,
+  totalVisible: 5 as number,
   prefectures: [] as string[],
   genders: [] as string[],
   genderIdsMap: genderIdsMap,
@@ -116,6 +110,12 @@ export const mutations = mutationTree(state, {
   },
   setShopsCount(state, value: number): void {
     state.shopsCount = value;
+  },
+  setPageLength(state) :void {
+    state.pageLength = Math.ceil(state.shopsCount / state.displayNumber);
+  },
+  setTotalVisible(state) :void {
+    state.totalVisible = state.pageLength >= 5 ? 5 : state.pageLength;
   },
   setPrefectures(state, values: string[]): void {
     state.prefectures = values;
@@ -159,6 +159,15 @@ export const mutations = mutationTree(state, {
     state.conditions.page = page;
   },
   initConditions(state): void {
+    // 条件初期値
+    const initConditions = {
+      page: 1,
+      order: 'DESC',
+      prefectureIds: [],
+      areaIds: [],
+      genderIds: [],
+      keyword:''
+    } as conditions
     state.conditions = initConditions;
   }
 })
@@ -178,6 +187,8 @@ export const actions = actionTree({ state, getters, mutations }, {
     const response = await this.$axios.$get('/api/api/shops', {params: conditions});
     commit('setShops', response.data.shops);
     commit('setShopsCount', response.data.count);
+    commit('setPageLength');
+    commit('setTotalVisible');
   },
   async getPrefectures({ getters, commit }) {
     const prefectures = await this.$axios.$get('/api/api/prefectures');
@@ -245,3 +256,7 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setConditionsGenders', genderIds)
   }
 })
+// 表示件数
+const getTotalVisible = (length:number) => {
+  return 
+}
