@@ -59,8 +59,8 @@ export default {
     }
     await this.$accessor.modules.shops.searchShops();
     this.shops = this.$accessor.modules.shops.shops;
-    this.length = getPageLength(this.$accessor.modules.shops.shopsCount, displayNumber);
-    this.totalVisible = getTotalVisible(this.length);
+    this.length = this.$accessor.modules.shops.pageLength;
+    this.totalVisible = this.$accessor.modules.shops.totalVisible;
   },
   methods: {
     async changePage(page) {
@@ -75,21 +75,9 @@ export default {
   watch: {
     searchShops: function(shops) {
       this.shops = shops;
+      this.length = this.$accessor.modules.shops.pageLength;
+      this.totalVisible = this.$accessor.modules.shops.totalVisible;
     }
   }
-}
-const getShopParameters = (page) => {
-  return {
-    'limit': '10',
-    'page': page,
-    'orderby': 'created_at',
-    'order': 'DESC'
-  }
-}
-const getPageLength = (count, page) => {
-  return Math.ceil(count / page);
-}
-const getTotalVisible = (length) => {
-  return length >= 5 ? 5 : length;
 }
 </script>
