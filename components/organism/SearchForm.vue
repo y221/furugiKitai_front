@@ -13,8 +13,8 @@
               color="grey"
               :dense="this.$vuetify.breakpoint.xs"
               :class="this.$vuetify.breakpoint.xs ? 'mx-2' : '' "
-              v-model="text"
-              @change="changeText(text)"
+              v-model="keyword"
+              @change="changeKeyword(keyword)"
             >
             </v-text-field>
             <v-btn
@@ -126,7 +126,7 @@ export default {
       selectedAreaIds: [],
       prefectureDialog: false,
       areaDialog: false,
-      text: ''
+      keyword: ''
     }
   },
   props: {
@@ -138,6 +138,33 @@ export default {
       type: Array,
       required: true
     },
+  },
+  mounted() {
+    const conditions = this.$route.query;
+    // 都道府県IDのデフォルト設定
+    if (Object.keys(conditions) && conditions.prefectureIds) {
+      for (const prefectureId of conditions.prefectureIds) {
+        this.selectedPrefectureIds.push(Number(prefectureId))
+      }
+    }
+    // エリアIDのデフォルト設定
+    if (Object.keys(conditions) && conditions.areaIds) {
+      for (const areaId of conditions.areaIds) {
+        this.selectedAreaIds.push(Number(areaId))
+      }
+    }
+    // 性別設定
+    if (Object.keys(conditions) && conditions.genderIds) {
+      const genderIdsMap = this.$accessor.modules.shops.genderIdsMap
+      for (const genderId of conditions.genderIds) {
+        if (genderIdsMap[genderId]) {
+          this.selectedGenders.push(genderIdsMap[genderId])
+        }
+      }
+    }
+    if (Object.keys(conditions) && conditions.keyword) {
+      this.keyword = conditions.keyword
+    }
   },
   methods: {
     selectPrefectures() {
@@ -161,8 +188,8 @@ export default {
     searchShops() {
       this.$emit('searchShops')
     },
-    changeText(text) {
-      this.$emit('changeText', text)
+    changeKeyword(text) {
+      this.$emit('changeKeyword', text)
     }
   },
   computed: {
@@ -201,13 +228,11 @@ export default {
       return 'ml-1 font-weight-bold'
     },
     prefectureSelected() {
-      const prefectures = []
-      this.regions.forEach(region => prefectures.push(...region.prefectures))
+      const prefectures = this.$accessor.modules.prefectures.prefectures
       return prefectures.filter(prefecture => this.selectedPrefectureIds.includes(prefecture.id))
     },
     areaSelected() {
-      const areas = []
-      this.prefectures.forEach(prefecture => areas.push(...prefecture.areas))
+      let areas = this.$accessor.modules.areas.areas
       return areas.filter(area => this.selectedAreaIds.includes(area.id))
     }
   },

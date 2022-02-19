@@ -1,6 +1,7 @@
 
 import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 
+// 店舗
 type shop = {
   id: number,
   prefectureId: number,
@@ -21,19 +22,42 @@ type shop = {
   likesNumber: number,
   reviewsNumber: number
 }
+
+// 都道府県ID
 type prefectureIds = number[];
+
+// エリアID
 type areaIds = number[];
+
+// 性別判定用文字列
 type genders = string[];
+
+// 性別ID
 type genderIds = number[];
+
+// ページ
+type page = number;
+
+// クエリパラメータ用
 type conditions = {
+  page: page,
+  order: string,
+  prefectureIds: prefectureIds,
+  areaIds: areaIds,
+  genderIds: genderIds,
+  keyword: string
+}
+
+// APIパラメータ用
+type apiConditions = {
   limit: number,
-  page: number,
+  page: page,
   orderby: string,
   order: string,
   prefectureIds: prefectureIds,
   areaIds: areaIds,
   genderIds: genderIds,
-  text: string
+  keyword: string
 }
 
 // チェックボックスで入る値とAPIで渡す値のマッピング
@@ -41,6 +65,23 @@ const gendersMap:{[key:string]:number} = {
   'ladies':2,
   'mens': 3
 };
+const genderIdsMap:{[key:number]:string} = {
+  2:'ladies',
+  3:'mens'
+};
+// 取得件数制限
+const limit = 10 as number;
+// 並び替え順
+const orderby = 'created_at' as string;
+// 条件初期値
+const initConditions = {
+  page: 1,
+  order: 'DESC',
+  prefectureIds: [],
+  areaIds: [],
+  genderIds: [],
+  keyword:''
+} as conditions
 
 export const state = () => ({
   shop: {} as shop,
@@ -48,15 +89,14 @@ export const state = () => ({
   shopsCount: 1 as number,
   prefectures: [] as string[],
   genders: [] as string[],
+  genderIdsMap: genderIdsMap,
   conditions: {
-    limit: 10,
     page: 1,
-    orderby: 'created_at',
     order: 'DESC',
     prefectureIds: [],
     areaIds: [],
     genderIds: [],
-    text:''
+    keyword:''
   } as conditions,
 })
 
@@ -83,6 +123,26 @@ export const mutations = mutationTree(state, {
   setGenders(state, values: string[]): void {
     state.genders = values;
   },
+  setConditions(state, conditions: conditions): void {
+    if (conditions.page) {
+      state.conditions.page = conditions.page;
+    }
+    if (conditions.order) {
+      state.conditions.order = conditions.order;
+    }
+    if (conditions.prefectureIds) {
+      state.conditions.prefectureIds = conditions.prefectureIds;
+    }
+    if (conditions.areaIds) {
+      state.conditions.areaIds = conditions.areaIds;
+    }
+    if (conditions.genderIds) {
+      state.conditions.genderIds = conditions.genderIds;
+    }
+    if (conditions.keyword) {
+      state.conditions.keyword = conditions.keyword;
+    }
+  },
   setConditionsPrefectureIds(state, prefectureIds: prefectureIds): void{
     state.conditions.prefectureIds = prefectureIds;
   },
@@ -92,8 +152,14 @@ export const mutations = mutationTree(state, {
   setConditionsGenders(state, genderIds: genderIds): void {
     state.conditions.genderIds = genderIds;
   },
-  setConditionsText(state, text:string): void {
-    state.conditions.text = text;
+  setConditionsKeyword(state, keyword:string): void {
+    state.conditions.keyword = keyword;
+  },
+  setPage(state, page:page): void {
+    state.conditions.page = page;
+  },
+  initConditions(state): void {
+    state.conditions = initConditions;
   }
 })
 
@@ -104,7 +170,12 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setShopsCount', response.data.count);
   },
   async searchShops({ getters, commit }) {
-    const response = await this.$axios.$get('/api/api/shops', {params: getters.conditions});
+    const defaultConditions = {
+      limit: limit,
+      orderby: orderby
+    }
+    let conditions:apiConditions = {...getters.conditions, ...defaultConditions};
+    const response = await this.$axios.$get('/api/api/shops', {params: conditions});
     commit('setShops', response.data.shops);
     commit('setShopsCount', response.data.count);
   },
@@ -142,8 +213,17 @@ export const actions = actionTree({ state, getters, mutations }, {
       }
     );
   },
-  assignConditionText({ commit }, text:string) {
-    commit('setConditionsText', text);
+  initConditions({commit}) {
+    commit('initConditions');
+  },
+  setPage({commit}, page: page) {
+    commit('setPage', page);
+  },
+  assignConditions({commit}, conditions: conditions) {
+    commit('setConditions', conditions);
+  },
+  assignConditionKeyword({ commit }, keyword:string) {
+    commit('setConditionsKeyword', keyword);
   },
   assignConditionPrefectureIds({ commit }, prefectureIds: prefectureIds) {
     commit('setConditionsPrefectureIds', prefectureIds)
