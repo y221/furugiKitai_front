@@ -43,7 +43,7 @@
           @click="toggleShopLike"
         >
           <fa :icon="check" />
-          お気に入り {{ shop.likesNumber }}
+          お気に入り {{ likeCount }}
         </v-btn>
         <v-btn
           depressed
@@ -60,7 +60,8 @@
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 export default {
   data: () => ({
-    shopId: ''
+    shopId: '',
+    likeCount: 0
   }),
   props: {
     name: String,
@@ -90,12 +91,21 @@ export default {
     async toggleShopLike () {
       let formData = new FormData;
       formData.append('shopId', this.shopId);
-      const response = await this.$accessor.modules.shopLike.toggleShopLike(formData);
+      const response = await this.$accessor.modules.shopLikes.toggleShopLike(formData);
       if (!response.errors) {
-        this.isCompleted = true;
+        this.likeCount = response.count;
       } else {
-        this.errors = response.errors;
+        console.log(response.errors);
       }
+    }
+  },
+  watch: {
+    shop: {
+      handler: function() {
+        this.likeCount = this.shop.likeCount
+      },
+      deep: true,
+      immediate: true
     }
   }
 }
