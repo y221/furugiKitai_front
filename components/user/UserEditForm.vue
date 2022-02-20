@@ -64,12 +64,10 @@ export default {
         uid: this.$auth.user.userId,
       };
 
-      const response = await this.$accessor.modules.users.updateUser(formData);
-      if (!response.errors) {
-        this.isCompleted = true;
-      } else {
-        this.errors = response.errors;
-      }
+      await this.$accessor.modules.users.updateUser(formData)
+      .then(() => this.isCompleted = true)
+      .catch(error =>  this.$router.push('/')); //TODO 500エラーへ?
+
       window.scrollTo({
         top: 0
       });
