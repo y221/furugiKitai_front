@@ -56,15 +56,13 @@
             >
               {{ chip.prefecture }}
             </v-chip>
-          </v-row>
-          <v-row :class="this.$vuetify.breakpoint.xs ? '' : 'mt-n5 mb-2'">
             <v-chip
               v-for="chip in areaSelected"
               :key="chip.id"
               close
               color="chip_color"
               text-color="white"
-              :class="$vuetify.breakpoint.xs ? 'ml-2 mt-2 caption' : 'ml-1 mt-4'"
+              :class="$vuetify.breakpoint.xs ? 'ml-2 mt-2 caption' : 'ml-1 mt-1'"
               @click:close="closeAreaChip(chip.id)"
             >
               {{ chip.name }}

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fill-height">
     <Header :isTop="false" />
     <SearchForm
       @searchShops="searchShops"
