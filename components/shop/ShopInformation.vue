@@ -23,7 +23,7 @@
                 class="blue-grey lighten-5 py-1 px-2 ml-1 review-count"
                 v-if="item.key === 'review'"
               >
-                {{ shop.reviewsNumber }}
+                {{ shop.reviewCount }}
               </span>
             </v-tab>
           </v-tabs>

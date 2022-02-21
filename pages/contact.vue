@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="fill-height">
     <Header :isTop="false" />
-    <v-main class="main-background-color display">
+    <v-main class="main-background-color">
       <v-container>
         <ContactHeader />
         <ContactForm />
@@ -10,9 +10,3 @@
     </v-main>
   </div>
 </template>
-
-<style>
-.display {
-  min-height: 100vh;
-}
-</style>

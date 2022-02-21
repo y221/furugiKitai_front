@@ -5,6 +5,10 @@
         <span :class="header">古着屋検索結果一覧</span>
         <br class="d-flex d-sm-none">
         <div :class="mainContent">
+          <div v-if="!isShopExist">
+            ご指定の条件に該当する古着屋は見つかりませんでした。
+            <br>検索条件を変更して、再度検索してください。
+          </div>
           <div v-for="shop in shops">
             <ShopItem 
               :shop="shop"
@@ -32,8 +36,9 @@ export default {
   data: () => ({
     page: 1,
     shops: [],
-    length: 1,
-    totalVisible: 1
+    length: 0,
+    totalVisible: 1,
+    isShopExist: true
   }),
   props: {
     searchShops: {
@@ -59,6 +64,7 @@ export default {
     }
     await this.$accessor.modules.shops.searchShops();
     this.shops = this.$accessor.modules.shops.shops;
+    this.isShopExist = this.shops.length !== 0;
     this.length = this.$accessor.modules.shops.pageLength;
     this.totalVisible = this.$accessor.modules.shops.totalVisible;
   },
@@ -67,6 +73,7 @@ export default {
       this.$accessor.modules.shops.setPage(page);
       await this.$accessor.modules.shops.searchShops();
       this.shops = this.$accessor.modules.shops.shops;
+      this.isShopExist = this.shops.length !== 0;
       window.scrollTo({
         top: 0
       });
@@ -75,6 +82,7 @@ export default {
   watch: {
     searchShops: function(shops) {
       this.shops = shops;
+      this.isShopExist = this.shops.length !== 0;
       this.length = this.$accessor.modules.shops.pageLength;
       this.totalVisible = this.$accessor.modules.shops.totalVisible;
     }
