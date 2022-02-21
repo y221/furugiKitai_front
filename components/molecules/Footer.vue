@@ -1,57 +1,30 @@
 <template>
   <v-footer color="main_background">
-    <v-row
-      class="mt-2"
-      justify="center"
-      no-gutters
-    >
-      <v-btn
-        :key="aboutButton.text"
-        :to="aboutButton.to"
-        text
-        :class="btnAbout"
-      >
-        {{ aboutButton.text }}
+    <v-row class="mt-2" justify="center" no-gutters>
+      <v-btn key="about" to="/about" text :class="btnFooter">
+        フルギキタイとは？
       </v-btn>
-      <v-btn
-        v-for="button in footerButtons"
-        :key="button.text"
-        :to="button.to"
-        text
-        :class="btnFooter"
-      >
-        {{ button.text }}
+      <v-btn v-if="$auth.loggedIn" key="shops-new" to="/shops/new" text :class="btnFooter">
+        古着屋登録
+      </v-btn>
+      <v-btn key="terms" to="/terms" text :class="btnFooter">
+        利用規約
+      </v-btn>
+      <v-btn key="privacy" to="/privacy" text :class="btnFooter">
+        プライバシーポリシー
+      </v-btn>
+      <v-btn key="contact" to="/contact" text :class="btnFooter">
+        お問い合わせ
       </v-btn>
     </v-row>
-    <v-col
-      :class="footer"
-      cols="12"
-      align="center"
-    >
-    <FurugiKitaiLogo 
-      height="129"
-      width="212.5"
-    />  
+    <v-col :class="footer" cols="12" align="center">
+      <FurugiKitaiLogo height="129" width="212.5"/>  
     </v-col>
   </v-footer>
 </template>
 <script>
 export default {
-  data () {
-    return {
-      aboutButton: aboutButton(),
-      footerButtons: footerButtons()
-    }
-  },
   computed: {
-    btnWidth () {
-      if (this.$vuetify.breakpoint.xs) return 'btn-width'
-      return '';
-    },
-    btnAbout () {
-      if (this.$vuetify.breakpoint.xs) return 'btn-about caption'
-      return '';
-    },
     btnFooter () {
       if (this.$vuetify.breakpoint.xs) return 'btn-footer caption'
       return '';
@@ -62,39 +35,8 @@ export default {
     }
   }
 }
-
-const aboutButton = () => {
-  return {
-    text: 'フルギキタイとは？',
-    to: '/about'
-  }
-}
-
-const footerButtons = () => {
-  return [
-    {
-      text: '古着屋登録',
-      to: '/shops/new'
-    },
-    {
-      text: '利用規約',
-      to: '/terms'
-    },
-    {
-      text: 'プライバシーポリシー',
-      to: '/privacy'
-    },
-    {
-      text: 'お問い合わせ',
-      to: '/contact'
-    }
-  ]
-}
 </script>
 <style>
-.btn-about {
-  width:100%;
-}
 .btn-footer {
   width:50%;
 }
