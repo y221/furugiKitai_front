@@ -1,7 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <CompleteText v-if="isCompleted" text="登録"/>
-    <div class="main-content" v-if="!isCompleted">
+    <div class="main-content">
       <div class="text-h5 font-weight-bold">基本情報</div>
       <ErrorsText class="mt-4" :errors="errors" />
       <div class="mt-5">
@@ -57,7 +56,6 @@ export default {
     holiday: '',
     businessHour: '',
     errors: {},
-    isCompleted: false,
     mainImage: ''
   }),
   methods: {
@@ -82,15 +80,16 @@ export default {
         'formData': formData,
         'id': this.id
       }
-      const response = await this.$accessor.modules.shops.updateShop(updateData);
-      if (!response.errors) {
-        this.isCompleted = true;
-      } else {
-        this.errors = response.errors;
-      }
-      window.scrollTo({
-        top: 0
+      const response = await this.$accessor.modules.shops.updateShop(updateData).catch(err => {
+        this.errors = err.response.data.errors;
+        window.scrollTo({
+          top: 0
+        });
       });
+      if (response) {
+        this.$accessor.modules.messages.setMessage('店舗情報を更新しました！ご協力ありがとうございます！')
+        this.$router.push(`/shops/${response.data.id}`)
+      }
     },
     changeValue(...values) {
       const [value, id] = values

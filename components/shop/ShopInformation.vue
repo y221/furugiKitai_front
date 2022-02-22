@@ -65,7 +65,7 @@ export default {
   computed: {
     mainContent () {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-2'
-      return 'main-content mt-6'
+      return 'main-content mt-9'
     },
     tabFont () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'
