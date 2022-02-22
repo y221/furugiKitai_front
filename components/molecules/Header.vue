@@ -157,15 +157,16 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
+    <v-fade-transition>
+      <v-alert v-if="displayMessage" dense light icon=" " color="secondary" type="warning" style="opacity:0.8; position:absolute; width:100%;">
+        <div class="main-wrapper text-center">{{ message }}</div>
+      </v-alert>
+    </v-fade-transition>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    drawer: false,
-    group: null,
-  }),
   props: {
     isTop: {
       type: Boolean,
@@ -173,16 +174,27 @@ export default {
     }
   },
   data () {
-      return {
-        drawer: null,
-        group: null,
-        menus: [
-          { title: 'フルギキタイとは', url: '/about' },
-          { title: '古着屋登録', url: '/shops/new' },
-          { title: 'お問い合わせ', url: '/contact' }
-        ]
-      }
-    },
+    return {
+      drawer: null,
+      group: null,
+      menus: [
+        { title: 'フルギキタイとは', url: '/about' },
+        { title: '古着屋登録', url: '/shops/new' },
+        { title: 'お問い合わせ', url: '/contact' }
+      ],
+      displayMessage: false
+    }
+  },
+  mounted () {
+    const message = this.$accessor.modules.messages.message;
+    if (message.length !== 0) {
+        this.displayMessage = true;
+        setTimeout(function(){
+          this.displayMessage = '';
+          this.$accessor.modules.messages.setMessage('');
+        }.bind(this), 5000);
+      } 
+  },
   computed: {
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'caption'
@@ -198,7 +210,10 @@ export default {
     },
     isLoggedIn () {
       return this.$auth.loggedIn
-    }
+    },
+    message() {
+      return this.$accessor.modules.messages.message
+    },
   },
   methods: {
     async logout () {

@@ -1,7 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <CompleteText v-if="isCompleted" text="登録"/>
-    <div class="main-content" v-if="!isCompleted">
+    <div class="main-content">
       <div class="d-flex align-center flex-row">
       <TitleBlock />
       <div :class="subHeader">基本情報</div>
@@ -68,7 +67,6 @@ export default {
     holiday: '',
     businessHour: '',
     errors: {},
-    isCompleted: false,
     mainImage: ''
   }),
   methods: {
@@ -95,7 +93,8 @@ export default {
         });
       });
       if (response) {
-        this.isCompleted = true;
+        this.$accessor.modules.messages.setMessage('店舗登録が完了しました！ご協力ありがとうございます！')
+        this.$router.push(`/shops/${response.data.id}`)
       }
         
     },
