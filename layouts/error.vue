@@ -1,7 +1,7 @@
 <template>
   <div class="fill-height">
     <Header :isTop="false" />
-    <v-main class="main-background-color">
+    <v-main class="main-background-color" align="center">
       <v-container>
       <div class="ErrorPage">
         <div class="ErrorPage__content">
@@ -9,9 +9,10 @@
             <template v-if="error.statusCode === 404">
 
               <v-img
+                class="mt-8 mb-12 mx-auto"
                 alt="shoot"
-                :height="479"
-                :width="312"
+                :max-height="this.$vuetify.breakpoint.xs ? '192' : '406'"
+                :max-width="this.$vuetify.breakpoint.xs ? '127' : '269'"
                 src="/images/404.png"
               >
               </v-img>
