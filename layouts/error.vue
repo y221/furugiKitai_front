@@ -17,11 +17,14 @@
               >
               </v-img>
 
-              <span>ERROR</span>
-              <h2>ページが見つかりません。</h2>
-              <p>URLに間違いがないかご確認ください。</p>
+              <div class="text-h1 font-weight-bold">404</div>
+              <div class="text-h2 font-weight-medium">PAGE NOT FOUND</div>
+              <p :class="this.$vuetify.breakpoint.xs ? 'text-caption mt-4' : 'text-body-1 mt-4'"
+              >
+                お探しのページは見つかりませんでした。<br v-if="this.$vuetify.breakpoint.xs">移動または削除された可能性があります。
+              </p>
               <v-btn
-                class="mx-auto my-6 font-weight-bold"
+                class="mx-auto my-10 font-weight-bold"
                 color="primary"
                 depressed
                 rounded
