@@ -202,8 +202,7 @@ export default {
       return this.$auth.loggedIn
     },
     message() {
-      console.log(this.$store.getters['modules/messages/message']);
-      return this.$accessor.modules.messages.message
+      return this.$store.getters['modules/messages/message']
     },
   },
   methods: {
