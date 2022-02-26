@@ -185,16 +185,6 @@ export default {
       displayMessage: false
     }
   },
-  mounted () {
-    const message = this.$accessor.modules.messages.message;
-    if (message.length !== 0) {
-        this.displayMessage = true;
-        setTimeout(function(){
-          this.displayMessage = '';
-          this.$accessor.modules.messages.setMessage('');
-        }.bind(this), 5000);
-      } 
-  },
   computed: {
     btn () {
       if (this.$vuetify.breakpoint.xs) return 'caption'
@@ -212,6 +202,7 @@ export default {
       return this.$auth.loggedIn
     },
     message() {
+      console.log(this.$store.getters['modules/messages/message']);
       return this.$accessor.modules.messages.message
     },
   },
@@ -219,7 +210,22 @@ export default {
     async logout () {
       this.$accessor.modules.users.logoutUser();
     }
-  }
+  },
+  watch: {
+    message: {
+      handler: function(value) {
+        if (value.length !== 0) {
+          this.displayMessage = true;
+          setTimeout(function(){
+            this.displayMessage = '';
+            this.$accessor.modules.messages.setMessage('');
+          }.bind(this), 5000);
+        } 
+      },
+      deep: true,
+      immediate: true
+    }
+  },
 }
 </script>
 <style>
