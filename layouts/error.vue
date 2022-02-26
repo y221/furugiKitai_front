@@ -14,10 +14,9 @@
           </v-img>
           <div class="grey--text text--darken-3">
             <div :class="this.$vuetify.breakpoint.xs ? 'text-h2 font-weight-bold' : 'text-h1 font-weight-bold'">404</div>
-            <div :class="this.$vuetify.breakpoint.xs ? 'text-h4 font-weight-bold' : 'text-h2 font-weight-bold'">PAGE NOT FOUND</div>
+            <div :class="this.$vuetify.breakpoint.xs ? 'text-h4 font-weight-bold' : 'text-h3 font-weight-bold'">PAGE NOT FOUND</div>
           </div>
-          <p :class="this.$vuetify.breakpoint.xs ? 'text-caption mt-4' : 'text-body-1 mt-4'"
-          >
+          <p :class="this.$vuetify.breakpoint.xs ? 'text-caption mt-4' : 'text-body-1 mt-4'">
             お探しのページは見つかりませんでした。<br v-if="this.$vuetify.breakpoint.xs">移動または削除された可能性があります。
           </p>
           <v-btn
