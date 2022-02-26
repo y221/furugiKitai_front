@@ -9,17 +9,12 @@
           :max-height="this.$vuetify.breakpoint.xs ? '225' : '406'"
           :max-width="this.$vuetify.breakpoint.xs ? '149' : '269'"
           src="/images/404.png"
-        >
-        </v-img>
+        ></v-img>
           <div class="grey--text text--darken-3">
             <div :class="this.$vuetify.breakpoint.xs ? 'text-h2 font-weight-bold' : 'text-h1 font-weight-bold'">{{ error.statusCode }}</div>
             <div :class="this.$vuetify.breakpoint.xs ? 'text-h4 font-weight-bold' : 'text-h3 font-weight-bold'">{{ message }}</div>
           </div>
-          <p :class="this.$vuetify.breakpoint.xs ? 'text-caption mt-4' : 'text-body-1 mt-4'">
-            {{ explainUp }}
-            <br v-if="this.$vuetify.breakpoint.xs">
-            {{ explainDown }}
-          </p>
+          <p :class="this.$vuetify.breakpoint.xs ? 'text-caption mt-4' : 'text-body-1 mt-4'">{{ explainUp }}<br v-if="this.$vuetify.breakpoint.xs">{{ explainDown }}</p>
         <v-btn
           class="mx-auto my-10 font-weight-bold"
           color="primary"
