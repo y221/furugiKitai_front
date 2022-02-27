@@ -38,7 +38,7 @@
         <v-btn
           depressed
           color="primary"
-          outlined
+          :outlined="!isUserShopLikeOn"
           :class="btn"
           @click="toggleShopLike"
         >
@@ -61,15 +61,24 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 export default {
   data: () => ({
     shopId: '',
-    likeCount: 0
+    likeCount: 0,
+    isUserShopLikeOn: false
   }),
   props: {
     name: String,
     gender: String,
     shop: Object
   },
-  mounted() {
+  async mounted() {
     this.shopId = this.$route.params.shopId;
+    if (this.$auth.loggedIn) {
+      const response = await this.$axios.$get(`/api/api/users/shop/like`, {
+        params: {
+          shopId: this.shopId
+        }
+      });
+      this.isUserShopLikeOn = response.isUserShopLikeOn;
+    }
   },
   computed: {
     check () {
@@ -93,6 +102,7 @@ export default {
       formData.append('shopId', this.shopId);
       const response = await this.$accessor.modules.shopLikes.toggleShopLike(formData);
       if (!response.errors) {
+        this.isUserShopLikeOn = !this.isUserShopLikeOn;
         this.likeCount = response.count;
       } else {
         console.log(response.errors);
