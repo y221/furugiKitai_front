@@ -14,7 +14,12 @@
 					cols="8"
 					lg="10"
 				>
-					{{ content }}
+					<a v-if="isInstaUrl" :href="content" target="_blank" rel="noopener noreferrer">
+						{{ content }}
+					</a>
+					<p v-else>
+						{{ content }}
+					</p>
 				</v-col>
 			</v-row>
 		</v-card>
@@ -27,6 +32,11 @@ export default {
 	props: {
 		title: String,
 		content: String
+	},
+	computed: {
+		isInstaUrl() {
+			return this.title == "Instagram" && this.content != '未登録';
+		}
 	}
 }
 </script>
