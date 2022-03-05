@@ -1,6 +1,5 @@
 <template>
-  <div class="mt-4">
-    <v-divider :class="this.$vuetify.breakpoint.xs ? '' : 'my-6'"></v-divider>
+  <div class="mt-6">
     <template v-for="(item, index) in items">
       <ShopReview
         :shopId="shopId"
