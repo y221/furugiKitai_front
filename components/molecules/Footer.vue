@@ -20,6 +20,7 @@
     <v-col :class="footer" cols="12" align="center">
       <FurugiKitaiLogo height="129" width="212.5"/>  
     </v-col>
+    <v-col class="mt-n16 text-caption" cols="12" align="center">©FURUGI KITAI</v-col>
   </v-footer>
 </template>
 <script>
