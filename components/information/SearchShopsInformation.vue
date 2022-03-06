@@ -5,10 +5,13 @@
         <span :class="header">古着屋検索結果一覧</span>
         <br class="d-flex d-sm-none">
         <div :class="mainContent">
+          <div v-if="!isShopExist">
+            ご指定の条件に該当する古着屋は見つかりませんでした。
+            <br>検索条件を変更して、再度検索してください。
+          </div>
           <div v-for="shop in shops">
             <ShopItem 
               :shop="shop"
-              :prefectures="prefectures"
             />
           </div>
           <div class="text-center my-10">
@@ -33,10 +36,16 @@ export default {
   data: () => ({
     page: 1,
     shops: [],
-    prefectures: [],
-    length: 1,
-    totalVisible: 1
+    length: 0,
+    totalVisible: 1,
+    isShopExist: true
   }),
+  props: {
+    searchShops: {
+      type: Array,
+      default: []
+    },
+  },
   computed: {
     header () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold text-h5 ml-2'
@@ -48,38 +57,35 @@ export default {
     }
   },
   async mounted() {
-    const getPrefectures = this.$accessor.modules.shops.getPrefectures();
-    const shopParameters = getShopParameters('1');
-    const getShops = this.$accessor.modules.shops.getShops(shopParameters);
-    await Promise.all([getPrefectures, getShops]);
-    this.prefectures = this.$accessor.modules.shops.convertedPrefectures
+    const conditions = this.$route.query;
+    // 条件があれば
+    if (Object.keys(conditions)) {
+      this.$accessor.modules.shops.assignConditions(conditions);
+    }
+    await this.$accessor.modules.shops.searchShops();
     this.shops = this.$accessor.modules.shops.shops;
-    this.length = getPageLength(this.$accessor.modules.shops.shopsCount, displayNumber);
-    this.totalVisible = getTotalVisible(this.length);
+    this.isShopExist = this.shops.length !== 0;
+    this.length = this.$accessor.modules.shops.pageLength;
+    this.totalVisible = this.$accessor.modules.shops.totalVisible;
   },
   methods: {
     async changePage(page) {
-      const shopParameters = getShopParameters(page);
-      await this.$accessor.modules.shops.getShops(shopParameters);
+      this.$accessor.modules.shops.setPage(page);
+      await this.$accessor.modules.shops.searchShops();
       this.shops = this.$accessor.modules.shops.shops;
+      this.isShopExist = this.shops.length !== 0;
       window.scrollTo({
         top: 0
       });
     }
+  },
+  watch: {
+    searchShops: function(shops) {
+      this.shops = shops;
+      this.isShopExist = this.shops.length !== 0;
+      this.length = this.$accessor.modules.shops.pageLength;
+      this.totalVisible = this.$accessor.modules.shops.totalVisible;
+    }
   }
-}
-const getShopParameters = (page) => {
-  return {
-    'limit': '10',
-    'page': page,
-    'orderby': 'created_at',
-    'order': 'DESC'
-  }
-}
-const getPageLength = (count, page) => {
-  return Math.ceil(count / page);
-}
-const getTotalVisible = (length) => {
-  return length >= 5 ? 5 : length;
 }
 </script>

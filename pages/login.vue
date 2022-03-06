@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <v-main class="main-background-color display">
+  <div class="fill-height">
+      <v-main class="main-background-color">
         <v-container>
           <Login />
         </v-container>
@@ -17,8 +17,3 @@ export default {
   }
 }
 </script>
-<style>
-.display {
-  min-height: 100vh;
-}
-</style>

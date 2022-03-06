@@ -1,7 +1,23 @@
 <template>
-  <div>
+  <div class="fill-height">
     <Header :isTop="false" />
-    <FavoriteShopsInformation />
+    <v-main class="main-background-color display">
+      <v-container>
+        <UserDetail />
+      </v-container>
+    </v-main>
     <Footer />
   </div>
 </template>
+
+<script>
+export default {
+  middleware: 'loginUser',
+}
+</script>
+
+<style>
+.display {
+  min-height: 100vh;
+}
+</style>

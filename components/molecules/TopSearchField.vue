@@ -9,6 +9,8 @@
         filled
         rounded
         :dense="this.$vuetify.breakpoint.xs"
+        v-model="text"
+        @change="changeKeyword(text)"
       >
       </v-text-field>
     </div>
@@ -20,8 +22,7 @@
       rounded
       class="font-weight-bold"
       :height="height"
-      
-      @click='test()'
+      @click='search()'
     >
       検索
     </v-btn>
@@ -31,10 +32,10 @@
 export default {
   data () {
     return {
-      aaa: 'bbb'
+      text: ''
     }
   },
-    computed: {
+  computed: {
     textField () {
       if (this.$vuetify.breakpoint.xs) return ''
       return 'text-field'
@@ -45,8 +46,11 @@ export default {
     }
   },
   methods: {
-    async test() {
-      const ip = await this.$axios.$get('/api/api/shops')
+    async search() {
+      this.$emit('searchShops')
+    },
+    changeKeyword(text) {
+      this.$emit('changeKeyword', text);
     }
   }
 }

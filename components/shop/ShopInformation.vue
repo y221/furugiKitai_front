@@ -23,7 +23,7 @@
                 class="blue-grey lighten-5 py-1 px-2 ml-1 review-count"
                 v-if="item.key === 'review'"
               >
-                {{ shop.reviewsNumber }}
+                {{ shop.reviewCount }}
               </span>
             </v-tab>
           </v-tabs>
@@ -65,7 +65,7 @@ export default {
   computed: {
     mainContent () {
       if (this.$vuetify.breakpoint.xs) return 'main-content mt-2'
-      return 'main-content mt-6'
+      return 'main-content mt-9'
     },
     tabFont () {
       if (this.$vuetify.breakpoint.xs) return 'font-weight-bold caption'

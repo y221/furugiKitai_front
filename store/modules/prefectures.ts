@@ -6,10 +6,6 @@ type prefecture = {
   regionId: number,
   prefecture: string
 }
-type region = {
-  id: number,
-  name: string
-}
 type prefecturesGroupByRegion = {
   name: string,
   prefectures: prefecture[]
@@ -17,6 +13,7 @@ type prefecturesGroupByRegion = {
 
 export const state = () => ({
   prefecturesGroupByRegion: [] as prefecturesGroupByRegion,
+  prefectures: [] as prefecture[]
 })
 
 export type RootState = ReturnType<typeof state>
@@ -26,22 +23,18 @@ export const getters = getterTree(state, {
 })
 
 export const mutations = mutationTree(state, {
-  setPrefecturesGroupByRegion(state, values): void {
+  setPrefecturesGroupByRegion(state, values: prefecturesGroupByRegion): void {
     state.prefecturesGroupByRegion = values
+    if (state.prefectures.length) {
+      return;
+  }
+    values.forEach(region => state.prefectures.push(...region.prefectures));
   }
 })
 
 export const actions = actionTree({ state, mutations }, {
   async fetchPrefecturesGroupByRegion({ commit }) {
-    const regionsPromise = this.$axios.get('/api/api/regions')
-    const prefecturesPromise = this.$axios.get('/api/api/prefectures')
-    const [ regionsResponse, prefecturesResponse ] = await Promise.all([regionsPromise, prefecturesPromise])
-    // prefectureをregionごとにグループ分けして格納
-    const prefecturesGroupByRegion = [] as prefecturesGroupByRegion;
-    for (const region of regionsResponse.data as region[]) {
-      const groupedPrefectures: prefecture[] = prefecturesResponse.data.filter((target: prefecture) => region.id === target.regionId)
-      prefecturesGroupByRegion.push({name: region.name, prefectures: groupedPrefectures})
-    }
-    commit('setPrefecturesGroupByRegion', prefecturesGroupByRegion)
+    const response = await this.$axios.get('/api/api/conditions/prefectures');
+    commit('setPrefecturesGroupByRegion', response.data.data)
   }
 })

@@ -3,7 +3,7 @@
     <div>{{ imageName }}</div>
     <img class="image mr-0" :src="image">
     <input
-      style="display: none"
+      style="display:none;"
       ref="input"
       type="file"
       :id="id"
@@ -82,6 +82,7 @@ export default {
     cancelImage() {
       this.image = this.imageDefault;
       this.isImageSelected = false;
+      this.$refs.input.value = '';
     }
   }
 }

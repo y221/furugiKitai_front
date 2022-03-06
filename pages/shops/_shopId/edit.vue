@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fill-height">
     <v-main class="main-background-color">
       <v-container>
         <ShopNewHeader class="mt-10"/>

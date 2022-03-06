@@ -13,7 +13,7 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree({ state, mutations }, {
   async toggleShopLike({ getters, commit}, shopData: object) {
     return await this.$axios.$post(
-      '/api/shopLikes', 
+      '/api/api/shop/likes', 
       shopData,
       {
         headers: {

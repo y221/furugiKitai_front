@@ -1,7 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <CompleteText v-if="isCompleted" text="登録"/>
-    <div class="main-content" v-if="!isCompleted">
+    <div class="main-content">
       <div class="d-flex align-center flex-row">
       <TitleBlock />
       <div :class="subHeader">基本情報</div>
@@ -68,7 +67,6 @@ export default {
     holiday: '',
     businessHour: '',
     errors: {},
-    isCompleted: false,
     mainImage: ''
   }),
   methods: {
@@ -88,16 +86,17 @@ export default {
       formData.append('holiday', this.holiday);
       formData.append('businessHour', this.businessHour);
       formData.append('mainImage', this.mainImage);
-      
-      const response = await this.$accessor.modules.shops.registerShop(formData);
-      if (!response.errors) {
-        this.isCompleted = true;
-      } else {
-        this.errors = response.errors;
-      }
-      window.scrollTo({
-        top: 0
+      const response = await this.$accessor.modules.shops.registerShop(formData).catch(err => {
+        this.errors = err.response.data.errors;
+        window.scrollTo({
+          top: 0
+        });
       });
+      if (response) {
+        this.$accessor.modules.messages.setMessage('店舗登録が完了しました！ご協力ありがとうございます！')
+        this.$router.push(`/shops/${response.data.id}`)
+      }
+        
     },
     changeValue(...values) {
       const [value, id] = values

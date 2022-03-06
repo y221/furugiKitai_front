@@ -25,8 +25,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [{ src: '~/plugins/routerOption.js', ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -74,7 +73,7 @@ export default {
       login: '/',
       logout: '/',
       callback: '/callback',
-      home: '/users/new'
+      home: '/users/me'
     },
     strategies: {
       google: {

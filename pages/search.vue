@@ -1,12 +1,16 @@
 <template>
-  <div>
+  <div class="fill-height">
     <Header :isTop="false" />
     <SearchForm
       @searchShops="searchShops"
-      @assignCondition="assignCondition"
+      @changeKeyword="changeKeyword"
+      @assignConditionPrefecture="assignConditionPrefecture"
+      @assignConditionArea="assignConditionArea"
+      @assignConditionGender="assignConditionGender"
       :regions="regions"
+      :prefectures="prefectures"
     />
-    <SearchShopsInformation />
+    <SearchShopsInformation :searchShops="shops"/>
     <Footer />
   </div>
 </template>
@@ -16,29 +20,42 @@ export default {
   data () {
     return {
       regions: [],
+      prefectures: [],
       conditions: [],
+      shops: [],
     }
   },
   async created() {
     try {
       await this.$accessor.modules.prefectures.fetchPrefecturesGroupByRegion();
+      await this.$accessor.modules.areas.fetchAreasGroupByPrefecture();
       this.regions = this.$accessor.modules.prefectures.prefecturesGroupByRegion
+      this.prefectures = this.$accessor.modules.areas.areasGroupByPrefecture
     } catch (error) {
-      // ここでエラー対応
       console.error(error)
-      console.error(error.response)
     }
   },
   methods: {
-    assignCondition(keyValue) {
-      this.$accessor.modules.shops.assignCondition(keyValue)
+    changeKeyword(text) {
+      this.$accessor.modules.shops.assignConditionKeyword(text);
+    },
+    assignConditionPrefecture(keyValue) {
+      this.$accessor.modules.shops.assignConditionPrefectureIds(keyValue)
+    },
+    assignConditionArea(keyValue) {
+      this.$accessor.modules.shops.assignConditionAreaIds(keyValue)
+    },
+    assignConditionGender(keyValue) {
+      this.$accessor.modules.shops.assignConditionGenders(keyValue)
     },
     async searchShops() {
+      this.$accessor.modules.shops.setPage(1);
+      this.$router.push({
+        path: '/search',
+        query: this.$accessor.modules.shops.conditions
+      });
       await this.$accessor.modules.shops.searchShops()
-
-      // 確認用。<SearchShopsInformation />と繋ぎ込む際に削除してください
-      console.log(this.$accessor.modules.shops.shops)
-      console.log(this.$accessor.modules.shops.shopsCount)
+      this.shops = this.$accessor.modules.shops.shops;
     }
   },
 }
