@@ -9,6 +9,10 @@
 				:title='title'
 				:explain='explain'
 			/>
+			<AboutTeam
+				:title='title'
+				:explain='explain'
+			/>
 		</div>
 	</div>
 </template>
