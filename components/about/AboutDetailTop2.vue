@@ -8,7 +8,7 @@
 			:height="height"
 			:width="width"
 		/>
-    <v-col align="left" md="10">
+    <v-col align="left" md="10" class="mb-4">
       <div :class="explain">
         <div>
           このサイトは運営者が古着をもっと知りたいという思いでつくりはじめたサイトです。

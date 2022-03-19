@@ -5,6 +5,10 @@
 				:title='title'
 				:explain='explain'
 			/>
+			<AboutVision
+				:title='title'
+				:explain='explain'
+			/>
 		</div>
 	</div>
 </template>
