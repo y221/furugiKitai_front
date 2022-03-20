@@ -30,19 +30,22 @@
 							</span>
 						</v-tab>
 					</v-tabs>
-				</div>
-				<div :class="this.$vuetify.breakpoint.xs ? 'mt-4' : 'mt-7'">
-					<v-tabs-items v-model="tab">
-						<v-tab-item key="review">
-							<ShopReviews />
-						</v-tab-item>
-						<v-tab-item key="favorite">
-							<ShopReviews />
-						</v-tab-item>
-					</v-tabs-items>
-				</div>
+				</div>	
 			</div>
 		</div>
+		<div
+			class="main-content"
+			:class="this.$vuetify.breakpoint.xs ? 'mt-4' : 'mt-7'"
+		>
+			<v-tabs-items v-model="tab">
+				<v-tab-item key="review">
+					<ShopReviews />
+				</v-tab-item>
+				<v-tab-item key="favorite">
+					<ShopReviews />
+				</v-tab-item>
+			</v-tabs-items>
+		</div>		
 	</div>
 </template>
 
