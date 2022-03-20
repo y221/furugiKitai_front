@@ -2,7 +2,7 @@
 	<div>
 		<div :class="title" class="pt-10">
 			<div>誰でも古着が楽しめる！</div>
-			<div>お気に入りの古着屋を検索できる<br v-if="this.$vuetify.breakpoint.xs">古着屋ポータルサイト</div>
+			<div>お気に入りの古着屋を検索できる<br v-if="this.$vuetify.breakpoint.smAndDown">古着屋ポータルサイト</div>
 		</div>
 		<FurugiKitaiLogo
 			:height="height"

@@ -3,6 +3,8 @@
 		<div :class="title" class="pt-10">
 			<div>フルギキタイでできること</div>
 		</div>
+		<v-col>
+		</v-col>
 	</div>
 </template>
 
@@ -13,6 +15,7 @@ export default {
 		explain: String
 	},
 	computed: {
+		
 	}
 }
 </script>
