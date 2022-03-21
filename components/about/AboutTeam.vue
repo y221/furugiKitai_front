@@ -3,7 +3,7 @@
 		<div :class="title" class="pt-10 mb-4">
 			<div>フルギキタイ運営チーム</div>
 		</div>
-		<v-row no-gutters justify="center" class="">
+		<v-row justify="center">
 			<div v-for="(social, index) in socials" :key="index">
 				<v-col cols="12">
 				<v-sheet
@@ -16,13 +16,15 @@
 					<v-col>
 						<v-img src="/images/forIcon.png" height=80% widht=80% class="mb-n16"></v-img>
 						<v-avatar size="60" class="mt-n9 mr-1 mb-6">
-							<img :src="`${ social.avatar}`">
+							<img :src="`${ social.avatar }`">
 						</v-avatar>
 					</v-col>
 					<v-col>
+						<div class="text-body-2">
 						<a :href="`${ social.link }`" target="_blank">
 							{{ social.name }}
 						</a>
+						</div>
 					</v-col>
 				</v-sheet>
 				</v-col>
@@ -35,8 +37,6 @@
 export default {
 	props: {
 		title: String,
-		explain: String,
-
 	},
 	computed: {
 		
