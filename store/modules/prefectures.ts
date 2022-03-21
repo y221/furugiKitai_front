@@ -34,7 +34,7 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, mutations }, {
   async fetchPrefecturesGroupByRegion({ commit }) {
-    const response = await this.$axios.get('/api/api/conditions/prefectures');
+    const response = await this.$axios.get('/api/conditions/prefectures');
     commit('setPrefecturesGroupByRegion', response.data.data)
   }
 })

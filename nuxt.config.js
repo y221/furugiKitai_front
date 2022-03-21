@@ -57,6 +57,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
+    prefix: '/api',
+    credentials: true
   },
   proxy: {
     '/api': {
@@ -151,6 +153,10 @@ export default {
     }
   },
   publicRuntimeConfig: {
-    googleApiKey: process.env.GOOGLE_API_KEY
+    googleApiKey: process.env.GOOGLE_API_KEY,
+    axios: {
+      baseURL: process.env.TARGET_SERVER_URL,
+      credentials: true
+    },
   }
 }

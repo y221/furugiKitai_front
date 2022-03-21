@@ -174,7 +174,7 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, getters, mutations }, {
   async getShops({ getters, commit }, parameter: object) {
-    const response = await this.$axios.$get('/api/api/shops', {params: parameter});
+    const response = await this.$axios.$get('/api/shops', {params: parameter});
     commit('setShops', response.data.shops);
     commit('setShopsCount', response.data.count);
   },
@@ -184,27 +184,27 @@ export const actions = actionTree({ state, getters, mutations }, {
       orderby: orderby
     }
     let conditions:apiConditions = {...getters.conditions, ...defaultConditions};
-    const response = await this.$axios.$get('/api/api/shops', {params: conditions});
+    const response = await this.$axios.$get('/api/shops', {params: conditions});
     commit('setShops', response.data.shops);
     commit('setShopsCount', response.data.count);
     commit('setPageLength');
     commit('setTotalVisible');
   },
   async getPrefectures({ getters, commit }) {
-    const prefectures = await this.$axios.$get('/api/api/prefectures');
+    const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
   },
   async getGenders({ getters, commit }) {
-    const genders = await this.$axios.$get('/api/api/genders');
+    const genders = await this.$axios.$get('/api/genders');
     commit('setGenders', genders);
   },
   async getShop({ getters, commit }, id : string) {
-    const response = await this.$axios.$get(`/api/api/shops/${id}`);
+    const response = await this.$axios.$get(`/api/shops/${id}`);
     commit('setShop', response.data);
   },
   async registerShop({ getters, commit}, shopData: object) {
     return await this.$axios.$post(
-      '/api/api/shops', 
+      '/api/shops', 
       shopData,
       {
         headers: {
@@ -215,7 +215,7 @@ export const actions = actionTree({ state, getters, mutations }, {
   },
   async updateShop({ getters, commit}, updateData: any) {
     return await this.$axios.$post(
-      `/api/api/shops/${updateData.id}`, 
+      `/api/shops/${updateData.id}`, 
       updateData.formData,
       {
         headers: {

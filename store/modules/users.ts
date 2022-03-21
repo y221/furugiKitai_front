@@ -23,11 +23,11 @@ export const mutations = mutationTree(state, {
 
 export const actions = actionTree({ state, getters, mutations }, {
   async loginUser({ commit, dispatch }, userData: object) {
-    await this.$axios.get('/api/sanctum/csrf-cookie', { withCredentials: true })
+    await this.$axios.get('/sanctum/csrf-cookie', { withCredentials: true })
     .then(
       async response => {
       const user = await this.$axios.$post(
-        '/api/login', 
+        '/login', 
         userData,
         { withCredentials: true }
       );
@@ -40,14 +40,14 @@ export const actions = actionTree({ state, getters, mutations }, {
 
   async updateUser({ commit }, {id, ...userData}) {
     const user = await this.$axios.$post(
-      `/api/api/users/${id}`, 
+      `/api/users/${id}`, 
       userData,
     );
     commit('setUser', user);
   },
 
   async logoutUser({ commit }) {
-    this.$axios.$post(`/api/logout`).then(() => {
+    this.$axios.$post(`/logout`, { withCredentials: true }).then(() => {
       // @ts-ignore
       this.$auth.logout();
       const user = {}
@@ -56,7 +56,7 @@ export const actions = actionTree({ state, getters, mutations }, {
   },
 
   async getUser({ commit }, id: number) {
-      const user = await this.$axios.$get(`/api/api/users/${id}`).
+      const user = await this.$axios.$get(`/api/users/${id}`).
       catch(
         error => this.$router.push('/') //TODO 404エラーへ
       );
