@@ -12,6 +12,7 @@
 			<AboutTeam
 				:title='title'
 				:explain='explain'
+				class="pb-8"
 			/>
 		</div>
 	</div>

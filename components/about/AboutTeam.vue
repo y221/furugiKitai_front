@@ -1,20 +1,31 @@
 <template>
 	<div>
-		<div :class="title" class="pt-10">
+		<div :class="title" class="pt-10 mb-4">
 			<div>フルギキタイ運営チーム</div>
 		</div>
-		<v-row no-gutters justify="center" class="mx-10">
-			<div v-for="social in socials" :key="social">
-				<v-card elevation="10">
-					<v-sheet color="#FBF8F4">
-						<v-avatar :size="avatarSize">
+		<v-row no-gutters justify="center" class="">
+			<div v-for="(social, index) in socials" :key="index">
+				<v-col cols="12">
+				<v-sheet
+					elevation="0"
+					height=100%
+					width=150
+					rounded
+					color="#FBF8F4"
+				>
+					<v-col>
+						<v-img src="/images/forIcon.png" height=80% widht=80% class="mb-n16"></v-img>
+						<v-avatar size="60" class="mt-n9 mr-1 mb-6">
 							<img :src="`${ social.avatar}`">
 						</v-avatar>
+					</v-col>
+					<v-col>
 						<a :href="`${ social.link }`" target="_blank">
 							{{ social.name }}
 						</a>
-					</v-sheet>
-				</v-card>
+					</v-col>
+				</v-sheet>
+				</v-col>
 			</div>
 		</v-row>			
 	</div>
@@ -50,7 +61,7 @@ export default {
 				},
 				{
 					avatar:'images/avatar04.jpg',
-					name: '@hidetsugu-o',
+					name: '@pmhr18',
 					link:'https://github.com/pmhr18'
 				}
 			]
