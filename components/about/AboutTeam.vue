@@ -3,25 +3,19 @@
 		<div :class="title" class="pt-10">
 			<div>フルギキタイ運営チーム</div>
 		</div>
-		<v-row no-gutters justify="center">
-				<v-card elevation="1">
+		<v-row no-gutters justify="center" class="mx-10">
+			<div v-for="social in socials" :key="social">
+				<v-card elevation="10">
 					<v-sheet color="#FBF8F4">
-						<div v-for="(avatar, index) in avatars" :key="index">
-							<v-avatar :size="avatarSize">
-								<img :src="avatar">
-							</v-avatar>
-						</div>
-						<div v-for="(social, index) in socials" :key="index">
-							<div v-for="(link, index) in links" :key="index">
-								<a :href="links" target="_blank">
-									{{ social }}
-								</a>
-							</div>
-						</div>
-
+						<v-avatar :size="avatarSize">
+							<img :src="`${ social.avatar}`">
+						</v-avatar>
+						<a :href="`${ social.link }`" target="_blank">
+							{{ social.name }}
+						</a>
 					</v-sheet>
 				</v-card>
-
+			</div>
 		</v-row>			
 	</div>
 </template>
@@ -38,24 +32,28 @@ export default {
 	},
 	data() {
 		return {
-				avatars:[
-					'images/avatar01.jpg',
-					'images/avatar02.jpg',
-					'images/avatar03.jpg',
-					'images/avatar04.jpg'
-				],
-				socials:[
-					'@hidetsugu-o',
-					'@y221',
-					'@Mashino1123',
-					'@theponthface'
-				],
-				links:[
-					'https://github.com/hidetsugu-o',
-					'https://github.com/y221',
-					'https://github.com/Mashino1123',
-					'https://www.instagram.com/theponthface/' 
-				]
+			socials:[
+				{
+					avatar:'images/avatar01.jpg',
+					name: '@hidetsugu-o',
+					link:'https://github.com/hidetsugu-o'
+				},
+				{
+					avatar:'images/avatar02.jpg',
+					name: '@y221',
+					link:'https://github.com/y221'
+				},
+				{
+					avatar:'images/avatar03.jpg',
+					name: '@Mashino1123',
+					link:'https://github.com/Mashino1123'
+				},
+				{
+					avatar:'images/avatar04.jpg',
+					name: '@hidetsugu-o',
+					link:'https://github.com/pmhr18'
+				}
+			]
 		}
 	}
 }
