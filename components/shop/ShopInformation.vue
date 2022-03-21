@@ -56,10 +56,10 @@ export default {
         text: '店舗情報',
         key: 'shopInformation'  
       },
-      review: {
-        text: 'クチコミ',
-        key: 'review'  
-      }
+      // review: {
+      //   text: 'クチコミ',
+      //   key: 'review'  
+      // }
     }
   }),
   computed: {

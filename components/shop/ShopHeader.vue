@@ -72,7 +72,7 @@ export default {
   async mounted() {
     this.shopId = this.$route.params.shopId;
     if (this.$auth.loggedIn) {
-      const response = await this.$axios.$get(`/api/api/users/shop/like`, {
+      const response = await this.$axios.$get(`/api/users/shop/like`, {
         params: {
           shopId: this.shopId
         }
