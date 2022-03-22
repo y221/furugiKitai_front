@@ -38,9 +38,6 @@ export default {
 	props: {
 		title: String,
 	},
-	computed: {
-		
-	},
 	data() {
 		return {
 			socials:[
