@@ -75,6 +75,7 @@ export default {
   async created() {
     await this.$accessor.modules.shops.getShop(this.$route.params.shopId);
     this.shop = this.$accessor.modules.shops.shop;
+    console.log(this.shop)
   }
 }
 </script>
