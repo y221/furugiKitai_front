@@ -1,7 +1,15 @@
 <template>
-  <div>
-    <v-col align="left">
-      <div :class="mainText">
+	<div>
+		<div :class="title" class="pt-10">
+			<div>誰でも古着が楽しめる！</div>
+			<div>お気に入りの古着屋を検索できる<br v-if="this.$vuetify.breakpoint.smAndDown">古着屋ポータルサイト</div>
+		</div>
+		<FurugiKitaiLogo
+			:height="height"
+			:width="width"
+		/>
+    <v-col align="left" md="9" cols="12" :class="explain">
+      <div :class="this.$vuetify.breakpoint.xs ? '' : 'mx-15'">
         <div>
           このサイトは運営者が古着をもっと知りたいという思いでつくりはじめたサイトです。
         </div>
@@ -20,15 +28,19 @@
 
 <script>
 export default {
-  computed: {
-    mainText () {
-      if (this.$vuetify.breakpoint.xs) return 'text-body-2 font-weight-medium pt-6 px-2'
-      if (this.$vuetify.breakpoint.mdAndDown) return 'text-body-1 font-weight-medium pt-6 px-2'
-      return 'text-h6 font-weight-medium px-5 mx-15 px-15 pt-6 py-10'
+	props: {
+		title: String,
+		explain: String
+	},
+	computed: {
+    height () {
+      if (this.$vuetify.breakpoint.xs) return '250'
+      return '350'
+    },
+    width () {
+      if (this.$vuetify.breakpoint.xs) return '250'
+      return '350'
     }
-  }
+	}
 }
 </script>
-
-
-
