@@ -31,7 +31,6 @@ export default {
     noMap: false
   }),
   created() {
-    console.log(this.latitude);
     this.$watch(function() {
       return [this.latitude, this.longitude]
     }, async function() {
@@ -39,7 +38,6 @@ export default {
         this.noMap = true;
         return;
       }
-      console.log(this.latitude);
       this.google = await GoogleMapsApiLoader({
         apiKey: this.$config.googleApiKey
       });
