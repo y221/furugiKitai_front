@@ -7,11 +7,11 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'furugiKitai_front',
+    title: 'フルギキタイ',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '全国の古着屋を掲載した古着屋ポータルサイト。キーワードや都道府県で検索でき、ユーザー登録することでお気に入りの古着屋をチェックすることができます。フルギキタイを使ってお気に入りの古着屋を見つけよう！' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
