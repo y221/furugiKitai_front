@@ -11,7 +11,6 @@
         <a v-if="this.instagram" :href="this.instagram" target="_blank" :class="this.$vuetify.breakpoint.xs ? 'my-0' : 'mt-2'">
             <fa :icon="faInstagram" size="2x" class="instagram"/>
         </a>
-        <p v-else :class="textFont" style="white-space: pre-line;">未登録</p>
       </v-list-item-content>
     </v-list-item>
   </div>
