@@ -92,3 +92,5 @@ sw.*
 .vscode
 
 functions/
+
+.firebase/hosting.ZGlzdA.cache

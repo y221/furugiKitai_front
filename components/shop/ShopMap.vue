@@ -48,8 +48,8 @@ export default {
   methods: {
     initializeMap() {
       const latLng = {
-          lat: this.latitude,
-          lng: this.longitude
+          lat: Number(this.latitude),
+          lng: Number(this.longitude)
         }
       const mapConfig = {
         center: latLng,

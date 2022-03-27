@@ -14,7 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: '全国の古着屋を掲載した古着屋ポータルサイト。キーワードや都道府県で検索でき、ユーザー登録することでお気に入りの古着屋をチェックすることができます。フルギキタイを使ってお気に入りの古着屋を見つけよう！' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/images/icon.ico' }
     ]
   },
 
