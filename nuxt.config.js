@@ -11,7 +11,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'お気に入りの古着屋がみつかる検索サイト' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/images/icon.ico' }
