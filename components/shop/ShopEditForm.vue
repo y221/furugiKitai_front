@@ -12,7 +12,7 @@
         <FormTextfield columnName="住所3" label="ビル名　例：フルギキタイビル 2F" :required="false" id="building"  v-on:change="changeValue" :default="building" />
         <FormTextfield columnName="アクセス" label="例：○○駅より徒歩3分" :required="false" id="access"  v-on:change="changeValue" :default="access" />
         <FormTextfield columnName="TEL" label="例：090-1234-5678" :required="false" id="phoneNumber" v-on:change="changeValue" :default="phoneNumber" />
-        <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagramUrl" v-on:change="changeValue" :default="instagramUrl" />
+        <FormTextfield columnName="Instagram" label="例：https://instagram.com/xxxxx" :required="false" id="instagramUrl" v-on:change="changeValue" :default="instagramUrl" />
         <FormTextarea columnName="定休日" label="例：水曜日" :required="false" id="holiday" v-on:change="changeValue" :default="holiday" />
         <FormTextarea columnName="営業時間" label="例：14時〜21時" :required="false" id="businessHour" v-on:change="changeValue" :default="businessHour" />
       </div>
