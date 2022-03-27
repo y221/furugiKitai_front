@@ -37,16 +37,16 @@
           :text="shop.phoneNumber"
         />
         <ShopDetailList
-          title="Instagram"
-          :text="shop.instagramUrl"
-        />
-        <ShopDetailList
           title="定休日"
           :text="shop.holiday"
         />
         <ShopDetailList
           title="営業時間"
           :text="shop.businessHour"
+        />
+        <ShopSnsList
+          title="SNS"
+          :instagram="shop.instagramUrl"
         />
       </v-list>
     </v-col>
