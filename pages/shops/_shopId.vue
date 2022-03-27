@@ -1,8 +1,12 @@
 <template>
   <div class="fill-height">
     <Header :isTop="false" />
-    <ShopInformation v-if="display" />
-    <NuxtChild />
+    <v-main class="main-background-color">
+      <v-container>
+        <ShopInformation v-if="display" />
+        <NuxtChild />
+      </v-container>
+    </v-main>
     <Footer />
   </div>
 </template>
