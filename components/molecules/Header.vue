@@ -158,7 +158,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-fade-transition>
-      <v-alert v-if="displayMessage" dense light icon=" " color="secondary" type="warning" style="opacity:0.8; position:absolute; width:100%;">
+      <v-alert v-if="displayMessage" dense light icon=" " color="secondary" type="warning" class="message">
         <div class="main-wrapper text-center">{{ message }}</div>
       </v-alert>
     </v-fade-transition>
@@ -230,5 +230,11 @@ export default {
 <style>
 .logo-wrapper {
   margin-right:48px;
+}
+.message {
+  z-index:10;
+  opacity:0.8;
+  position:absolute;
+  width:100%;
 }
 </style>
