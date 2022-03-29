@@ -232,7 +232,7 @@ export default {
   margin-right:48px;
 }
 .message {
-  z-index:10;
+  z-index:100;
   opacity:0.8;
   position:absolute;
   width:100%;
