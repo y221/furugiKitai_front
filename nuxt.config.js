@@ -21,7 +21,7 @@ export default {
       { hid: 'og:url', property: 'og:url', content: 'https://furugi-kitai.com' },
       { hid: 'og:title', property: 'og:title', content: 'フルギキタイ' },
       { hid: 'og:description', property: 'og:description', content: 'お気に入りの古着屋がみつかる検索サイト' },
-      { hid: 'og:image', property: 'og:image', content: 'https://furugi-kitai.com/images/mainLogo.png' },
+      { hid: 'og:image', property: 'og:image', content: 'https://furugi-kitai.com/images/ogimage.png' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/images/icon.ico' }
