@@ -158,7 +158,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-fade-transition>
-      <v-alert v-if="displayMessage" dense light icon=" " color="secondary" type="warning" class="message">
+      <v-alert v-if="displayMessage" dense light icon=" " color="secondary" type="warning" style="z-index:100; opacity:0.8; position:absolute; width:100%;">
         <div class="main-wrapper text-center">{{ message }}</div>
       </v-alert>
     </v-fade-transition>
