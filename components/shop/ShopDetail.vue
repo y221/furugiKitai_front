@@ -63,7 +63,7 @@ export default {
   created() {
     this.$watch(() => this.shop, () => {
         const building = this.shop.building ?? '';
-        this.address = `${this.shop.prefecture}${this.shop.city}${this.shop.address}${building}`
+        this.address = `${this.shop.prefecture}${this.shop.city}${this.shop.address} ${building}`
     })
   }
 }
