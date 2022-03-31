@@ -19,7 +19,7 @@
             </v-text-field>
             <v-btn
               button=""
-              :class="conditionBtn"
+              :class="conditionBtnPrefecture"
               :width="conditionWidth"
               :height="conditionHeight"
               color="secondary"
@@ -32,7 +32,7 @@
             </v-btn>
             <v-btn
               button=""
-              :class="conditionBtn"
+              :class="conditionBtnArea"
               :width="conditionWidth"
               :height="conditionHeight"
               color="secondary"
@@ -221,8 +221,12 @@ export default {
       if (this.$vuetify.breakpoint.xs) return '40'
       return '58'
     },
-    conditionBtn () {
+    conditionBtnPrefecture () {
       if (this.$vuetify.breakpoint.xs) return 'caption font-weight-bold mt-n4'
+      return 'ml-1 font-weight-bold'
+    },
+    conditionBtnArea () {
+      if (this.$vuetify.breakpoint.xs) return 'caption font-weight-bold mt-1'
       return 'ml-1 font-weight-bold'
     },
     prefectureSelected() {
