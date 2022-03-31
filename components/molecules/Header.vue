@@ -151,7 +151,7 @@
             ログアウト
           </v-btn>
           <v-divider class="my-4"></v-divider>
-            <v-list-item class="ml-4" v-for="menu in menus" :key="menu.title" :to="menu.url">
+            <v-list-item class="ml-4" v-for="menu in menus" :key="menu.title" :to="menu.url" v-if="isDisplay(menu.key)">
                 <v-list-item-title>{{ menu.title }}</v-list-item-title>
             </v-list-item>
         </v-list-item-group>
@@ -178,9 +178,9 @@ export default {
       drawer: null,
       group: null,
       menus: [
-        { title: 'フルギキタイとは', url: '/about' },
-        { title: '古着屋登録', url: '/shops/new' },
-        { title: 'お問い合わせ', url: '/contact' }
+        { title: 'フルギキタイとは', url: '/about', key: 'about'},
+        { title: '古着屋登録', url: '/shops/new', key: 'shopNew' },
+        { title: 'お問い合わせ', url: '/contact', key: 'contact' }
       ],
       displayMessage: false
     }
@@ -208,6 +208,12 @@ export default {
   methods: {
     async logout () {
       this.$accessor.modules.users.logoutUser();
+    },
+    isDisplay(key) {
+      if (key !== 'shopNew') {
+        return true;
+      }
+      return this.$auth.loggedIn
     }
   },
   watch: {
