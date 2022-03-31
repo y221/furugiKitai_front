@@ -35,7 +35,7 @@
         sm="6"
       >
         <p class="text-h5 font-weight-medium main-text-color mb-0">{{ shop.name }}</p>
-        <p :class="address">{{shop.prefecture}}{{ shop.city }}{{ shop.address }}{{ shop.building }}</p>
+        <p :class="address">{{shop.prefecture}}{{ shop.city }}{{ shop.address }} {{ shop.building }}</p>
         <p :class="time">
           <span>営業時間</span>
           <span class="ml-1" v-if="shop.businessHour">{{ shop.businessHour }}</span>
