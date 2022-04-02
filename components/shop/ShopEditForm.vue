@@ -97,10 +97,7 @@ export default {
     }
   },
   async mounted() {
-    const getPrefectures = this.$accessor.modules.shops.getPrefectures();
-    const getGenders = this.$accessor.modules.shops.getGenders();
-    const getShop = this.$accessor.modules.shops.getShop(this.$route.params.shopId);
-    await Promise.all([getGenders, getPrefectures, getShop]);
+    await this.$accessor.modules.shops.editShop(this.$route.params.shopId);
     this.prefectures = this.$accessor.modules.shops.prefectures;
     this.genders = this.$accessor.modules.shops.genders;
     const shop = this.$accessor.modules.shops.shop;

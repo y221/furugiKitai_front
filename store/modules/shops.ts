@@ -190,6 +190,12 @@ export const actions = actionTree({ state, getters, mutations }, {
     commit('setPageLength');
     commit('setTotalVisible');
   },
+  async editShop({ getters, commit }, id : string) {
+    const response = await this.$axios.$get(`/api/shops/edit/${id}`);
+    commit('setShop', response.data.shop);
+    commit('setPrefectures', response.data.prefectures);
+    commit('setGenders', response.data.genders);
+  },
   async getPrefectures({ getters, commit }) {
     const prefectures = await this.$axios.$get('/api/prefectures');
     commit('setPrefectures', prefectures);
