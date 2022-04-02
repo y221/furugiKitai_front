@@ -7,14 +7,14 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    title: 'フルギキタイ',
+    titleTemplate: 'フルギキタイ | %s',
     htmlAttrs:{
       lang: 'ja'
     },
-    title: 'フルギキタイ',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'フルギキタイ'},
       { hid: 'description', name: 'description', content: 'お気に入りの古着屋がみつかる検索サイト' },
       { hid: 'og:site_name', property: 'og:site_name', content: 'フルギキタイ' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
@@ -126,7 +126,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'ja'
     }
   },
 

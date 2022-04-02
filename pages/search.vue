@@ -14,9 +14,13 @@
     <Footer />
   </div>
 </template>
-
 <script>
 export default {
+  head() {
+    return {
+      title: '店舗検索'
+    }
+  },
   data () {
     return {
       regions: [],
