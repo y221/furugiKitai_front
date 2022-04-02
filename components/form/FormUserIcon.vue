@@ -74,8 +74,12 @@ export default {
       required: true
     },
     imagePath: {
+      default: "",
+      required: false
+    },
+    id: {
       type: String,
-      default: ""
+      required: true
     }
   },
   mounted () {
@@ -93,10 +97,9 @@ export default {
     selectedImage() {
       const file = this.$refs.input.files[0]
       if (!file) return;
-      this.isImageSelected = !this.isImageSelected;
-      if (this.isImageSelected) {
-        this.image = window.URL.createObjectURL(file);
-      }
+      this.image = window.URL.createObjectURL(file);
+      this.isImageSelected = true;
+      this.$emit("change", event.target.files[0], this.id);
     },
     cancelImage() {
       this.image = imageDefault;
