@@ -31,10 +31,9 @@ export default {
   },
   async created() {
     try {
-      await this.$accessor.modules.prefectures.fetchPrefecturesGroupByRegion();
-      await this.$accessor.modules.areas.fetchAreasGroupByPrefecture();
-      this.regions = this.$accessor.modules.prefectures.prefecturesGroupByRegion
-      this.prefectures = this.$accessor.modules.areas.areasGroupByPrefecture
+      await this.$accessor.modules.conditions.fetchConditions();
+      this.regions = this.$accessor.modules.conditions.prefecturesGroupByRegion
+      this.prefectures = this.$accessor.modules.conditions.areasGroupByPrefecture
     } catch (error) {
       console.error(error)
     }
