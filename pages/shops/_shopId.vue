@@ -12,6 +12,11 @@
 </template>
 <script>
 export default {
+  head() {
+    return {
+      title: '古着屋情報'
+    }
+  },
   data: () => ({
     display: true
   }),

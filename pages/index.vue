@@ -7,7 +7,13 @@
   </div>
 </template>
 <script lang="ts">
-
+export default {
+  head() {
+    return {
+      titleTemplate: ''
+    }
+  }
+}
 </script>
 <style>
 </style>

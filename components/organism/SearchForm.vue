@@ -47,7 +47,7 @@
           <v-row :class="this.$vuetify.breakpoint.xs ? '' : 'mt-n5 mb-2'">
             <v-chip
               v-for="chip in prefectureSelected"
-              :key="chip.id"
+              :key="'prefecture' + chip"
               close
               color="chip_color"
               text-color="white"
@@ -58,7 +58,7 @@
             </v-chip>
             <v-chip
               v-for="chip in areaSelected"
-              :key="chip.id"
+              :key="'area' + chip"
               close
               color="chip_color"
               text-color="white"
@@ -230,11 +230,11 @@ export default {
       return 'ml-1 font-weight-bold'
     },
     prefectureSelected() {
-      const prefectures = this.$accessor.modules.prefectures.prefectures
+      const prefectures = this.$accessor.modules.conditions.prefectures
       return prefectures.filter(prefecture => this.selectedPrefectureIds.includes(prefecture.id))
     },
     areaSelected() {
-      let areas = this.$accessor.modules.areas.areas
+      let areas = this.$accessor.modules.conditions.areas
       return areas.filter(area => this.selectedAreaIds.includes(area.id))
     }
   },

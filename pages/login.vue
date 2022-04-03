@@ -10,6 +10,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: 'ログイン'
+    }
+  },
   created () {
     if (this.$auth.loggedIn) {
       this.$router.push('/');

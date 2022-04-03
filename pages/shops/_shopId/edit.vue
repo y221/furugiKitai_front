@@ -6,6 +6,11 @@
 </template>
 <script>
 export default {
+  head() {
+    return {
+      title: '古着屋編集'
+    }
+  },
   created () {
     if (!this.$auth.loggedIn) {
       this.$router.push('/login');

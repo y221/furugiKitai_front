@@ -12,6 +12,11 @@
 </template>
 <script>
 export default {
+  head() {
+    return {
+      title: '古着屋登録'
+    }
+  },
   created () {
     if (!this.$auth.loggedIn) {
       this.$router.push('/login');

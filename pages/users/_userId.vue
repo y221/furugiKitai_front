@@ -13,6 +13,16 @@
 <script>
 export default {
   middleware: 'loginUser',
+  head() {
+    if (this.$route.params.userId == 'me') {
+      return {
+        title: 'マイページ'
+      }
+    }
+    return {
+      title: 'ユーザ情報'
+    }
+  }
 }
 </script>
 

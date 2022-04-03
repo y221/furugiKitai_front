@@ -12,6 +12,11 @@
 
 <script>
 export default {
-  middleware: 'checkLoggedIn'
+  middleware: 'checkLoggedIn',
+  head() {
+    return {
+      title: 'プロフィール編集'
+    }
+  }
 }
 </script>
