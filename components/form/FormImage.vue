@@ -83,6 +83,7 @@ export default {
       this.image = this.imageDefault;
       this.isImageSelected = false;
       this.$refs.input.value = '';
+      this.$emit("change", '', this.id);
     }
   }
 }
