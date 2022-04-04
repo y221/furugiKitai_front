@@ -4,7 +4,8 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex';
 type prefecture = {
   id: number,
   regionId: number,
-  prefecture: string
+  prefecture: string,
+  shopCount: number
 }
 type prefecturesGroupByRegion = {
   name: string,
@@ -14,7 +15,8 @@ type prefecturesGroupByRegion = {
 type area = {
   id: number,
   prefectureId: number,
-  name: string
+  name: string,
+  shopCount: number
 }
 type areasGroupByPrefecture = {
   prefecture: string,

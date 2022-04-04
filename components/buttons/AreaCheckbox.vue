@@ -37,7 +37,7 @@
                 v-for="area in prefecture.areas"
                 :key="area.id"
                 :class="$vuetify.breakpoint.xs ? 'ml-2 mr-4 mt-2' :'ml-4 mt-2'"
-                :label="area.name"
+                :label="area.name + ' (' + area.shop_count + ')'"
                 :value="area.id"
                 v-model="selected"
               ></v-checkbox>
