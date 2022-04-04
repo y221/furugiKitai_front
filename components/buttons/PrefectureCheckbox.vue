@@ -37,7 +37,7 @@
                 v-for="prefecture in region.prefectures"
                 :key="prefecture.id"
                 :class="$vuetify.breakpoint.xs ? 'ml-2 mr-4 mt-2' :'ml-4 mt-2'"
-                :label="prefecture.prefecture"
+                :label="prefecture.prefecture + ' (' + prefecture.shop_count + ')'"
                 :value="prefecture.id"
                 v-model="selected"
               ></v-checkbox>
