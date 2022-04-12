@@ -14,10 +14,8 @@
 					color="#FBF8F4"
 				>
 					<v-col>
-						<v-img src="/images/forIcon.png" height=80% widht=80% class="mb-n16"></v-img>
-						<v-avatar size="60" class="mt-n9 mr-1 mb-6">
-							<img :src="`${ social.avatar }`">
-						</v-avatar>
+						<v-img src="/images/forIcon.png" height=100% widht=100% class="d-inline-block mb-n16"></v-img>
+						<v-img :src="`${ social.avatar }`" height=70% width=70% class="d-inline-block mt-n14 mr-2 "></v-img>
 					</v-col>
 					<v-col>
 						<div class="text-body-2">
@@ -42,22 +40,22 @@ export default {
 		return {
 			socials:[
 				{
-					avatar:'images/avatar01.jpg',
+					avatar:'images/avatar01.png',
 					name: '@hidetsugu-o',
 					link:'https://github.com/hidetsugu-o'
 				},
 				{
-					avatar:'images/avatar02.jpg',
+					avatar:'images/avatar02.png',
 					name: '@y221',
 					link:'https://github.com/y221'
 				},
 				{
-					avatar:'images/avatar03.jpg',
+					avatar:'images/avatar03.png',
 					name: '@Mashino1123',
 					link:'https://github.com/Mashino1123'
 				},
 				{
-					avatar:'images/avatar04.jpg',
+					avatar:'images/avatar04.png',
 					name: '@pmhr18',
 					link:'https://github.com/pmhr18'
 				}
