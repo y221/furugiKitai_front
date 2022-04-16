@@ -24,7 +24,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: 'https://furugi-kitai.com/images/ogimage.png' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/images/icon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ]
   },
 
