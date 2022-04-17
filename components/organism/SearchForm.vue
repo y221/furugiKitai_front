@@ -12,7 +12,7 @@
               filled
               color="grey"
               :dense="this.$vuetify.breakpoint.xs"
-              :class="this.$vuetify.breakpoint.xs ? 'mx-2' : '' "
+              :class="this.$vuetify.breakpoint.xs ? 'mx-2 mt-4' : '' "
               v-model="keyword"
               @change="changeKeyword(keyword)"
             >
