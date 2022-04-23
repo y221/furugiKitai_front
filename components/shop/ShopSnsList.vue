@@ -43,9 +43,7 @@ export default {
   transition: .5s;/*ゆっくり変化*/
 }
 .instagram {
-  color: #FFF;
-  background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
-  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+  color:#505050;
   padding:0 3px;
   border-radius: 5px;
 }

@@ -131,13 +131,19 @@ export const mutations = mutationTree(state, {
       state.conditions.order = conditions.order;
     }
     if (conditions.prefectureIds) {
-      state.conditions.prefectureIds = conditions.prefectureIds;
+      state.conditions.prefectureIds = Array.isArray(conditions.prefectureIds)
+        ? conditions.prefectureIds
+        : [conditions.prefectureIds];
     }
     if (conditions.areaIds) {
-      state.conditions.areaIds = conditions.areaIds;
+      state.conditions.areaIds = Array.isArray(conditions.areaIds)
+        ? conditions.areaIds
+        : [conditions.areaIds];
     }
     if (conditions.genderIds) {
-      state.conditions.genderIds = conditions.genderIds;
+      state.conditions.genderIds = Array.isArray(conditions.genderIds)
+        ? conditions.genderIds
+        : [conditions.genderIds];
     }
     if (conditions.keyword) {
       state.conditions.keyword = conditions.keyword;

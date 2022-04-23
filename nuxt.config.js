@@ -8,7 +8,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'フルギキタイ',
-    titleTemplate: 'フルギキタイ | %s',
+    titleTemplate: '%s | フルギキタイ ',
     htmlAttrs:{
       lang: 'ja'
     },
@@ -24,7 +24,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: 'https://furugi-kitai.com/images/ogimage.png' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/images/icon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 

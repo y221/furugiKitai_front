@@ -71,6 +71,10 @@ export default {
   methods: {
     async changePage(page) {
       this.$accessor.modules.shops.setPage(page);
+      this.$router.push({
+        path: '/search',
+        query: this.$accessor.modules.shops.conditions
+      });
       await this.$accessor.modules.shops.searchShops();
       this.shops = this.$accessor.modules.shops.shops;
       this.isShopExist = this.shops.length !== 0;

@@ -12,7 +12,7 @@
               filled
               color="grey"
               :dense="this.$vuetify.breakpoint.xs"
-              :class="this.$vuetify.breakpoint.xs ? 'mx-2' : '' "
+              :class="this.$vuetify.breakpoint.xs ? 'mx-2 mt-4' : '' "
               v-model="keyword"
               @change="changeKeyword(keyword)"
             >
@@ -141,22 +141,36 @@ export default {
     const conditions = this.$route.query;
     // 都道府県IDのデフォルト設定
     if (Object.keys(conditions) && conditions.prefectureIds) {
-      for (const prefectureId of conditions.prefectureIds) {
-        this.selectedPrefectureIds.push(Number(prefectureId))
+      if (Array.isArray(conditions.prefectureIds)) {
+        for (const prefectureId of conditions.prefectureIds) {
+          this.selectedPrefectureIds.push(Number(prefectureId))
+        }
+      } else {
+        this.selectedPrefectureIds.push(Number(conditions.prefectureIds))
       }
     }
     // エリアIDのデフォルト設定
     if (Object.keys(conditions) && conditions.areaIds) {
-      for (const areaId of conditions.areaIds) {
-        this.selectedAreaIds.push(Number(areaId))
+      if (Array.isArray(conditions.areaIds)) {
+        for (const areaId of conditions.areaIds) {
+          this.selectedAreaIds.push(Number(areaId))
+        }
+      } else {
+        this.selectedAreaIds.push(Number(conditions.areaIds))
       }
     }
     // 性別設定
     if (Object.keys(conditions) && conditions.genderIds) {
       const genderIdsMap = this.$accessor.modules.shops.genderIdsMap
-      for (const genderId of conditions.genderIds) {
-        if (genderIdsMap[genderId]) {
-          this.selectedGenders.push(genderIdsMap[genderId])
+      if (Array.isArray(conditions.genderIds)) {
+        for (const genderId of conditions.genderIds) {
+          if (genderIdsMap[genderId]) {
+            this.selectedGenders.push(genderIdsMap[genderId])
+          }
+        }
+      } else {
+        if (genderIdsMap[conditions.genderIds]) {
+          this.selectedGenders.push(genderIdsMap[conditions.genderIds])
         }
       }
     }
