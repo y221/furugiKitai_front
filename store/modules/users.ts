@@ -32,6 +32,7 @@ export const actions = actionTree({ state, getters, mutations }, {
         { withCredentials: true }
       );
       commit('setUser', user.data);
+      return user;
     })
     .catch(
       error => this.$router.push('/login')
@@ -45,6 +46,7 @@ export const actions = actionTree({ state, getters, mutations }, {
       {headers: {'Content-Type': 'multipart/form-data'}}
     );
     commit('setUser', user.data);
+    return user;
   },
 
   async logoutUser({ commit }) {

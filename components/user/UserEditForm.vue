@@ -63,13 +63,19 @@ export default {
       formData.append('instagram', this.instagram);
       formData.append('uid', this.$auth.user.userId);
 
-      await this.$accessor.modules.users.updateUser(formData)
-      .then(() => this.isCompleted = true)
-      .catch(error =>  this.$router.push('/')); //TODO 500エラーへ?
-
-      window.scrollTo({
-        top: 0
+      const response = await this.$accessor.modules.users.updateUser(formData)
+      .catch(err => {
+        this.errors = err.response.data.errors;
+        window.scrollTo({
+          top: 0
+        });
       });
+
+      if (response) {
+        this.$accessor.modules.messages.setMessage('プロフィール編集が完了しました！');
+        this.$router.push(`/users/me`);
+      };
+
     },
     changeValue(...values) {
       const [value, id] = values;
