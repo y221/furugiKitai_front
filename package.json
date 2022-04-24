@@ -23,7 +23,6 @@
     "google-maps-api-loader": "^1.1.1",
     "nanoid": "^2.1.11",
     "nuxt": "^2.14.12",
-    "nuxt-basic-auth-module": "^1.4.1",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-typed-vuex": "^0.1.22",
     "nuxt-webfontloader": "^1.1.0"

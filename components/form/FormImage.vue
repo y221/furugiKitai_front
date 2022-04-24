@@ -35,8 +35,8 @@
 export default {
   data ()　{
     return {
-      image: "/images/noimage.png",
-      imageDefault: "/images/noimage.png",
+      image: "/images/noimage.webp",
+      imageDefault: "/images/noimage.webp",
       isImageSelected: false
     }
   },

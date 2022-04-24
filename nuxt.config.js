@@ -58,7 +58,6 @@ export default {
     'nuxt-webfontloader',
     'nuxt-fontawesome',
     '@nuxtjs/auth',
-    'nuxt-basic-auth-module',
   ],
   fontawesome: {
     component: 'fa'
@@ -143,6 +142,10 @@ export default {
     ]
   },
   vuetify: {
+    defaultAssets: {
+      icons: false,
+      font: false
+    },
     theme: {
       dark: false,
       themes: {
@@ -156,11 +159,6 @@ export default {
         }
       }
     },
-  },
-  webfontloader: {
-    google: {
-      families: ['Noto+Sans+JP']
-    }
   },
   publicRuntimeConfig: {
     googleApiKey: process.env.GOOGLE_API_KEY,

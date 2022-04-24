@@ -115,7 +115,7 @@ export default {
   methods: {
     imageUrl(url) {
       if (!url) {
-        return '/images/subNoImage.png'
+        return '/images/subNoImage.webp'
       }
       return url
     }

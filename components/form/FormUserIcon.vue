@@ -60,7 +60,7 @@
 </template>
 
 <script>
-const imageDefault = "/images/noimage.png"
+const imageDefault = "/images/noimage.webp"
 export default {
   data () {
     return {
