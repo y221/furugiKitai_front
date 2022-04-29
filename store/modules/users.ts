@@ -31,19 +31,22 @@ export const actions = actionTree({ state, getters, mutations }, {
         userData,
         { withCredentials: true }
       );
-      commit('setUser', user);
+      commit('setUser', user.data);
+      return user;
     })
     .catch(
       error => this.$router.push('/login')
     );
   },
 
-  async updateUser({ commit }, {id, ...userData}) {
+  async updateUser({ commit }, userData) {
     const user = await this.$axios.$post(
-      `/api/users/${id}`, 
+      `/api/users/${userData.get('id')}`, 
       userData,
+      {headers: {'Content-Type': 'multipart/form-data'}}
     );
-    commit('setUser', user);
+    commit('setUser', user.data);
+    return user;
   },
 
   async logoutUser({ commit }) {
@@ -60,6 +63,6 @@ export const actions = actionTree({ state, getters, mutations }, {
       catch(
         error => this.$router.push('/') //TODO 404エラーへ
       );
-      commit('setOtherUser', user);
+      commit('setOtherUser', user.data);
   }
 })

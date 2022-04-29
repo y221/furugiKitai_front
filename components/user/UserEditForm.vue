@@ -11,23 +11,23 @@
       </div>
       <ErrorsText class="mt-4" :errors="errors" />
       <div>
-          <FormUserIcon :imagePath="icon" imageName="ユーザーアイコン" id="icon" />
-          <FormTextfield columnName="名前" label="例：古着大好きおじさん" :required="true" id="name" :default="name" v-on:change="changeValue"/>
-          <FormTextarea columnName="好きな古着" label="例：ビンテージのデニム" :required="false" id="favorite" :default="favorite"  v-on:change="changeValue"/>
-          <FormTextarea columnName="プロフィール" label="例：ホゲホゲ" :required="false" id="profile" :default="profile" v-on:change="changeValue"/>
-          <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagram" :default="instagram" v-on:change="changeValue"/>
-        </div>
-        <v-col align="center">
-          <v-btn
-            class="mx-auto my-6 font-weight-bold"
-            color="primary"
-            depressed
-            rounded
-            width="200px"
-            @click="updateUser()"
-          >
-            登録
-          </v-btn>
+        <FormUserIcon imageName="ユーザーアイコン" id="icon" :imagePath="icon" v-on:change="changeValue"/>
+        <FormTextfield columnName="名前" label="例：古着大好きおじさん" :required="true" id="name" :default="name" v-on:change="changeValue"/>
+        <FormTextarea columnName="好きな古着" label="例：ビンテージのデニム" :required="false" id="favorite" :default="favorite"  v-on:change="changeValue"/>
+        <FormTextarea columnName="プロフィール" label="例：ホゲホゲ" :required="false" id="profile" :default="profile" v-on:change="changeValue"/>
+        <FormTextfield columnName="Instagram" label="例：https://www.instagram.com/xxxxx/" :required="false" id="instagram" :default="instagram" v-on:change="changeValue"/>
+      </div>
+      <v-col align="center">
+        <v-btn
+          class="mx-auto my-6 font-weight-bold"
+          color="primary"
+          depressed
+          rounded
+          width="200px"
+          @click="updateUser()"
+        >
+          登録
+        </v-btn>
       </v-col>
     </div>
   </div>
@@ -54,35 +54,40 @@ export default {
   }),
   methods: {
     async updateUser() {
-      const formData = {
-        id: this.$accessor.modules.users.user.id,
-        icon: this.icon,
-        name: this.name,
-        favorite: this.favorite,
-        profile: this.profile,
-        instagram: this.instagram,
-        uid: this.$auth.user.userId,
+      const formData = new FormData;
+      formData.append('id', this.$accessor.modules.users.user.id);
+      formData.append('icon', this.icon);
+      formData.append('name', this.name);
+      formData.append('favorite', this.favorite);
+      formData.append('profile', this.profile);
+      formData.append('instagram', this.instagram);
+      formData.append('uid', this.$auth.user.userId);
+
+      const response = await this.$accessor.modules.users.updateUser(formData)
+      .catch(err => {
+        this.errors = err.response.data.errors;
+        window.scrollTo({
+          top: 0
+        });
+      });
+
+      if (response) {
+        this.$accessor.modules.messages.setMessage('プロフィール編集が完了しました！');
+        this.$router.push(`/users/me`);
       };
 
-      await this.$accessor.modules.users.updateUser(formData)
-      .then(() => this.isCompleted = true)
-      .catch(error =>  this.$router.push('/')); //TODO 500エラーへ?
-
-      window.scrollTo({
-        top: 0
-      });
     },
     changeValue(...values) {
-      const [value, id] = values
+      const [value, id] = values;
       this[id] = value;
     }
   },
   created() {
-    this.name = this.$accessor.modules.users.user.name
-    this.icon = this.$accessor.modules.users.user.icon
-    this.favorite = this.$accessor.modules.users.user.favorite
-    this.profile = this.$accessor.modules.users.user.profile
-    this.instagram =this.$accessor.modules.users.user.instagram
+    this.name = this.$accessor.modules.users.user.name ?? '';
+    this.icon = this.$accessor.modules.users.user.icon ?? '';
+    this.favorite = this.$accessor.modules.users.user.favorite ?? '';
+    this.profile = this.$accessor.modules.users.user.profile ?? '';
+    this.instagram =this.$accessor.modules.users.user.instagram ?? '';
   }
 }
 </script>
