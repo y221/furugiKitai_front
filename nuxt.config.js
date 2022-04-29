@@ -142,10 +142,10 @@ export default {
     ]
   },
   vuetify: {
-    defaultAssets: {
-      icons: false,
-      font: false
-    },
+    // defaultAssets: {
+    //   icons: false,
+    //   font: false
+    // },
     theme: {
       dark: false,
       themes: {
