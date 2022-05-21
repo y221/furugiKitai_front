@@ -7,6 +7,7 @@
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
+    "analyze": "nuxt build --analyze",
     "test": "jest"
   },
   "dependencies": {

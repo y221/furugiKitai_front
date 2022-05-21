@@ -166,5 +166,10 @@ export default {
       baseURL: process.env.TARGET_SERVER_URL,
       credentials: true
     },
-  }
+  },
+  webfontloader: {
+    google: {
+      families: ['Noto+Sans+JP']
+    }
+  },
 }
